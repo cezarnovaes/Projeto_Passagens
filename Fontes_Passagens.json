@@ -1,0 +1,98 @@
+{"agents" : [ {
+      "id" : "arbr",
+      "name" : "Mytrip",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.33,
+      "feedbackCount" : 8484
+    }, {
+      "id" : "bcbr",
+      "name" : "Booking.com",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.94,
+      "feedbackCount" : 11397
+    }, {
+      "id" : "copb",
+      "name" : "Capo Viagens",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.59,
+      "feedbackCount" : 1783
+    }, {
+      "id" : "ctbr",
+      "name" : "Trip.com",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.14,
+      "feedbackCount" : 5703
+    }, {
+      "id" : "dclr",
+      "name" : "Decolar",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.01,
+      "feedbackCount" : 2300
+    }, {
+      "id" : "golt",
+      "name" : "GOL Linhas Aéreas",
+      "isCarrier" : true,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.77,
+      "feedbackCount" : 4919
+    }, {
+      "id" : "gtbr",
+      "name" : "Gotogate",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.2,
+      "feedbackCount" : 2660
+    }, {
+      "id" : "milh",
+      "name" : "123milhas",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.46,
+      "feedbackCount" : 12480
+    }, {
+      "id" : "skyp",
+      "name" : "Kiwi.com",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.04,
+      "feedbackCount" : 4147
+    }, {
+      "id" : "tamd",
+      "name" : "LATAM Airlines",
+      "isCarrier" : true,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : false,
+      "rating" : 4.92,
+      "feedbackCount" : 11980
+    }, {
+      "id" : "viaj",
+      "name" : "ViajaNet",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 4.44,
+      "feedbackCount" : 519
+    }, {
+      "id" : "xpbr",
+      "name" : "Expedia",
+      "isCarrier" : false,
+      "updateStatus" : "pending",
+      "optimisedForMobile" : true,
+      "rating" : 3.09,
+      "feedbackCount" : 1024
+    } ]
+}

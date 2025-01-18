@@ -1,0 +1,28 @@
+{
+    API CONSULTA VOOS VIAJANET - GET
+    https://www.viajanet.com.br/shop/flights-busquets/api/v1/web/search?reSearch=true&di=1&adults=1&channel=viajanet-site&adtCount=1&language=pt_BR&initialCurrencyCode=BRL&returnDate=2025-01-31&clientType=WEB&children=0&chdCount=0&limit=10&from=RAO&departureDate=2025-01-15&routeType=DOMESTIC&flow=SEARCH&disambiguationType=NO_DISAMBIGUATION&infants=0&searchType=ROUND_TRIP&h=0d5c2b82f80e7ee3efc268a057b294a6&refererEvent=SB&refererFront=https%3A%2F%2Fwww.viajanet.com.br%2Fshop%2Fflights%2Fresults%2Froundtrip%2FRAO%2FBSB%2F2025-01-15%2F2025-01-31%2F1%2F0%2F0%3Ffrom%3DSB%26di%3D1%26reSearch%3Dtrue&site=BR&companyId=3212&refererBusquets=http%3A%2F%2Fwww.viajanet.com.br%2Fshop%2Fflights%2Fresults%2Froundtrip%2FRAO%2FBSB%2F2025-01-15%2F2025-01-31%2F1%2F0%2F0%3Ffrom%3DSB%26di%3D1%26reSearch%3Dtrue&chdDistribution=0&pageViewId=shopping-flightsa64cc12c-89b3-48f2-84f8-d12f7931e5ea&partnerId=viajanet&partnerType=BENEFIT_OPEN&to=BSB&user=997471ca-8ba6-4e72-b471-ca8ba6be7261&agencyType=whitelabel
+
+    API BUSCA AEROPORTOS VIAJANET - GET
+    https://www.viajanet.com.br/suggestions?locale=pt_BR&profile=sbox-flights&hint=bra
+}
+
+{
+    API CONSULTA VOOS BOOKING - GET
+    https://flights.booking.com/api/flights/?type=ROUNDTRIP&adults=1&cabinClass=ECONOMY&children=&from=BSB.AIRPORT&to=SAO.CITY&fromCountry=BR&toCountry=BR&fromLocationName=Aeroporto+Internacional+de+Bras%C3%ADlia+-+Presidente+Juscelino+Kubitschek&toLocationName=S%C3%A3o+Paulo&depart=2025-02-15&return=2025-02-22&sort=BEST&travelPurpose=leisure&ca_source=flights_index_sb&aid=304142&label=gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCiMSfvAbAAgHSAiQ1MTUwMjVjYi0yMmZjLTQ0ZWUtODAzOC0wZDE5ODIzY2RjODLYAgTgAgE&adplat=www-index-web_shell_header-flight-missing_creative-5SQfleC4AaLbSmEg097WTh&enableVI=1
+
+    API BUSCA AEROPORTOS BOOKING - GET
+    https://flights.booking.com/api/autocomplete/pt?q=A
+}
+
+{
+    API CONSULTA VOOS 123MILHAS - GET
+    https://123milhas.com/api/v3/flight/search?date_outbound=2025-01-15&iata_from=BSB&class_service=3&is_loyalty=0&adults=1&children=0&babies=0&iata_to=SAO
+
+    API BUSCAS AEROPORTOS 123MILHAS - POST
+    https://123milhas.com/api/v3/home/search-airports
+
+    PAYLOAD
+    {
+        "text": "BRa"
+    }
+}
