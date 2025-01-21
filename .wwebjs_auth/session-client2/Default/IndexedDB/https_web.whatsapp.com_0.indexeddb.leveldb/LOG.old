@@ -1,27 +1,27 @@
-2025/01/20-19:40:43.213 1ba8 Reusing MANIFEST C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client2\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/01/20-19:40:43.217 1ba8 Recovering log #311
-2025/01/20-19:40:43.475 1ba8 Reusing old log C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client2\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000311.log 
-2025/01/20-19:40:45.417 1ba8 Level-0 table #323: started
-2025/01/20-19:40:45.431 1ba8 Level-0 table #323: 385901 bytes OK
-2025/01/20-19:40:45.432 1ba8 Delete type=0 #311
-2025/01/20-19:40:45.432 1ba8 Manual compaction at level-0 from '\x00$\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00%\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/01/20-19:40:49.680 e38 Compacting 1@1 + 8@2 files
-2025/01/20-19:40:49.981 e38 Generated table #324@1: 39457 keys, 2207773 bytes
-2025/01/20-19:40:50.040 e38 Generated table #325@1: 3338 keys, 2162883 bytes
-2025/01/20-19:40:50.131 e38 Generated table #326@1: 3294 keys, 2158882 bytes
-2025/01/20-19:40:50.164 e38 Generated table #327@1: 3195 keys, 2155283 bytes
-2025/01/20-19:40:50.304 e38 Generated table #328@1: 21328 keys, 2205733 bytes
-2025/01/20-19:40:50.594 e38 Generated table #329@1: 28842 keys, 2265141 bytes
-2025/01/20-19:40:50.753 e38 Generated table #330@1: 39147 keys, 2227528 bytes
-2025/01/20-19:40:51.074 e38 Generated table #331@1: 89809 keys, 2024832 bytes
-2025/01/20-19:40:51.074 e38 Compacted 1@1 + 8@2 files => 17408055 bytes
-2025/01/20-19:40:51.074 e38 compacted to: files[ 0 0 8 0 0 0 0 ]
-2025/01/20-19:40:51.074 e38 Delete type=2 #313
-2025/01/20-19:40:51.074 e38 Delete type=2 #314
-2025/01/20-19:40:51.074 e38 Delete type=2 #315
-2025/01/20-19:40:51.075 e38 Delete type=2 #316
-2025/01/20-19:40:51.075 e38 Delete type=2 #317
-2025/01/20-19:40:51.075 e38 Delete type=2 #318
-2025/01/20-19:40:51.075 e38 Delete type=2 #319
-2025/01/20-19:40:51.075 e38 Delete type=2 #320
-2025/01/20-19:40:51.075 e38 Delete type=2 #323
+2025/01/20-20:12:55.667 b8c Reusing MANIFEST C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client2\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/20-20:12:55.670 b8c Recovering log #322
+2025/01/20-20:12:55.870 b8c Reusing old log C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client2\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000322.log 
+2025/01/20-20:12:59.968 30fc Level-0 table #334: started
+2025/01/20-20:13:00.002 30fc Level-0 table #334: 628340 bytes OK
+2025/01/20-20:13:00.003 30fc Delete type=0 #322
+2025/01/20-20:13:00.003 30fc Manual compaction at level-0 from '\x00%\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00&\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/20-20:13:05.148 30fc Compacting 1@1 + 8@2 files
+2025/01/20-20:13:05.431 30fc Generated table #335@1: 40375 keys, 2209367 bytes
+2025/01/20-20:13:05.467 30fc Generated table #336@1: 3337 keys, 2161087 bytes
+2025/01/20-20:13:05.516 30fc Generated table #337@1: 3269 keys, 2160263 bytes
+2025/01/20-20:13:05.610 30fc Generated table #338@1: 3196 keys, 2154299 bytes
+2025/01/20-20:13:05.865 30fc Generated table #339@1: 21074 keys, 2204164 bytes
+2025/01/20-20:13:06.054 30fc Generated table #340@1: 28861 keys, 2264477 bytes
+2025/01/20-20:13:06.349 30fc Generated table #341@1: 39407 keys, 2228142 bytes
+2025/01/20-20:13:06.759 30fc Generated table #342@1: 96399 keys, 2220801 bytes
+2025/01/20-20:13:06.759 30fc Compacted 1@1 + 8@2 files => 17602600 bytes
+2025/01/20-20:13:06.760 30fc compacted to: files[ 0 0 8 0 0 0 0 ]
+2025/01/20-20:13:06.760 30fc Delete type=2 #324
+2025/01/20-20:13:06.760 30fc Delete type=2 #325
+2025/01/20-20:13:06.760 30fc Delete type=2 #326
+2025/01/20-20:13:06.760 30fc Delete type=2 #327
+2025/01/20-20:13:06.760 30fc Delete type=2 #328
+2025/01/20-20:13:06.760 30fc Delete type=2 #329
+2025/01/20-20:13:06.760 30fc Delete type=2 #330
+2025/01/20-20:13:06.760 30fc Delete type=2 #331
+2025/01/20-20:13:06.760 30fc Delete type=2 #334

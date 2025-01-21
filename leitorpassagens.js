@@ -36,13 +36,13 @@ function generateWhatsAppMessages(data) {
                 const offerUrl = generateOfferURL(deal, from, to, departureDate);
 
                 messages.push(`
-✈️ **Oferta de Viagem - Melhores Condições!**
-🌍 Rota: **${decodeURIComponent(from)} ➡️   ${decodeURIComponent(to)}**
-📅 Data de Partida: **${departureDate}**
-🛏️ Classe: **${cabinClass}**
-💸 Preço Total: **${currency} ${price.toFixed(2)}**
-🔍 Base Fare: **${currency} ${baseFare}**
-🧾 Taxas: **${currency} ${taxes}**
+✈️ *Oferta de Viagem - Melhores Condições!*
+🌍 Rota: *${decodeURIComponent(from)} ➡️ ${decodeURIComponent(to)}*
+📅 Data de Partida: *${departureDate}*
+🛏️ Classe: *${cabinClass}*
+💸 Preço Total: *${currency} ${price.toFixed(2)}*
+🔍 Base Fare: *${currency} ${baseFare}*
+🧾 Taxas: *${currency} ${taxes}*
 
 🌟 Aproveite esta oferta incrível para sua próxima viagem! 
 🔗 Confira todos os detalhes e reserve agora: ${offerUrl}`
@@ -54,19 +54,6 @@ function generateWhatsAppMessages(data) {
     return messages;
 }
 
-// Função para enviar mensagens para o WhatsApp
-async function sendWhatsAppMessages(client, messages, recipientNumber) {
-    for (const message of messages) {
-        try {
-            const chat = await client.getChatById(recipientNumber)
-            await chat.sendMessage(message);
-            console.log(`Mensagem enviada com sucesso para ${recipientNumber}`)
-        } catch (error) {
-            console.error(`Erro ao enviar mensagem para ${recipientNumber}: `, error)
-        }
-    }
-}
-
 // Função principal
 async function main() {
     const filePath = "./logs/PASSAGENS/passagensResult.json"; // Substitua pelo caminho correto do arquivo JSON
@@ -74,7 +61,7 @@ async function main() {
 
     // Configurar cliente WhatsApp
     const client = new Client({
-        authStrategy: new LocalAuth({ clientId: "client2" }),  // Cria uma nova sessão ou usa uma existente com um clientId único
+        authStrategy: new LocalAuth({ clientId: "client3" }),  // Cria uma nova sessão ou usa uma existente com um clientId único
         puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: true } // Opcional: Torne o navegador headless
     })
 
@@ -85,34 +72,37 @@ async function main() {
 
     client.on("ready", async () => {
         console.log("Cliente WhatsApp está pronto!");
-    
+
         // Obter a lista de chats/grupos
         const chats = await client.getChats();
         // console.log(chats)
         console.log(`${chats.length} Chats encontrados, filtrando grupo...`)
         // Filtrar apenas grupos
-        chats.forEach(c => {console.log(c.name + " - " + c.id._serialized)})
-        const groups = chats.filter(chat => chat.name == `Teste1`)
+        // chats.forEach(c => {console.log(c.name + " - " + c.id._serialized)})
+        const grupo = chats.find(chat => chat.name == "Teste1")
 
-        if (groups.length > 0) {
-            const groupId = groups[0].id._serialized;  // ID do primeiro grupo encontrado
-    
+        if (grupo) {
+            const groupId = grupo.id._serialized;
             // Gerar as mensagens detalhadas
             const messages = generateWhatsAppMessages(data);
-            console.log(groups[0])
-            console.log(groupId)
-            // Enviar as mensagens para o grupo
-            await client.sendMessage(groupId, messages[0])
-            // await sendWhatsAppMessages(client, messages, groupId)
-    
-            // Encerrar o cliente após enviar as mensagens
-            client.destroy();
+            console.log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
+
+            try {
+                // Enviar as mensagens para o grupo - 120363390566540905@g.us Teste1
+                await client.sendMessage(groupId, messages[0])
+                console.log('Mensagem enviada com sucesso!')
+            } catch (error) {
+                console.log('Erro ao enviar mensagem para o grupo: ' + error)
+            } finally {
+                // Encerrar o cliente após enviar as mensagens
+                // client.destroy();
+            }
         } else {
             client.destroy();
             console.log("Nenhum grupo encontrado!")
         }
     })
-    
+
     client.on("message", (message) => {
         console.log(`Message received from ${message.from}: ${message.body}`)
     })
