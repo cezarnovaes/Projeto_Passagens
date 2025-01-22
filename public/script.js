@@ -19,7 +19,6 @@ async function renderLocationSelector() {
 
   try {
     const groupedLocations = await fetchLocations();
-    console.log(groupedLocations)
 
     container.innerHTML = `
       <h2>Origem e Destino</h2>
@@ -40,15 +39,26 @@ async function renderLocationSelector() {
         </div>
       </div>
     `;
+
+    const originSelect = document.getElementById("origin")
+    const saoPauloOption = Array.from(originSelect.options).find(
+      (option) => option.text.toLowerCase().includes("são paulo") && option.value.endsWith("SAO"),
+    )
+    if (saoPauloOption) {
+      saoPauloOption.selected = true
+      // Trigger a change event to update any dependent fields
+      const event = new Event("change")
+      originSelect.dispatchEvent(event)
+    }
   } catch (error) {
     console.error("Error fetching locations:", error);
-    container.innerHTML = "<p>Erro ao carregar localizações. Por favor, tente novamente mais tarde.</p>";
+    container.innerHTML = "<h2>Origem e Destino</h2> <p>Erro ao carregar localizações. Por favor, tente novamente mais tarde.</p>";
   }
 }
 
 async function fetchLocations() {
   try {
-    const response = await fetch('/api/fetch-locations');
+    const response = await fetch('/api/fetch-locations-booking');
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -78,32 +88,72 @@ function groupLocationsByCityCode(locations) {
 }
 
 function renderLocationOptions(groupedLocations) {
-  return Object.entries(groupedLocations)
-    .map(([cityCode, locations]) => {
-      const cityLocation = locations.find((loc) => loc.type === "CITY") || locations[0];
-      return `
-        <optgroup label="${cityLocation.name}">
-          ${locations
-          .map((location) => `<option value="${location.code}">${formatLocationLabel(location)}</option>`)
-          .join('')}
-        </optgroup>
-      `;
-    })
-    .join('');
-}
+  // Inicializa os grupos de cidades e locais sem agrupamento
+  const cityGroups = []
+  const ungroupedLocations = []
 
-function formatLocationLabel(location) {
-  let label = location.name;
-  if (location.type && location.type !== "CITY") {
-    label += ` (${location.type})`;
-  }
-  return label;
+  // Itera sobre os grupos de localização
+  Object.entries(groupedLocations).forEach(([cityCode, locations]) => {
+    const city = locations.find((loc) => loc.type === "CITY")
+    const airports = locations.filter((loc) => loc.type === "AIRPORT")
+
+    if (city) {
+      // Agrupa a cidade com seus aeroportos
+      const options = [
+        `<option value="${city.code}">
+          ${city.name} (CITY)
+        </option>`,
+        ...airports.map(
+          (airport) => `
+          <option value="${airport.code}">
+            ${airport.name} (AIRPORT)
+          </option>
+        `,
+        ),
+      ].join("")
+
+      // Adiciona ao grupo de cidades
+      cityGroups.push({
+        name: city.name,
+        html: `
+          <optgroup label="${city.name}">
+            ${options}
+          </optgroup>
+        `,
+      })
+    } else {
+      // Locais que não possuem uma cidade relacionada
+      ungroupedLocations.push(...locations)
+    }
+  })
+
+  // Ordena os grupos de cidades alfabeticamente
+  cityGroups.sort((a, b) => a.name.localeCompare(b.name))
+
+  // Ordena os locais não agrupados
+  ungroupedLocations.sort((a, b) => (a.name || "").localeCompare(b.name || ""))
+
+  // Cria as opções dos locais não agrupados
+  const ungroupedOptions = ungroupedLocations
+    .map(
+      (location) => `
+        <option value="${location.code}">
+          ${location.name} (${location.type})
+        </option>
+      `,
+    )
+    .join("")
+
+  // Combina os grupos de cidades ordenados com os locais não agrupados
+  return `
+    ${cityGroups.map((group) => group.html).join("")}
+    ${ungroupedLocations.length > 0 ? `<optgroup label="Outros">${ungroupedOptions}</optgroup>` : ""}
+  `
 }
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
 
 async function handleStopRobot() {
   try {
@@ -160,33 +210,6 @@ function renderPeriodSelector() {
       specificDates.classList.toggle("hidden", e.target.value !== "specific")
     })
   })
-}
-
-function renderLocationOptions(groupedLocations) {
-  return Object.entries(groupedLocations)
-    .map(([cityCode, locations]) => {
-      const cityLocation = locations.find((loc) => loc.type === "CITY") || locations[0]
-      return `
-                <optgroup label="${cityLocation.name}">
-                    ${locations
-          .map(
-            (location) => `
-                        <option value="${location.code}">${formatLocationLabel(location)}</option>
-                    `,
-          )
-          .join("")}
-                </optgroup>
-            `
-    })
-    .join("")
-}
-
-function formatLocationLabel(location) {
-  let label = location.name
-  if (location.type && location.type !== "CITY") {
-    label += ` (${location.type})`
-  }
-  return label
 }
 
 function renderFlightConfig() {

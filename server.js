@@ -9,8 +9,7 @@ const PORT = 3000
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
-// Rota para buscar locais usando Puppeteer
-app.get('/api/fetch-locations', async (req, res) => {
+app.get('/api/fetch-locations-booking', async (req, res) => {
   const baseURL = 'https://flights.booking.com/api/autocomplete/pt?q=';
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const results = {};
@@ -35,9 +34,13 @@ app.get('/api/fetch-locations', async (req, res) => {
           results[letter] = [];
         }
 
-        // Adiciona os itens retornados à lista da letra
+        // Adiciona itens não repetidos à lista
         if (Array.isArray(response)) {
-          results[letter].push(...response);
+          response.forEach((item) => {
+            if (!isDuplicate(item, results)) {
+              results[letter].push(item);
+            }
+          });
         } else {
           console.warn(`Unexpected response format for ${letter}:`, response);
         }
@@ -47,6 +50,16 @@ app.get('/api/fetch-locations', async (req, res) => {
       }
     }
 
+    // Ordena as listas de resultados: cidades primeiro, aeroportos depois
+    for (const letter in results) {
+      results[letter].sort((a, b) => {
+        if (a.type === b.type) {
+          return (a.cityName || a.name || '').localeCompare(b.cityName || b.name || '');
+        }
+        return a.type === "CITY" ? -1 : 1;
+      });
+    }
+
     await browser.close(); // Fecha o navegador
     res.status(200).json(results); // Retorna os resultados como JSON
   } catch (error) {
@@ -54,6 +67,21 @@ app.get('/api/fetch-locations', async (req, res) => {
     res.status(500).send({ error: 'Erro ao buscar locais.' });
   }
 });
+
+// Função para verificar duplicados
+function isDuplicate(item, results) {
+  const itemType = item.type;
+  const itemCode = item.code;
+
+  // Percorre todas as listas no objeto results
+  for (const letter in results) {
+    if (results[letter].some((existingItem) => existingItem.type === itemType && existingItem.code === itemCode)) {
+      return true; // Encontrado duplicado
+    }
+  }
+
+  return false; // Não há duplicados
+}
 
 
 // Inicia o servidor
