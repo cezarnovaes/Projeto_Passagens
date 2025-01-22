@@ -60,7 +60,7 @@ var nomeCategoria;
 
 
         const browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
             defaultViewport: null,
             protocolTimeout: 0,
             timeout: 0,
@@ -134,12 +134,46 @@ var nomeCategoria;
                 resultsOrigens[letra] = { error: error.message }; // Armazena o erro associado à letra
             }
         }
-
+        
         var jsonGerados = 0
-        function generateBookingURLs(resultsOrigens) {
+
+        // const urls = generateBookingURLs(resultsOrigens);
+        const urls = generateBookingURLs(getTopOriginsDestinations(resultsOrigens));
+
+        log(`Total de URLs geradas: ${urls.length}`);
+        log(`Recuperando passagens`)
+
+        const results = await fetchAllUrls(urls, page);
+
+        caminhoLogSql = path.join(caminhoNovaPasta, "passagensResult.json");
+        fs.unlink(caminhoLogSql, (err) => {
+            fs.writeFile(caminhoLogSql, "", 'utf-8', (err) => {
+                if (err) {
+                    console.log('Ocorreu um erro ao criar o arquivo logJSON: ' + jsonGerados + ' => ' + err);
+                    browser.close()
+                    browser.disconnect()
+                }
+                console.log('Arquivo JSON criado com sucesso e conteúdo escrito ' + caminhoLogSql);
+                // console.log(results)
+                logJson(results)
+
+                browser.close()
+                browser.disconnect()
+            })
+        })
+    }
+    function randomDelay() {
+        return Math.floor(Math.random() * (150 - 70 + 1) + 70);
+    }
+
+    function generateBookingURLs(resultsOrigens) {
+        const datasViagens = obterViagensFimDeSemana(); // Calcula todas as viagens possiveis de finais de semana nos proximos 30 dias
+        const urls = [];
+
+        for(const dataV of datasViagens) {
             const baseURL = "https://flights.booking.com/api/flights/";
             const baseParams = {
-                type: "ONEWAY",
+                type: "ROUNDTRIP",
                 adults: "1",
                 cabinClass: "ECONOMY",
                 children: "",
@@ -149,250 +183,150 @@ var nomeCategoria;
                 aid: "304142",
                 label: "gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCmb25vAbAAgHSAiQ4MmQzM2I1OC02ZDM0LTRiYzYtODIzYS1iMGRkZjY3MDAxY2HYAgTgAgE",
                 adplat: "www-index-web_shell_header-flight-missing_creative-2VlI6ThuqGTRdPGFqUvfiU",
-                enableVI: "1"
+                enableVI: "1",
+                depart: dataV.saida,
+                return: dataV.retorno,
             };
-
-            const urls = [];
             const allDestinations = Object.values(resultsOrigens).flat();
 
-            for (const origin of allDestinations) {
+            // for (const origin of allDestinations) {
                 for (const destination of allDestinations) {
-                    if (origin.code !== destination.code) {
+                    if ('SAO.CITY' !== destination.code) {
                         const params = new URLSearchParams({
                             ...baseParams,
-                            from: (origin.type ? `${origin.code}.${origin.type}` : origin.code),
+                            from: 'SAO.CITY',
                             to: (destination.type ? `${destination.code}.${destination.type}` : destination.code),
-                            fromCountry: origin.country,
+                            fromCountry: 'BR',
                             toCountry: destination.country,
-                            fromLocationName: origin.name,
-                            toLocationName: destination.name,
-                            depart: "2025-02-22" // You might want to make this dynamic
+                            fromLocationName: 'São Paulo',
+                            toLocationName: destination.name
                         });
 
                         const url = `${baseURL}?${params.toString()}`;
                         urls.push(url);
                     }
                 }
+            // }
+        }
+        return urls
+    }
+
+    // Função para fazer o fetch de uma única URL
+    async function fetchUrl(url, page) {
+        try {
+            const response = await page.evaluate(async (url) => {
+                return await fetch(url).then(async (res) => {
+                    return await res.json()
+                })
+            }, url)
+            if (!response) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-
-            return urls
+            const data = response;
+            log(`Fetch passagem url: ${url}`)
+            return { url, status: 'success', data };
+        } catch (error) {
+            log(`Fetch passagem erro: ${error.message}`)
+            return { url, status: 'error', error: error.message };
         }
-        const generatedURLs = generateBookingURLs(resultsOrigens);
+    }
 
-        log(`Total URLs generated: ${generatedURLs.length}`);
+    // Função principal para fazer o fetch de todas as URLs
+    async function fetchAllUrls(urls, page) {
+        const results = [];
+        const totalUrls = urls.length;
+        const startTime = Date.now();
 
-        function randomDelay() {
-            return Math.floor(Math.random() * (150 - 70 + 1) + 70);
-        }
+        log(`Iniciando fetch de ${totalUrls} URLs`);
 
-        // Função para fazer o fetch de uma única URL
-        async function fetchUrl(url) {
-            try {
-                const response = await page.evaluate(async (url) => {
-                    return await fetch(url).then(async (res) => {
-                        return await res.json()
-                    })
-                }, url)
-                if (!response) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = response;
-                log(`Fetch passagem url: ${url}`)
-                return { url, status: 'success', data };
-            } catch (error) {
-                log(`Fetch passagem erro: ${error.message}`)
-                return { url, status: 'error', error: error.message };
+        for (let i = 0; i < totalUrls; i++) {
+            const url = urls[i];
+            const result = await fetchUrl(url, page);
+            results.push(result);
+
+            // Calcular e exibir o progresso
+            const elapsedTime = (Date.now() - startTime) / 1000;
+            const estimatedTotalTime = (elapsedTime / (i + 1)) * totalUrls;
+            const remainingTime = estimatedTotalTime - elapsedTime;
+
+            log(`Progresso: ${i + 1}/${totalUrls} (${((i + 1) / totalUrls * 100).toFixed(2)}%)`);
+            log(`Tempo estimado restante: ${remainingTime.toFixed(2)/60} minutos`);
+            log(`Status da última requisição: ${result.status}`);
+
+            if (i < totalUrls - 1) {
+                const delay = randomDelay();
+                await new Promise(resolve => setTimeout(resolve, delay));
             }
         }
 
-        // Função principal para fazer o fetch de todas as URLs
-        async function fetchAllUrls(urls) {
-            const results = [];
-            const totalUrls = urls.length;
-            const startTime = Date.now();
+        return results;
+    }
 
-            log(`Iniciando fetch de ${totalUrls} URLs`);
-
-            for (let i = 0; i < totalUrls; i++) {
-                const url = urls[i];
-                const result = await fetchUrl(url);
-                results.push(result);
-
-                // Calcular e exibir o progresso
-                const elapsedTime = (Date.now() - startTime) / 1000;
-                const estimatedTotalTime = (elapsedTime / (i + 1)) * totalUrls;
-                const remainingTime = estimatedTotalTime - elapsedTime;
-
-                log(`Progresso: ${i + 1}/${totalUrls} (${((i + 1) / totalUrls * 100).toFixed(2)}%)`);
-                log(`Tempo estimado restante: ${remainingTime.toFixed(2)} segundos`);
-                log(`Status da última requisição: ${result.status}`);
-
-                if (i < totalUrls - 1) {
-                    const delay = randomDelay();
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                }
-            }
-
-            return results;
-        }
-
-        function getTopOriginsDestinations(data) {
-            const allLocations = [];
-          
-            // Iterar pelas letras no JSON
-            for (const letter in data) {
-              if (data.hasOwnProperty(letter)) {
-                const locations = data[letter];
-          
-                // Adicionar locais ao array, mantendo apenas aeroportos
-                locations.forEach((location) => {
-                  if (location.type === "AIRPORT") {
-                    allLocations.push({
-                      code: location.code,
-                      name: location.name,
-                      country: location.country,
-                      countryName: location.countryName
-                    });
-                  }
+    function getTopOriginsDestinations(data) {
+        const allLocations = [];
+      
+        // Iterar pelas letras no JSON
+        for (const letter in data) {
+          if (data.hasOwnProperty(letter)) {
+            const locations = data[letter];
+      
+            // Adicionar locais ao array, mantendo apenas aeroportos
+            locations.forEach((location) => {
+              if (location.type === "AIRPORT") {
+                allLocations.push({
+                  code: location.code,
+                  name: location.name,
+                  country: location.country,
+                  countryName: location.countryName
                 });
               }
-            }
-          
-            // Separar locais brasileiros e internacionais
-            const brazilianLocations = allLocations.filter(
-              (location) => location.country === "BR"
-            );
-            const internationalLocations = allLocations.filter(
-              (location) => location.country !== "BR"
-            );
-          
-            // Selecionar os 20 principais de cada grupo
-            const topBrazilian = brazilianLocations.slice(0, 20);
-            const topInternational = internationalLocations.slice(0, 20);
-          
-            // Combinar os dois grupos
-            const topLocations = [...topBrazilian, ...topInternational];
-          
-            return topLocations;
+            });
+          }
         }
+      
+        // Separar locais brasileiros e internacionais
+        const brazilianLocations = allLocations.filter(
+          (location) => location.country === "BR"
+        );
+        const internationalLocations = allLocations.filter(
+          (location) => location.country !== "BR"
+        );
+      
+        // Selecionar os 20 principais de cada grupo
+        const topBrazilian = brazilianLocations.slice(0, 5);
+        const topInternational = internationalLocations.slice(0, 5);
+      
+        // Combinar os dois grupos
+        const topLocations = [...topBrazilian, ...topInternational];
+        // log("Top 20 locais de origem e destino:")
+        // log(topLocations)
+        return topLocations;
+    }
 
-        const urls = generateBookingURLs(getTopOriginsDestinations(resultsOrigens));
-
-        log(`Total de URLs geradas: ${urls.length}`);
-        log(`Recuperando passagens`)
-        await sleep(5000)
-
-        const results = await fetchAllUrls(urls);
-
-        caminhoLogSql = path.join(caminhoNovaPasta, "passagensResult.json");
-        fs.unlink(caminhoLogSql, (err) => {
-            fs.writeFile(caminhoLogSql, "", 'utf-8', (err) => {
-                if (err) {
-                    console.log('Ocorreu um erro ao criar o arquivo logJSON: ' + jsonGerados + ' => ' + err);
-                    return;
-                }
-                console.log('Arquivo JSON criado com sucesso e conteúdo escrito ' + jsonGerados);
-                logJson(results)
-            })
-        })
-        await sleep(120000)
-        await browser.close()
-        browser.disconnect()
-        process.exit()
-
-        if (produtos) {
-            log('PRODUTOS RECUPERADOS: ' + produtos.products.length + ' / ' + produtos.settings.totalItemCount)
-
-            for (p of produtos.products) {
-                var url_produto = 'https://www.lacquadifiori.com.br/' + p.urlFriendly
-
-                var produto_detail = null
-
-                page.on('response', async (resp) => {
-                    if (resp.url().includes('https://www.lacquadifiori.com.br/api')) {
-                        try {
-                            if ((await resp.text()).includes('"productImages":')) {
-                                produto_detail = await resp.json()
-                            }
-                        } catch (error) { }
-                    }
-                })
-                log('ENTRANDO PRODUTO: ' + url_produto)
-                await page.goto(url_produto, { waitUntil: ['domcontentloaded', 'networkidle0'] })
-                // await sleep(5000)
-                log('RECUPERANDO INFORMAÇÕES')
-
-                var descricao = p.name
-                var referencia = p.code
-                var marca = p.brand.name
-                var preco = p.price
-                var preco_desconto = p.pricePromotion
-                if (preco_desconto == 0) {
-                    preco_desconto = preco
-                }
-                var cor = 'N/A'
-                var cor_url = 'N/A'
-
-                if (produto_detail) {
-                    var codbarras = produto_detail.gtin
-                    var descricao_completa = produto_detail.descriptionDetailWithoutHtml
-                    var descricao_breve = produto_detail.descriptionDetailSummaryWithoutHtml
-                    var composicao = 'N/A'
-                    var carrocel_imagens = []
-                    produto_detail.productImages.forEach(el => carrocel_imagens.push('https:' + el.imageHighResolution))
-                } else {
-                    log('PRODUTO_DETAIL NÃO ENCONTRADO')
-                }
-
-                var jsonPassagens = {
-                    link: url_produto,
-                    descricao: descricao,
-                    referencia: referencia,
-                    marca: 'LACQUA DI FIORI',
-                    cor: 'N/A',
-                    tonalidade: 'N/A',
-                    tonalidade_hexadecimal: 'N/A',
-                    tonalidade_url: cor_url,
-                    descricao_completa: descricao_completa.replace(/<[^>]+>/g, '').replace(/&nbsp;|\r|\n/g, ''),
-                    descricao_breve: descricao_breve.replace(/<[^>]+>/g, '').replace(/&nbsp;|\r|\n/g, ''),
-                    nome: descricao,
-                    composicao: composicao,
-                    categoria: nomePasta != '' ? nomeCategoria + ' > ' + nomePasta : nomeCategoria,
-                    fotos: carrocel_imagens,
-                    tamanhos: [
-                        {
-                            tamanho: 'ÚNICO',
-                            codigobarras: codbarras,
-                            sku: referencia,
-                            preco: preco,
-                            preco_desconto: preco_desconto,
-                        }
-                    ],
-                }
-
-                caminhoLogSql = path.join(caminhoNovaPasta, jsonGerados + "-" + fase + ".json");
-                fs.unlink(caminhoLogSql, (err) => {
-                    fs.writeFile(caminhoLogSql, "", 'utf-8', (err) => {
-                        if (err) {
-                            console.log('Ocorreu um erro ao criar o arquivo logJSON: ' + jsonGerados + ' => ' + err);
-                            return;
-                        }
-                        console.log('Arquivo JSON criado com sucesso e conteúdo escrito ' + jsonGerados);
-                        logJson(jsonPassagens)
-                    })
-                })
-                log('PRODUTO: ' + descricao)
-                log('JSON GERADO COM SUCESSO ' + jsonGerados)
-                log('')
-                jsonGerados++
-                // break
+    function obterViagensFimDeSemana() {
+        const hoje = new Date(); // Data atual
+        const viagens = [];
+        
+        // Iterar pelos próximos 30 dias
+        for (let i = 0; i < 30; i++) {
+            const data = new Date();
+            data.setDate(hoje.getDate() + i);
+            
+            // Verificar se é uma sexta-feira
+            if (data.getDay() === 5) { 
+                const sexta = new Date(data);
+                const domingo = new Date(data);
+                domingo.setDate(sexta.getDate() + 2); // Adicionar 2 dias para o domingo
+                
+                // Adicionar as datas ao array de viagens
+                viagens.push({
+                    saida: sexta.toISOString().split('T')[0], // Formato YYYY-MM-DD
+                    retorno: domingo.toISOString().split('T')[0],
+                });
             }
         }
-
-        log('FINALIZANDO JSON GERADOS: ' + jsonGerados + ' / ' + produtos.settings.totalItemCount)
-        await browser.close()
-        browser.disconnect()
-        process.exit()
+        
+        return viagens;
     }
 
     async function decodeHTMLEntities(text, page) {

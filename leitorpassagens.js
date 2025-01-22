@@ -1,6 +1,7 @@
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const fs = require("fs");
 const qrcode = require("qrcode-terminal");
+const axios = require("axios");
 
 // Função para ler o arquivo JSON
 function readJsonFile(filePath) {
@@ -54,6 +55,22 @@ function generateWhatsAppMessages(data) {
     return messages;
 }
 
+async function sendTelegramMessage(botToken, chatId, message) {
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+    try {
+        const response = await axios.get(url);
+
+        if (response.data.ok) {
+            console.log("Mensagem enviada com sucesso!");
+        } else {
+            console.error("Erro ao enviar mensagem:", response.data.description);
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error.message);
+    }
+}
+
 // Função principal
 async function main() {
     const filePath = "./logs/PASSAGENS/passagensResult.json"; // Substitua pelo caminho correto do arquivo JSON
@@ -84,18 +101,21 @@ async function main() {
         if (grupo) {
             const groupId = grupo.id._serialized;
             // Gerar as mensagens detalhadas
-            const messages = generateWhatsAppMessages(data);
-            console.log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
-
+            const messages = generateWhatsAppMessages(data);            
+            // console.log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
+            // console.log(messages)
             try {
                 // Enviar as mensagens para o grupo - 120363390566540905@g.us Teste1
                 await client.sendMessage(groupId, messages[0])
-                console.log('Mensagem enviada com sucesso!')
+                await sendTelegramMessage('7874360588:AAGYphRhJGd8NWMZ2bk_eIWrZ4zivKEOUTM', '-1002352411246', messages[0])
+                console.log('Mensagens enviadas com sucesso!')
             } catch (error) {
                 console.log('Erro ao enviar mensagem para o grupo: ' + error)
             } finally {
                 // Encerrar o cliente após enviar as mensagens
-                // client.destroy();
+                console.log('Finalizando...')
+                await sleep(3000)
+                client.destroy();
             }
         } else {
             client.destroy();
@@ -103,9 +123,9 @@ async function main() {
         }
     })
 
-    client.on("message", (message) => {
-        console.log(`Message received from ${message.from}: ${message.body}`)
-    })
+    // client.on("message", (message) => {
+    //     console.log(`Message received from ${message.from}: ${message.body}`)
+    // })
 
     client.on("authenticated", () => {
         console.log("Cliente autenticado com sucesso!")
@@ -121,8 +141,6 @@ async function main() {
 
     // Inicializar o cliente
     client.initialize()
-
-    await sleep(120000)
 }
 
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));

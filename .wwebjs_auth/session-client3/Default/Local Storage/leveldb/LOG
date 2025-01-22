@@ -1,3 +1,8 @@
-2025/01/21-17:02:17.172 f60 Reusing MANIFEST C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client3\Default\Local Storage\leveldb/MANIFEST-000001
-2025/01/21-17:02:17.175 f60 Recovering log #3
-2025/01/21-17:02:17.175 f60 Reusing old log C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client3\Default\Local Storage\leveldb/000003.log 
+2025/01/21-21:04:07.732 3a54 Reusing MANIFEST C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client3\Default\Local Storage\leveldb/MANIFEST-000001
+2025/01/21-21:04:07.738 3a54 Recovering log #3
+2025/01/21-21:04:07.738 3a54 Level-0 table #3: started
+2025/01/21-21:04:07.740 3a54 Level-0 table #3: 17651 bytes OK
+2025/01/21-21:04:07.740 3a54 Recovering log #4
+2025/01/21-21:04:07.741 3a54 Reusing old log C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client3\Default\Local Storage\leveldb/000004.log 
+2025/01/21-21:04:07.742 3a54 Delete type=0 #3
+2025/01/21-21:04:07.742 3a54 Delete type=2 #5
