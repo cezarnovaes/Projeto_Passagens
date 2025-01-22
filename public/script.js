@@ -10,6 +10,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", handleSubmit)
 })
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("searchForm");
+  const robotStatus = document.getElementById("robotStatus");
+  const stopRobotButton = document.getElementById("stopRobotButton");
+
+  renderPeriodSelector();
+  renderLocationSelector();
+  renderFlightConfig();
+  renderAdditionalFilters();
+  renderRobotConfig();
+
+  form.addEventListener("submit", handleSubmit);
+  stopRobotButton.addEventListener("click", handleStopRobot);
+});
+
+async function handleStopRobot() {
+  try {
+    const stopRobotResponse = await fetch("/api/stop-robot", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!stopRobotResponse.ok) {
+      throw new Error("Failed to stop the robot");
+    }
+
+    alert("Robô parado com sucesso!");
+    // Voltar para o estado inicial
+    document.getElementById("searchForm").style.display = "block";
+    document.getElementById("robotStatus").classList.add("hidden");
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Ocorreu um erro ao parar o robô. Por favor, tente novamente.");
+  }
+}
 
 function renderPeriodSelector() {
   const container = document.getElementById("periodSelector")
@@ -123,12 +158,12 @@ function renderLocationOptions(groupedLocations) {
       return `
                 <optgroup label="${cityLocation.name}">
                     ${locations
-                      .map(
-                        (location) => `
+          .map(
+            (location) => `
                         <option value="${location.code}">${formatLocationLabel(location)}</option>
                     `,
-                      )
-                      .join("")}
+          )
+          .join("")}
                 </optgroup>
             `
     })

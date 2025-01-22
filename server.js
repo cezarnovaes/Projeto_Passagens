@@ -1,15 +1,41 @@
 const express = require('express');
-const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 3000;
 
-// Define a pasta 'public' como fonte de arquivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+let robotRunning = false;
 
-// Rota para a página inicial
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.use(bodyParser.json());
+app.use(express.static('public'));
+
+// Salvar configurações
+app.post('/api/save-config', (req, res) => {
+  const config = req.body;
+  console.log("Configurações salvas:", config);
+  res.status(200).send({ message: "Configurações salvas com sucesso" });
+});
+
+// Iniciar robô
+app.post('/api/start-robot', (req, res) => {
+  if (robotRunning) {
+    return res.status(400).send({ message: "O robô já está em execução" });
+  }
+
+  robotRunning = true;
+  console.log("Robô iniciado com as configurações:", req.body);
+  res.status(200).send({ message: "Robô iniciado com sucesso" });
+});
+
+// Parar robô
+app.post('/api/stop-robot', (req, res) => {
+  if (!robotRunning) {
+    return res.status(400).send({ message: "O robô não está em execução" });
+  }
+
+  robotRunning = false;
+  console.log("Robô parado.");
+  res.status(200).send({ message: "Robô parado com sucesso" });
 });
 
 // Inicia o servidor

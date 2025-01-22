@@ -77,6 +77,23 @@ select {
   background-color: #2980b9;
 }
 
+.btn-danger {
+  background-color: #ff0011;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.btn-danger:hover {
+  background-color: #ff0011;
+}
+
 .hidden {
   display: none;
 }
