@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Passagens Promocionais</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Pesquisa de Passagens Promocionais</h1>
+        <form id="searchForm">
+            <div id="periodSelector" class="form-section"></div>
+            <div id="locationSelector" class="form-section"></div>
+            <div id="flightConfig" class="form-section"></div>
+            <div id="additionalFilters" class="form-section"></div>
+            <div id="robotConfig" class="form-section"></div>
+            <button type="submit" class="btn-primary">Iniciar Pesquisa</button>
+        </form>
+        <div id="robotStatus" class="hidden">
+            <h2>Robô em execução</h2>
+            <p>O robô está executando a pesquisa com as configurações fornecidas.</p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
