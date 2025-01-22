@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("searchForm")
-  const robotStatus = document.getElementById("robotStatus")
-
-  renderPeriodSelector()
-  renderLocationSelector()
-  renderFlightConfig()
-  renderAdditionalFilters()
-  renderRobotConfig()
-
-  form.addEventListener("submit", handleSubmit)
-})
-document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("searchForm");
   const robotStatus = document.getElementById("robotStatus");
   const stopRobotButton = document.getElementById("stopRobotButton");
@@ -24,6 +12,98 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", handleSubmit);
   stopRobotButton.addEventListener("click", handleStopRobot);
 });
+
+async function renderLocationSelector() {
+  const container = document.getElementById("locationSelector");
+  container.innerHTML = '<h2>Origem e Destino</h2> <div class="loading"></div>'; // Indicador de carregamento
+
+  try {
+    const groupedLocations = await fetchLocations();
+    console.log(groupedLocations)
+
+    container.innerHTML = `
+      <h2>Origem e Destino</h2>
+      <div class="flex">
+        <div>
+          <label for="origin">Origem</label>
+          <select id="origin" name="origin">
+            <option value="">Selecione a origem</option>
+            ${renderLocationOptions(groupedLocations)}
+          </select>
+        </div>
+        <div>
+          <label for="destination">Destino</label>
+          <select id="destination" name="destination">
+            <option value="">Todos os destinos</option>
+            ${renderLocationOptions(groupedLocations)}
+          </select>
+        </div>
+      </div>
+    `;
+  } catch (error) {
+    console.error("Error fetching locations:", error);
+    container.innerHTML = "<p>Erro ao carregar localizações. Por favor, tente novamente mais tarde.</p>";
+  }
+}
+
+async function fetchLocations() {
+  try {
+    const response = await fetch('/api/fetch-locations');
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const results = await response.json();
+    return groupLocationsByCityCode(flattenResults(results));
+  } catch (error) {
+    console.error("Error fetching locations:", error);
+    throw error;
+  }
+}
+
+
+function flattenResults(results) {
+  return Object.values(results).flat();
+}
+
+function groupLocationsByCityCode(locations) {
+  const grouped = {};
+  locations.forEach((location) => {
+    const cityCode = location.city || location.code;
+    if (!grouped[cityCode]) {
+      grouped[cityCode] = [];
+    }
+    grouped[cityCode].push(location);
+  });
+  return grouped;
+}
+
+function renderLocationOptions(groupedLocations) {
+  return Object.entries(groupedLocations)
+    .map(([cityCode, locations]) => {
+      const cityLocation = locations.find((loc) => loc.type === "CITY") || locations[0];
+      return `
+        <optgroup label="${cityLocation.name}">
+          ${locations
+          .map((location) => `<option value="${location.code}">${formatLocationLabel(location)}</option>`)
+          .join('')}
+        </optgroup>
+      `;
+    })
+    .join('');
+}
+
+function formatLocationLabel(location) {
+  let label = location.name;
+  if (location.type && location.type !== "CITY") {
+    label += ` (${location.type})`;
+  }
+  return label;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 
 async function handleStopRobot() {
   try {
@@ -80,75 +160,6 @@ function renderPeriodSelector() {
       specificDates.classList.toggle("hidden", e.target.value !== "specific")
     })
   })
-}
-
-async function renderLocationSelector() {
-  const container = document.getElementById("locationSelector")
-  container.innerHTML = '<div class="loading"></div>'
-
-  try {
-    const locations = await fetchLocations()
-    const groupedLocations = groupLocationsByCityCode(locations)
-
-    container.innerHTML = `
-            <h2>Origem e Destino</h2>
-            <div class="flex">
-                <div>
-                    <label for="origin">Origem</label>
-                    <select id="origin" name="origin">
-                        <option value="">Selecione a origem</option>
-                        ${renderLocationOptions(groupedLocations)}
-                    </select>
-                </div>
-                <div>
-                    <label for="destination">Destino</label>
-                    <select id="destination" name="destination">
-                        <option value="">Todos os destinos</option>
-                        ${renderLocationOptions(groupedLocations)}
-                    </select>
-                </div>
-            </div>
-        `
-
-    // Set default origin to São Paulo
-    const originSelect = document.getElementById("origin")
-    const saoPauloOption = Array.from(originSelect.options).find(
-      (option) => option.text.toLowerCase().includes("são paulo") && option.value.endsWith(".CITY"),
-    )
-    if (saoPauloOption) {
-      saoPauloOption.selected = true
-    }
-  } catch (error) {
-    console.error("Error fetching locations:", error)
-    container.innerHTML = "<p>Erro ao carregar localizações. Por favor, tente novamente mais tarde.</p>"
-  }
-}
-
-async function fetchLocations() {
-  // For this example, we'll use mock data instead of fetching from an API
-  return [
-    { code: "SAO.CITY", name: "São Paulo", type: "CITY" },
-    { code: "SAO.AIRPORT", name: "Aeroporto de Guarulhos", type: "AIRPORT", cityCode: "SAO.CITY" },
-    { code: "SAO.AIRPORT", name: "Aeroporto de Congonhas", type: "AIRPORT", cityCode: "SAO.CITY" },
-    { code: "RIO.CITY", name: "Rio de Janeiro", type: "CITY" },
-    { code: "RIO.AIRPORT", name: "Aeroporto Galeão", type: "AIRPORT", cityCode: "RIO.CITY" },
-    { code: "RIO.AIRPORT", name: "Aeroporto Santos Dumont", type: "AIRPORT", cityCode: "RIO.CITY" },
-    { code: "NYC.CITY", name: "Nova York", type: "CITY" },
-    { code: "NYC.AIRPORT", name: "Aeroporto JFK", type: "AIRPORT", cityCode: "NYC.CITY" },
-    { code: "NYC.AIRPORT", name: "Aeroporto LaGuardia", type: "AIRPORT", cityCode: "NYC.CITY" },
-  ]
-}
-
-function groupLocationsByCityCode(locations) {
-  const grouped = {}
-  locations.forEach((location) => {
-    const cityCode = location.cityCode || location.code
-    if (!grouped[cityCode]) {
-      grouped[cityCode] = []
-    }
-    grouped[cityCode].push(location)
-  })
-  return grouped
 }
 
 function renderLocationOptions(groupedLocations) {

@@ -1,0 +1,40 @@
+{
+    "A": [
+      {
+        "type": "AIRPORT",
+        "name": "Aeroporto de Schiphol",
+        "code": "AMS",
+        "city": "AMS",
+        "cityName": "Amesterdão",
+        "regionName": "Holanda do Norte",
+        "country": "NL",
+        "countryName": "Países Baixos",
+        "countryNameShort": "Países Baixos",
+        "photoUri": "https://q-xx.bstatic.com/xdata/images/city/square150/976538.jpg?k=19a2487e30f31349e54aaf32d509121d81e2e31eee5b820c7c98576a4426d997&o=",
+        "distanceToCity": { "value": 11.396990072691436, "unit": "km" },
+        "parent": "AMS"
+      }
+    ],
+    "B": [
+      {
+        "type": "CITY",
+        "name": "Banguecoque",
+        "code": "BKK",
+        "regionName": "Bangkok Province",
+        "country": "TH",
+        "countryName": "Tailândia",
+        "photoUri": "https://q-xx.bstatic.com/xdata/images/city/square150/977254.jpg?k=63f933394752da6919853788cd62467945e5d98127c5c3a04abc9981882400b8&o="
+      }
+    ],
+    "C": [
+      {
+        "type": "CITY",
+        "name": "Paris",
+        "code": "PAR",
+        "regionName": "Íle de France",
+        "country": "FR",
+        "countryName": "França",
+        "photoUri": "https://q-xx.bstatic.com/xdata/images/city/square150/977239.jpg?k=c2409c69613bc168e54e0c4930e1436a0f378d7fe40d9c94f4a03595e0f423a8&o="
+      }
+    ]
+}

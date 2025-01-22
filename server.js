@@ -1,44 +1,62 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express')
+const puppeteer = require('puppeteer')
+const bodyParser = require('body-parser')
 
-const app = express();
-const PORT = 3000;
+const app = express()
+const PORT = 3000
 
-let robotRunning = false;
+// Middleware
+app.use(bodyParser.json())
+app.use(express.static('public'))
 
-app.use(bodyParser.json());
-app.use(express.static('public'));
+// Rota para buscar locais usando Puppeteer
+app.get('/api/fetch-locations', async (req, res) => {
+  const baseURL = 'https://flights.booking.com/api/autocomplete/pt?q=';
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const results = {};
 
-// Salvar configurações
-app.post('/api/save-config', (req, res) => {
-  const config = req.body;
-  console.log("Configurações salvas:", config);
-  res.status(200).send({ message: "Configurações salvas com sucesso" });
-});
+  try {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('https://booking.com/'); // Acessa o contexto da página
 
-// Iniciar robô
-app.post('/api/start-robot', (req, res) => {
-  if (robotRunning) {
-    return res.status(400).send({ message: "O robô já está em execução" });
+    for (const letter of alphabet) {
+      const fetchURL = `${baseURL}${letter}`;
+      console.log(`Fetching: ${fetchURL}`);
+
+      try {
+        // Avalia o fetch no contexto da página
+        const response = await page.evaluate(async (fetchURL) => {
+          return await fetch(fetchURL).then((res) => res.json());
+        }, fetchURL);
+
+        // Garante que a letra tenha uma lista inicial
+        if (!results[letter]) {
+          results[letter] = [];
+        }
+
+        // Adiciona os itens retornados à lista da letra
+        if (Array.isArray(response)) {
+          results[letter].push(...response);
+        } else {
+          console.warn(`Unexpected response format for ${letter}:`, response);
+        }
+      } catch (error) {
+        console.error(`Failed to fetch data for ${letter}: ${error.message}`);
+        results[letter] = [];
+      }
+    }
+
+    await browser.close(); // Fecha o navegador
+    res.status(200).json(results); // Retorna os resultados como JSON
+  } catch (error) {
+    console.error('Error fetching locations:', error);
+    res.status(500).send({ error: 'Erro ao buscar locais.' });
   }
-
-  robotRunning = true;
-  console.log("Robô iniciado com as configurações:", req.body);
-  res.status(200).send({ message: "Robô iniciado com sucesso" });
 });
 
-// Parar robô
-app.post('/api/stop-robot', (req, res) => {
-  if (!robotRunning) {
-    return res.status(400).send({ message: "O robô não está em execução" });
-  }
-
-  robotRunning = false;
-  console.log("Robô parado.");
-  res.status(200).send({ message: "Robô parado com sucesso" });
-});
 
 // Inicia o servidor
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em: http://localhost:${PORT}`);
+  console.log(`Servidor rodando em: http://localhost:${PORT}`)
 });
