@@ -1,57 +1,61 @@
-const puppeteer = require('puppeteer');
-const path = require('path');
-const fs = require('fs');//escrevendo em um arquivo
-var caminhoLog = null;
-var caminhoLogSql = null;
-var nomeCategoria;
+const puppeteer = require('puppeteer')
+const path = require('path')
+const fs = require('fs')
+var caminhoLog = null
+var caminhoLogSql = null
+var nomeCategoria
+var listaDestinosG = []
 
-async function runCrawler(config) {
-    const controller = new AbortController();
-    const { signal } = controller;
+async function runCrawler(config, logCallback) {
+    const controller = new AbortController()
+    const { signal } = controller
 
     function log(texto) {
         if (texto != null) {
-            console.log(texto);
-            texto = "CRAWLER-BOOKING|" + (new Date()) + "|" + texto + "\r\n";
+            console.log(texto)
+            if (logCallback) {
+                logCallback(texto)
+            }
+            texto = "CRAWLER-BOOKING|" + (new Date()) + "|" + texto + "\r\n"
             //Adicionando ao final do arquivo
-            fs.appendFileSync(caminhoLog, texto, "UTF-8");
+            fs.appendFileSync(caminhoLog, texto, "UTF-8")
         }
     }
     function logSql(sql) {
         ;
         //Adicionando ao final do arquivo
-        fs.appendFileSync(caminhoLogSql, sql, "UTF-8");
+        fs.appendFileSync(caminhoLogSql, sql, "UTF-8")
     }
 
     function logJson(json) {
         // sql = sql.replace("\r\n", "").replace("\r", "").replace("\n", "") + "\r\n";
 
         //Adicionando ao final do arquivo
-        fs.appendFileSync(caminhoLogSql, JSON.stringify(json), "UTF-8");
+        fs.appendFileSync(caminhoLogSql, JSON.stringify(json), "UTF-8")
     }
 
-    const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
+    const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))
 
     async function main() {
-        const diretorioAtual = __dirname.split('scripts')[0];
+        const diretorioAtual = __dirname.split('scripts')[0]
         //Gerando o arquivo de logs
         //Construindo um caminho relativo a partir do diretório atual
-        caminhoLog = path.join(diretorioAtual, 'logs', "-log.txt");
+        caminhoLog = path.join(diretorioAtual, 'logs', "-log.txt")
         //Deletando o arquivo
         fs.unlink(caminhoLog, (err) => {
             if (err) {
-                console.log('Ocorreu um erro ao deletar o arquivo log:' + err);
-                return;
+                console.log('Ocorreu um erro ao deletar o arquivo log:' + err)
+                return
             }
-            console.log('Arquivo log deletado com sucesso.');
+            console.log('Arquivo log deletado com sucesso.')
         });
         //Criando e escrevendo no arquivo
         fs.writeFile(caminhoLog, "", 'utf-8', (err) => {
             if (err) {
-                console.log('Ocorreu um erro ao criar o arquivo log:' + err);
-                return;
+                console.log('Ocorreu um erro ao criar o arquivo log:' + err)
+                return
             }
-            console.log('Arquivo log criado com sucesso e conteúdo escrito.');
+            console.log('Arquivo log criado com sucesso e conteúdo escrito.')
         });
         //Gerando o arquivo de SQL
         //Construindo um caminho relativo a partir do diretório atual
@@ -130,11 +134,11 @@ async function runCrawler(config) {
         fs.unlink(caminhoLogSql, (err) => {
             fs.writeFile(caminhoLogSql, "", 'utf-8', (err) => {
                 if (err) {
-                    console.log('Ocorreu um erro ao criar o arquivo logJSON: ' + jsonGerados + ' => ' + err);
+                    console.log('Ocorreu um erro ao criar o arquivo logJSON: ' + jsonGerados + ' => ' + err)
                     browser.close()
                     browser.disconnect()
                 }
-                console.log('Arquivo JSON criado com sucesso e conteúdo escrito ' + caminhoLogSql);
+                console.log('Arquivo JSON criado com sucesso e conteúdo escrito ' + caminhoLogSql)
                 // console.log(results)
                 logJson(results)
 
@@ -207,6 +211,15 @@ async function runCrawler(config) {
                         });
 
                         const url = `${baseURL}?${params.toString()}`;
+                        listaDestinosG.push({
+                            ...baseParams,
+                            from: config.origin.split('-')[0],
+                            to: (destination.type ? `${destination.code}.${destination.type}` : destination.code),
+                            fromCountry: config.origin.split('-')[1].split('-')[0],
+                            toCountry: destination.country,
+                            fromLocationName: config.origin.split('-')[1].split('-')[1],
+                            toLocationName: destination.name
+                        })
                         urls.push(url);
                     }
                 }
@@ -238,10 +251,19 @@ async function runCrawler(config) {
                 toCountry: destination.origin.split('-')[1].split('-')[0],
                 fromLocationName: config.origin.split('-')[1].split('-')[1],
                 toLocationName: destination.origin.split('-')[1].split('-')[1]
-            });
+            })
 
-            const url = `${baseURL}?${params.toString()}`;
-            urls.push(url);
+            const url = `${baseURL}?${params.toString()}`
+            listaDestinosG.push({
+                ...baseParams,
+                from: config.origin.split('-')[0],
+                to: destination.origin.split('-')[0],
+                fromCountry: config.origin.split('-')[1].split('-')[0],
+                toCountry: destination.origin.split('-')[1].split('-')[0],
+                fromLocationName: config.origin.split('-')[1].split('-')[1],
+                toLocationName: destination.origin.split('-')[1].split('-')[1]
+            })
+            urls.push(url)
         }
         return urls
     }
@@ -258,7 +280,7 @@ async function runCrawler(config) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = response;
-            log(`Fetch passagem url: ${url}`)
+            // log(`Fetch passagem url: ${url}`)
             return { url, status: 'success', data };
         } catch (error) {
             log(`Fetch passagem erro: ${error.message}`)
@@ -286,6 +308,7 @@ async function runCrawler(config) {
             const estimatedTotalTime = (elapsedTime / (i + 1)) * totalUrls;
             const remainingTime = estimatedTotalTime - elapsedTime;
 
+            log(`Origem: ${listaDestinosG[i].fromLocationName}, ${listaDestinosG[i].fromCountry} => ${listaDestinosG[i].toLocationName}, ${listaDestinosG[i].toCountry}`)
             log(`Progresso: ${i + 1}/${totalUrls} (${((i + 1) / totalUrls * 100).toFixed(2)}%)`);
             log(`Tempo estimado restante: ${remainingTime.toFixed(2) / 60} minutos`);
             log(`Status da última requisição: ${result.status}`);

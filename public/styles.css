@@ -188,3 +188,24 @@ select option {
   margin-right: 5px;
 }
 
+.progress-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.logs {
+  height: 300px;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1.5;
+}

@@ -20,9 +20,14 @@
         <div id="robotStatus" class="hidden">
             <h2>Robô em execução</h2>
             <p>O robô está executando a pesquisa com as configurações fornecidas.</p>
+            <div id="robotProgressContainer" class="progress-container hidden">
+                <h2>Progresso do Robô</h2>
+                <div id="robotLogs" class="logs"></div>
+            </div>
             <button id="stopRobotButton" class="btn-danger">Parar Robô</button>
         </div>        
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

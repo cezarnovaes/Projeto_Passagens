@@ -162,7 +162,7 @@ async function handleStopRobot() {
     const stopRobotResponse = await fetch("/api/stop-robos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: 'todos',
+      body: "todos",
     });
 
     if (!stopRobotResponse.ok) {
@@ -320,6 +320,21 @@ function renderIntervalInput(name, label) {
     `
 }
 
+function filterGroupedLocations(groupedLocations) {
+  return Object.fromEntries(
+    Object.entries(groupedLocations).map(([key, locations]) => [
+      key,
+      locations.map((location) => ({
+        name: location.name,
+        type: location.type,
+        code: location.code,
+        country: location.country,
+        countryName: location.countryName
+      })),
+    ])
+  );
+}
+
 async function handleSubmit(event) {
   event.preventDefault();
   const form = event.target;
@@ -331,7 +346,7 @@ async function handleSubmit(event) {
   data.messageInterval = convertToMinutes(data, "messageInterval");
 
   // Adiciona groupedLocationsConfig ao objeto data
-  data.groupedLocationsConfig = groupedLocationsConfig;
+  data.groupedLocationsConfig = filterGroupedLocations(groupedLocationsConfig);
 
   // Captura o estado do checkbox "Mostrar apenas os principais resultados"
   const checkbox = form.querySelector('input[name="showMainResults"]');
@@ -340,6 +355,11 @@ async function handleSubmit(event) {
   console.log(data);
 
   try {
+    form.style.display = "none";
+    document.getElementById("robotStatus").classList.remove("hidden");
+    
+    startRobotProgress();
+
     const startCrawlerResponse = await fetch("/api/run-crawler", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -358,15 +378,39 @@ async function handleSubmit(event) {
       throw new Error("Erro ao iniciar leitor");
     }
 
-    // Esconde o formulário e exibe o status do robô
-    form.style.display = "none";
-    document.getElementById("robotStatus").classList.remove("hidden");
   } catch (error) {
     console.error("Error:", error);
     alert("Ocorreu um erro ao iniciar o robô. Por favor, tente novamente.");
   }
 }
 
+const socket = io("http://localhost:3000", {
+  transports: ["websocket", "polling"],
+})
+
+socket.on("connect", () => {
+  console.log("Connected to server")
+})
+
+socket.on("disconnect", () => {
+  console.log("Disconnected from server")
+})
+
+socket.on("error", (error) => {
+  console.error("Socket.IO Error:", error)
+})
+
+socket.on("log", (logMessage) => {
+  const logsContainer = document.getElementById("robotLogs")
+  if (logsContainer) {
+    logsContainer.innerHTML += `<p>${logMessage}</p>`
+    logsContainer.scrollTop = logsContainer.scrollHeight
+  }
+})
+
+function startRobotProgress() {
+    document.getElementById('robotProgressContainer').classList.remove('hidden');
+}
 
 function convertToMinutes(data, intervalName) {
   return (
