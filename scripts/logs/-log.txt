@@ -1,0 +1,4 @@
+CRAWLER-BOOKING|Wed Jan 22 2025 20:10:35 GMT-0300 (Horário Padrão de Brasília)|Abrindo pagina https://booking.com/
+CRAWLER-BOOKING|Wed Jan 22 2025 20:10:37 GMT-0300 (Horário Padrão de Brasília)|Total de URLs geradas: 0
+CRAWLER-BOOKING|Wed Jan 22 2025 20:10:37 GMT-0300 (Horário Padrão de Brasília)|Recuperando passagens
+CRAWLER-BOOKING|Wed Jan 22 2025 20:10:37 GMT-0300 (Horário Padrão de Brasília)|Iniciando fetch de 0 URLs

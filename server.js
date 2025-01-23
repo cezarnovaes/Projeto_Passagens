@@ -5,9 +5,88 @@ const bodyParser = require('body-parser')
 const app = express()
 const PORT = 3000
 
+let isCrawlerRunning = false;
+let isLeitorPassagensRunning = false;
+let crawlerProcess = null;
+let leitorPassagensProcess = null;
+
 // Middleware
 app.use(bodyParser.json())
-app.use(express.static('public'))
+app.use(express.static('public')) 
+app.use(bodyParser.json({ limit: "50mb" }))
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }))
+
+app.post('/api/run-crawler', async (req, res) => {
+  const config = req.body; // Configurações enviadas pela página
+  if (isCrawlerRunning) {
+    return res.status(400).json({ status: 'error', message: 'Crawler já está em execução.' });
+  }
+  const { createController, runCrawler } = require('./scripts/crawlerbooking');
+  const controller = createController();
+
+  crawlerProcess = controller;
+  isCrawlerRunning = true;
+
+  try {
+      const result = await runCrawler(config);
+      isCrawlerRunning = false;
+      res.status(200).json(result);
+  } catch (error) {
+      console.error('Erro ao executar o crawler:', error.message);
+      isCrawlerRunning = false;
+      res.status(500).json({ status: 'error', message: error.message });
+  }
+});
+
+// Rota para executar o leitor de passagens com configurações
+app.post('/api/run-leitor-passagens', async (req, res) => {
+  const config = req.body; // Configurações enviadas pela página
+
+  if (isLeitorPassagensRunning) {
+    return res.status(400).json({ status: 'error', message: 'Leitor já está em execução.' });
+  }
+  const { createController, runLeitorPassagens } = require('./scripts/leitorpassagens');
+  const controller = createController();
+
+  leitorPassagensProcess = controller;
+  isLeitorPassagensRunning = true;
+
+  try {
+      const result = await runLeitorPassagens(config);
+      isLeitorPassagensRunning = false;
+      res.status(200).json(result);
+  } catch (error) {
+      console.error('Erro ao executar o leitor de passagens:', error.message);
+      isLeitorPassagensRunning = false;
+      res.status(500).json({ status: 'error', message: error.message });
+  }
+});
+
+app.post('/api/stop-robos', async (req, res) => {
+  const { target } = req.body; // 'crawler' ou 'leitor'
+  try {
+      if (target === 'crawler' && isCrawlerRunning) {
+          crawlerProcess.abort(); // Método para abortar o crawler
+          isCrawlerRunning = false;
+          res.status(200).json({ status: 'success', message: 'Crawler parado com sucesso!' });
+      } else if (target === 'leitor' && isLeitorPassagensRunning) {
+          leitorPassagensProcess.abort(); // Método para abortar o leitor
+          isLeitorPassagensRunning = false;
+          res.status(200).json({ status: 'success', message: 'Leitor de passagens parado com sucesso!' });
+      }else if(target === 'todos' && isCrawlerRunning && isLeitorPassagensRunning){
+        leitorPassagensProcess.abort();
+        isLeitorPassagensRunning = false;
+        crawlerProcess.abort();
+        isCrawlerRunning = false;
+        res.status(200).json({ status: 'success', message: 'Robos parados com sucesso!' });
+      }else {
+          res.status(400).json({ status: 'error', message: 'Nenhum robô correspondente está em execução.' });
+      }
+  } catch (error) {
+      console.error('Erro ao parar o robô:', error.message);
+      res.status(500).json({ status: 'error', message: error.message });
+  }
+});
 
 app.get('/api/fetch-locations-booking', async (req, res) => {
   const baseURL = 'https://flights.booking.com/api/autocomplete/pt?q=';

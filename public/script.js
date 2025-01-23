@@ -1,3 +1,5 @@
+let groupedLocationsConfig = null;
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("searchForm");
   const robotStatus = document.getElementById("robotStatus");
@@ -42,7 +44,7 @@ async function renderLocationSelector() {
 
     const originSelect = document.getElementById("origin")
     const saoPauloOption = Array.from(originSelect.options).find(
-      (option) => option.text.toLowerCase().includes("são paulo") && option.value.endsWith("SAO"),
+      (option) => option.text.toLowerCase().includes("são paulo") && option.value.startsWith("SAO"),
     )
     if (saoPauloOption) {
       saoPauloOption.selected = true
@@ -91,7 +93,7 @@ function renderLocationOptions(groupedLocations) {
   // Inicializa os grupos de cidades e locais sem agrupamento
   const cityGroups = []
   const ungroupedLocations = []
-
+  groupedLocationsConfig = groupedLocations
   // Itera sobre os grupos de localização
   Object.entries(groupedLocations).forEach(([cityCode, locations]) => {
     const city = locations.find((loc) => loc.type === "CITY")
@@ -100,12 +102,12 @@ function renderLocationOptions(groupedLocations) {
     if (city) {
       // Agrupa a cidade com seus aeroportos
       const options = [
-        `<option value="${city.code}">
+        `<option value="${city.code}-${city.country}-${city.name}">
           ${city.name} (CITY)
         </option>`,
         ...airports.map(
           (airport) => `
-          <option value="${airport.code}">
+          <option value="${airport.code}-${airport.country}-${airport.name}">
             ${airport.name} (AIRPORT)
           </option>
         `,
@@ -128,7 +130,7 @@ function renderLocationOptions(groupedLocations) {
   })
 
   // Ordena os grupos de cidades alfabeticamente
-  cityGroups.sort((a, b) => a.name.localeCompare(b.name))
+  cityGroups.sort((a, b) => a.name.localeCompare(b.name)) 
 
   // Ordena os locais não agrupados
   ungroupedLocations.sort((a, b) => (a.name || "").localeCompare(b.name || ""))
@@ -137,7 +139,7 @@ function renderLocationOptions(groupedLocations) {
   const ungroupedOptions = ungroupedLocations
     .map(
       (location) => `
-        <option value="${location.code}">
+        <option value="${location.code}-${location.country}-${location.name}">
           ${location.name} (${location.type})
         </option>
       `,
@@ -157,9 +159,10 @@ function sleep(ms) {
 
 async function handleStopRobot() {
   try {
-    const stopRobotResponse = await fetch("/api/stop-robot", {
+    const stopRobotResponse = await fetch("/api/stop-robos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      body: 'todos',
     });
 
     if (!stopRobotResponse.ok) {
@@ -235,8 +238,8 @@ function renderFlightConfig() {
                 <input type="number" id="children" name="children" min="0" value="0">
             </div>
             <div>
-                <label for="tripType">Tipo de Viagem</label>
-                <select id="tripType" name="tripType">
+                <label for="tripOptions">Opções de Viagem</label>
+                <select id="tripOptions" name="tripOptions">
                     <option value="ROUNDTRIP">Ida e Volta</option>
                     <option value="ONEWAY">Somente Ida</option>
                 </select>
@@ -318,46 +321,52 @@ function renderIntervalInput(name, label) {
 }
 
 async function handleSubmit(event) {
-  event.preventDefault()
-  const form = event.target
-  const formData = new FormData(form)
-  const data = Object.fromEntries(formData)
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData);
 
-  // Convert intervals to minutes
-  data.updateInterval = convertToMinutes(data, "updateInterval")
-  data.messageInterval = convertToMinutes(data, "messageInterval")
+  // Converte intervalos para minutos
+  data.updateInterval = convertToMinutes(data, "updateInterval");
+  data.messageInterval = convertToMinutes(data, "messageInterval");
+
+  // Adiciona groupedLocationsConfig ao objeto data
+  data.groupedLocationsConfig = groupedLocationsConfig;
+
+  // Captura o estado do checkbox "Mostrar apenas os principais resultados"
+  const checkbox = form.querySelector('input[name="showMainResults"]');
+  data.showMainResults = checkbox ? checkbox.checked : false;
+
+  console.log(data);
 
   try {
-    // Save configuration
-    const saveConfigResponse = await fetch("/api/save-config", {
+    const startCrawlerResponse = await fetch("/api/run-crawler", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    })
+    });
 
-    if (!saveConfigResponse.ok) {
-      throw new Error("Failed to save configuration")
-    }
-
-    // Start the robot
-    const startRobotResponse = await fetch("/api/start-robot", {
+    const startLeitorResponse = await fetch("/api/run-leitor-passagens", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    })
+    });
 
-    if (!startRobotResponse.ok) {
-      throw new Error("Failed to start robot")
+    if (!startCrawlerResponse.ok) {
+      throw new Error("Erro ao iniciar robô");
+    } else if (!startLeitorResponse.ok) {
+      throw new Error("Erro ao iniciar leitor");
     }
 
-    // Hide form and show robot status
-    form.style.display = "none"
-    document.getElementById("robotStatus").classList.remove("hidden")
+    // Esconde o formulário e exibe o status do robô
+    form.style.display = "none";
+    document.getElementById("robotStatus").classList.remove("hidden");
   } catch (error) {
-    console.error("Error:", error)
-    alert("Ocorreu um erro ao iniciar o robô. Por favor, tente novamente.")
+    console.error("Error:", error);
+    alert("Ocorreu um erro ao iniciar o robô. Por favor, tente novamente.");
   }
 }
+
 
 function convertToMinutes(data, intervalName) {
   return (
