@@ -4,27 +4,6 @@ const qrcode = require("qrcode-terminal");
 const axios = require("axios");
 const path = require('path')
 
-// Função para ler o arquivo JSON
-function readJsonFile(filePath) {
-    try {
-        // Tenta ler o arquivo e retornar os dados como JSON
-        const data = fs.readFileSync(filePath, "utf8");
-        return JSON.parse(data);
-    } catch (error) {
-        // Verifica o tipo de erro e retorna uma mensagem apropriada
-        if (error.code === "ENOENT") {
-            // Arquivo não encontrado
-            return { error: "O arquivo não foi encontrado. Certifique-se de que ele existe no caminho especificado." };
-        } else if (error.name === "SyntaxError") {
-            // Erro de JSON inválido
-            return { error: "Erro ao processar o arquivo. O conteúdo não está em formato JSON válido." };
-        } else {
-            // Outros erros
-            return { error: `Erro ao ler o arquivo: ${error.message}` };
-        }
-    }
-}
-
 // Função para criar o URL da oferta
 function generateOfferURL(deal, from, to, departureDate) {
     const offerToken = encodeURIComponent(deal.offerToken);
@@ -80,10 +59,9 @@ async function runLeitorPassagens(config, logCallback) {
     const caminhoArquivo = path.join(caminhoLog, 'PASSAGENS')
     const caminhoPassagens = path.join(caminhoArquivo, 'passagensResult.json')
     const data = readJsonFile(caminhoPassagens)
-
     if (data.error) {
         console.error(data.error);
-        return; // Encerra a execução, evitando falhas posteriores
+        return;
     }
 
     function log(texto) {
@@ -91,6 +69,25 @@ async function runLeitorPassagens(config, logCallback) {
             console.log(texto)
             if (logCallback) {
                 logCallback(texto)
+            }
+        }
+    }
+
+    function readJsonFile(filePath) {
+        try {
+            const data = fs.readFileSync(filePath, "utf8");
+            // log(`Passagens lidas com sucesso!`)
+            return JSON.parse(data);
+        } catch (error) {
+            if (error.code === "ENOENT") {
+                log(`Arquivo de passagens não encontrado no caminho especificado: ${error.message}`)
+                return { error: "O arquivo não foi encontrado. Certifique-se de que ele existe no caminho especificado." };
+            } else if (error.name === "SyntaxError") {
+                log(`Conteúdo do arquivo não está em formato JSON válido: ${error.message}`)
+                return { error: "Erro ao processar o arquivo. O conteúdo não está em formato JSON válido." };
+            } else {
+                log(`Erro ao ler arquivo: ${error.message}`)
+                return { error: `Erro ao ler o arquivo: ${error.message}` };
             }
         }
     }
@@ -108,7 +105,6 @@ async function runLeitorPassagens(config, logCallback) {
             log("Erro na requisição telegram:", error.message);
         }
     }
-
     // Configurar cliente WhatsApp
     const client = new Client({
         authStrategy: new LocalAuth({ clientId: "client3" }),  // Cria uma nova sessão ou usa uma existente com um clientId único
@@ -177,9 +173,11 @@ async function runLeitorPassagens(config, logCallback) {
     })
 
     // Inicializar o cliente
+    log(`Iniciando client`)
     client.initialize()
-    return { status: 'success', message: 'Crawler concluído.' };
+    log(`Client iniciado`)
+    // return { status: 'success', message: 'Envio de mensagens concluído.' }
 }
-const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
+const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))
 
-module.exports = { runLeitorPassagens, createControllerLeitor: () => new AbortController() };
+module.exports = { runLeitorPassagens, createControllerLeitor: () => new AbortController() }
