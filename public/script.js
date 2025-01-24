@@ -1,30 +1,19 @@
 let groupedLocationsConfig = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  groupedLocationsConfig = fetchLocations()
-  
   const form = document.getElementById("searchForm");
+  const robotStatus = document.getElementById("robotStatus");
   const stopRobotButton = document.getElementById("stopRobotButton");
 
   renderPeriodSelector();
-  renderFlightConfig();
   renderLocationSelector();
+  renderFlightConfig();
   renderAdditionalFilters();
   renderRobotConfig();
   setupFieldValidations();
-
-  const originInput = document.getElementById('originSearch');
-  const originResults = document.getElementById('originResults');
-
-  const destinationInput = document.getElementById('destinationSearch');
-  const destinationResults = document.getElementById('destinationResults');
-
-  setupSearchBehavior(originInput, originResults);
-  setupSearchBehavior(destinationInput, destinationResults);
+  setupTripOptionsBehavior();
 
   form.addEventListener("submit", handleSubmit);
-  const submitButton = document.querySelector('button[type="submit"]');
-  submitButton.disabled = true;
   stopRobotButton.addEventListener("click", handleStopRobot);
 });
 
@@ -112,168 +101,47 @@ function setupTripOptionsBehavior() {
 
 async function renderLocationSelector() {
   const container = document.getElementById("locationSelector");
-  container.innerHTML = `
-  <div id="locationSelector">
-    <h2>Origem e Destino</h2>
-    <div class="flex">
-      <div>
-        <label for="originSearch">Pesquisar Origem</label>
-        <div class="input-wrapper">
-          <input type="text" id="originSearch" placeholder="Digite para pesquisar" autocomplete="off" required>
-          <span class="arrow"></span>
+  container.innerHTML = '<h2>Origem e Destino</h2> <div class="loading"></div>'; // Indicador de carregamento
+
+  try {
+    const groupedLocations = await fetchLocations();
+
+    container.innerHTML = `
+      <h2>Origem e Destino</h2>
+      <div class="flex">
+        <div>
+          <label for="origin">Origem</label>
+          <select id="origin" name="origin">
+            <option value="">Selecione a origem</option>
+            ${renderLocationOptions(groupedLocations)}
+          </select>
         </div>
-        <div id="originResults" class="results-container"></div>
-      </div>
-      <div>
-        <label for="destinationSearch">Pesquisar Destino</label>
-        <div class="input-wrapper">
-          <input type="text" id="destinationSearch" placeholder="Digite para pesquisar" autocomplete="off" required>
-          <span class="arrow"></span>
+        <div>
+          <label for="destination">Destino<span style="color: red;">*</span></label>
+          <select id="destination" name="destination">
+            <option value="">Todos os destinos</option>
+            ${renderLocationOptions(groupedLocations)}
+          </select>
         </div>
-        <div id="destinationResults" class="results-container"></div>
       </div>
-    </div>
-  </div>
-  `;
+    `;
 
-  const destinationSearch = document.getElementById("destinationSearch");
-  const destinationSelect = document.getElementById("destination");
-
-  // Configurar comportamento para desativar o campo de destino ao selecionar "Somente Ida"
-  setupTripOptionsBehavior(destinationSearch, destinationSelect);
-}
-
-async function setupSearchBehavior(inputElement, resultsContainer) {
-  let timeoutId;
-  let abortController;
-
-  inputElement.addEventListener('input', () => {
-    const query = inputElement.value.trim();
-
-    // Limpa resultados se o texto for muito curto
-    if (query.length < 3) {
-      resultsContainer.style.display = 'none';
-      resultsContainer.innerHTML = '';
-      return;
+    const originSelect = document.getElementById("origin")
+    const destinationSelect = document.getElementById("destination")
+    const saoPauloOption = Array.from(originSelect.options).find(
+      (option) => option.text.toLowerCase().includes("são paulo") && option.value.startsWith("SAO"),
+    )
+    if (saoPauloOption) {
+      saoPauloOption.selected = true
     }
-
-    // Cancela requisições anteriores
-    if (abortController) {
-      abortController.abort();
-    }
-
-    // Exibe indicador de carregamento
-    resultsContainer.style.display = 'block';
-    resultsContainer.classList.add('loading');
-    resultsContainer.innerHTML = '';
-
-    // Inicia uma nova busca com debounce
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(async () => {
-      try {
-        abortController = new AbortController();
-        const results = await fetchDynamicLocations(query, abortController.signal);
-        displayResults(results, resultsContainer);
-      } catch (error) {
-        if (error.name !== 'AbortError') {
-          console.error('Erro ao buscar locais:', error);
-          resultsContainer.innerHTML = '<p>Erro ao carregar resultados.</p>';
-        }
-      } finally {
-        resultsContainer.classList.remove('loading');
-      }
-    }, 500);
-  });
-
-  // Abre o menu de resultados ao clicar no campo, se houver resultados
-  inputElement.addEventListener('focus', () => {
-    if (resultsContainer.innerHTML.trim() !== '') {
-      resultsContainer.style.display = 'block';
-    }
-  });
-
-  // Fecha o menu de resultados ao clicar fora
-  document.addEventListener('click', (e) => {
-    if (!inputElement.contains(e.target) && !resultsContainer.contains(e.target)) {
-      resultsContainer.style.display = 'none';
-    }
-  });
-}
-
-async function fetchDynamicLocations(query, signal) {
-  const response = await fetch(`/api/search-locations?query=${encodeURIComponent(query)}`, { signal });
-  if (!response.ok) {
-    throw new Error(`Erro na requisição: ${response.status}`);
+    const event = new Event("change")
+    destinationSelect.dispatchEvent(event)
+    originSelect.dispatchEvent(event)
+  } catch (error) {
+    console.error("Error fetching locations:", error);
+    container.innerHTML = "<h2>Origem e Destino</h2> <p>Erro ao carregar localizações. Por favor, tente novamente mais tarde.</p>";
   }
-  const data = await response.json();
-
-  // Agrupa os resultados por cidade
-  const grouped = { others: [] };
-  data.forEach((location) => {
-    const cityCode = location.city || 'others';
-    if (!grouped[cityCode]) {
-      grouped[cityCode] = { city: null, airports: [] };
-    }
-    if (location.type === 'CITY') {
-      grouped[cityCode].city = location;
-    } else if (location.type === 'AIRPORT') {
-      grouped[cityCode].airports.push(location);
-    }
-  });
-
-  return grouped;
 }
-
-function displayResults(groupedLocations, container) {
-  const cityGroups = Object.entries(groupedLocations)
-    .filter(([key]) => key !== 'others')
-    .sort(([a], [b]) => a.localeCompare(b));
-  const otherGroup = groupedLocations.others.sort((a, b) => a.name.localeCompare(b.name));
-
-  const html = [
-    ...cityGroups.map(([key, { city, airports }]) => `
-      <div class="result-group">
-        <div class="result-group-title">${city ? city.name + ' (Todos os Aeroportos)' : ''}</div>
-        ${airports
-          .map(
-            (airport) => `
-              <div class="result-item" data-value="${airport.code}-${airport.country}-${airport.name}">
-                ${airport.name} (AIRPORT)
-              </div>`
-          )
-          .join('')}
-      </div>
-    `),
-    otherGroup.length
-      ? `
-        <div class="result-group">
-          <div class="result-group-title others">Outras</div>
-          ${otherGroup
-            .map(
-              (airport) => `
-                <div class="result-item" data-value="${airport.code}-${airport.country}-${airport.name}">
-                  ${airport.name} (AIRPORT)
-                </div>`
-            )
-            .join('')}
-        </div>
-      `
-      : '',
-  ].join('');
-
-  container.innerHTML = html;
-
-  // Adiciona evento para selecionar a opção
-  container.querySelectorAll('.result-item').forEach((item) => {
-    item.addEventListener('click', () => {
-      const value = item.getAttribute('data-value');
-      const input = container.previousElementSibling.querySelector('input');
-      input.value = value.split('-')[2]; // Preenche com o nome
-      container.style.display = 'none';
-    });
-  });
-}
-
 
 async function fetchLocations() {
   try {
@@ -304,6 +172,70 @@ function groupLocationsByCityCode(locations) {
     grouped[cityCode].push(location);
   });
   return grouped;
+}
+
+function renderLocationOptions(groupedLocations) {
+  // Inicializa os grupos de cidades e locais sem agrupamento
+  const cityGroups = []
+  const ungroupedLocations = []
+  groupedLocationsConfig = groupedLocations
+  // Itera sobre os grupos de localização
+  Object.entries(groupedLocations).forEach(([cityCode, locations]) => {
+    const city = locations.find((loc) => loc.type === "CITY")
+    const airports = locations.filter((loc) => loc.type === "AIRPORT")
+
+    if (city) {
+      // Agrupa a cidade com seus aeroportos
+      const options = [
+        `<option value="${city.code}-${city.country}-${city.name}">
+          ${city.name} (CITY)
+        </option>`,
+        ...airports.map(
+          (airport) => `
+          <option value="${airport.code}-${airport.country}-${airport.name}">
+            ${airport.name} (AIRPORT)
+          </option>
+        `,
+        ),
+      ].join("")
+
+      // Adiciona ao grupo de cidades
+      cityGroups.push({
+        name: city.name,
+        html: `
+          <optgroup label="${city.name}">
+            ${options}
+          </optgroup>
+        `,
+      })
+    } else {
+      // Locais que não possuem uma cidade relacionada
+      ungroupedLocations.push(...locations)
+    }
+  })
+
+  // Ordena os grupos de cidades alfabeticamente
+  cityGroups.sort((a, b) => a.name.localeCompare(b.name))
+
+  // Ordena os locais não agrupados
+  ungroupedLocations.sort((a, b) => (a.name || "").localeCompare(b.name || ""))
+
+  // Cria as opções dos locais não agrupados
+  const ungroupedOptions = ungroupedLocations
+    .map(
+      (location) => `
+        <option value="${location.code}-${location.country}-${location.name}">
+          ${location.name} (${location.type})
+        </option>
+      `,
+    )
+    .join("")
+
+  // Combina os grupos de cidades ordenados com os locais não agrupados
+  return `
+    ${cityGroups.map((group) => group.html).join("")}
+    ${ungroupedLocations.length > 0 ? `<optgroup label="Outros">${ungroupedOptions}</optgroup>` : ""}
+  `
 }
 
 function sleep(ms) {
