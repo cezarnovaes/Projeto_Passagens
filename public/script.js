@@ -1,80 +1,71 @@
-let groupedLocationsConfig = null;
+let groupedLocationsConfig = null
 
 document.addEventListener("DOMContentLoaded", () => {
-  groupedLocationsConfig = fetchLocations()
-  
-  const form = document.getElementById("searchForm");
-  const stopRobotButton = document.getElementById("stopRobotButton");
+  fetchLocations()
 
-  renderPeriodSelector();
-  renderFlightConfig();
-  renderLocationSelector();
-  renderAdditionalFilters();
-  renderRobotConfig();
-  setupFieldValidations();
+  const form = document.getElementById("searchForm")
+  const stopRobotButton = document.getElementById("stopRobotButton")
 
-  const originInput = document.getElementById('originSearch');
-  const originResults = document.getElementById('originResults');
+  renderPeriodSelector()
+  renderFlightConfig()
+  renderLocationSelector()
+  renderAdditionalFilters()
+  renderRobotConfig()
+  setupFieldValidations()
+  setupTripOptionsBehavior()
 
-  const destinationInput = document.getElementById('destinationSearch');
-  const destinationResults = document.getElementById('destinationResults');
-
-  setupSearchBehavior(originInput, originResults);
-  setupSearchBehavior(destinationInput, destinationResults);
-
-  form.addEventListener("submit", handleSubmit);
-  const submitButton = document.querySelector('button[type="submit"]');
-  submitButton.disabled = true;
-  stopRobotButton.addEventListener("click", handleStopRobot);
-});
+  form.addEventListener("submit", handleSubmit)
+  const submitButton = document.querySelector('button[type="submit"]')
+  submitButton.disabled = true
+  stopRobotButton.addEventListener("click", handleStopRobot)
+})
 
 function setupFieldValidations() {
   // Campos obrigatórios
   const requiredFields = [
     { id: "adults", minValue: 1 },
     { id: "resultCount", minValue: 1 },
-  ];
+  ]
 
   requiredFields.forEach(({ id, minValue }) => {
-    const field = document.getElementById(id);
+    const field = document.getElementById(id)
     if (field) {
-      field.required = true;
+      field.required = true
       field.addEventListener("input", () => {
         if (field.value < minValue) {
-          field.value = minValue;
+          field.value = minValue
         }
-      });
+      })
 
       // Adiciona o asterisco vermelho
-      const label = field.closest("div").querySelector("label");
+      const label = field.closest("div").querySelector("label")
       if (label) {
-        label.innerHTML += ' <span style="color: red;">*</span>';
+        label.innerHTML += ' <span style="color: red;">*</span>'
       }
     }
-  });
+  })
 
   // Validação para datas
-  const periodTypeInputs = document.querySelectorAll('input[name="periodType"]');
+  const periodTypeInputs = document.querySelectorAll('input[name="periodType"]')
   periodTypeInputs.forEach((input) => {
     input.addEventListener("change", (e) => {
-      const specificDates = document.getElementById("specificDates");
-      const departureDate = document.getElementById("departureDate");
-      const returnDate = document.getElementById("returnDate");
+      const specificDates = document.getElementById("specificDates")
+      const departureDate = document.getElementById("departureDate")
+      const returnDate = document.getElementById("returnDate")
 
       if (e.target.value === "specific") {
-        specificDates.classList.remove("hidden");
-        departureDate.required = true;
-        returnDate.required = true;
+        specificDates.classList.remove("hidden")
+        departureDate.required = true
+        returnDate.required = true
       } else {
-        specificDates.classList.add("hidden");
-        departureDate.required = false;
-        returnDate.required = false;
+        specificDates.classList.add("hidden")
+        departureDate.required = false
+        returnDate.required = false
       }
-    });
-  });
+    })
+  })
 }
 
-// Configuração de habilitação/desabilitação do campo de destino
 function setupTripOptionsBehavior() {
   const tripOptions = document.getElementById("tripOptions");
 
@@ -84,230 +75,250 @@ function setupTripOptionsBehavior() {
   }
 
   tripOptions.addEventListener("change", (e) => {
-    const destinationField = document.getElementById("destination");
-    const destinationLabel = document.querySelector('label[for="destination"]');
+    const returnDateField = document.getElementById("returnDate");
+    const returnDateLabel = document.querySelector('label[for="returnDate"]');
 
-    if (!destinationField || !destinationLabel) {
+    if (!returnDateField || !returnDateLabel) {
       console.error("Campo ou label de destino não encontrado.");
       return;
     }
 
     if (e.target.value === "ONEWAY") {
-      destinationField.disabled = true;
-      destinationField.value = ""; // Limpa o valor selecionado
+      returnDateField.disabled = true;
+      returnDateField.value = ""; // Limpa o valor selecionado
 
       // Remove o asterisco do label de destino
-      destinationLabel.innerHTML = destinationLabel.innerHTML.replace(/<span style="color: red;">\*<\/span>/, "");
+      returnDateLabel.innerHTML = returnDateLabel.innerHTML.replace(/<span style="color: red;">\*<\/span>/, "");
     } else {
-      destinationField.disabled = false;
-      destinationField.required = true;
+      returnDateField.disabled = false;
+      returnDateField.required = true;
 
       // Adiciona o asterisco ao label, caso não exista
-      if (!destinationLabel.innerHTML.includes("*")) {
-        destinationLabel.innerHTML += ' <span style="color: red;">*</span>';
+      if (!returnDateLabel.innerHTML.includes("*")) {
+        returnDateLabel.innerHTML += ' <span style="color: red;">*</span>';
       }
     }
   });
 }
 
-async function renderLocationSelector() {
-  const container = document.getElementById("locationSelector");
+function renderLocationSelector() {
+  const container = document.getElementById("locationSelector")
   container.innerHTML = `
   <div id="locationSelector">
     <h2>Origem e Destino</h2>
     <div class="flex">
       <div>
-        <label for="originSearch">Pesquisar Origem</label>
+        <label for="originSearch">Pesquisar Origem &#8203;<span style="color: red;">*</span> </label>
         <div class="input-wrapper">
           <input type="text" id="originSearch" placeholder="Digite para pesquisar" autocomplete="off" required>
           <span class="arrow"></span>
+          <div id="originResults" class="results-container" style="display: none"></div>
         </div>
-        <div id="originResults" class="results-container"></div>
       </div>
       <div>
         <label for="destinationSearch">Pesquisar Destino</label>
         <div class="input-wrapper">
-          <input type="text" id="destinationSearch" placeholder="Digite para pesquisar" autocomplete="off" required>
+          <input type="text" id="destinationSearch" placeholder="Digite para pesquisar" autocomplete="off">
           <span class="arrow"></span>
+          <div id="destinationResults" class="results-container" style="display: none"></div>
         </div>
-        <div id="destinationResults" class="results-container"></div>
       </div>
     </div>
   </div>
-  `;
+  `
 
-  const destinationSearch = document.getElementById("destinationSearch");
-  const destinationSelect = document.getElementById("destination");
+  const originInput = document.getElementById("originSearch")
+  const originResults = document.getElementById("originResults")
+  const destinationInput = document.getElementById("destinationSearch")
+  const destinationResults = document.getElementById("destinationResults")
 
-  // Configurar comportamento para desativar o campo de destino ao selecionar "Somente Ida"
-  setupTripOptionsBehavior(destinationSearch, destinationSelect);
+  setupSearchBehavior(originInput, originResults)
+  setupSearchBehavior(destinationInput, destinationResults)
 }
 
 async function setupSearchBehavior(inputElement, resultsContainer) {
-  let timeoutId;
-  let abortController;
+  let timeoutId
+  let abortController
 
-  inputElement.addEventListener('input', () => {
-    const query = inputElement.value.trim();
+  inputElement.addEventListener("input", () => {
+    const query = inputElement.value.trim()
 
-    // Limpa resultados se o texto for muito curto
     if (query.length < 3) {
-      resultsContainer.style.display = 'none';
-      resultsContainer.innerHTML = '';
-      return;
+      resultsContainer.style.display = "none"
+      resultsContainer.innerHTML = ""
+      return
     }
 
-    // Cancela requisições anteriores
     if (abortController) {
-      abortController.abort();
+      abortController.abort()
     }
 
-    // Exibe indicador de carregamento
-    resultsContainer.style.display = 'block';
-    resultsContainer.classList.add('loading');
-    resultsContainer.innerHTML = '';
+    resultsContainer.style.display = "block"
+    resultsContainer.classList.add("loading")
+    resultsContainer.innerHTML = ""
 
-    // Inicia uma nova busca com debounce
-    clearTimeout(timeoutId);
+    clearTimeout(timeoutId)
     timeoutId = setTimeout(async () => {
       try {
-        abortController = new AbortController();
-        const results = await fetchDynamicLocations(query, abortController.signal);
-        displayResults(results, resultsContainer);
+        abortController = new AbortController()
+        results = await fetchDynamicLocations(query, abortController.signal)
+        displayResults(results, resultsContainer)
       } catch (error) {
-        if (error.name !== 'AbortError') {
-          console.error('Erro ao buscar locais:', error);
-          resultsContainer.innerHTML = '<p>Erro ao carregar resultados.</p>';
+        if (error.name !== "AbortError") {
+          console.error("Erro ao buscar locais:", error)
+          resultsContainer.innerHTML = "<p>Erro ao carregar resultados.</p>"
         }
       } finally {
-        resultsContainer.classList.remove('loading');
+        resultsContainer.classList.remove("loading")
       }
-    }, 500);
-  });
+    }, 500)
+  })
 
   // Abre o menu de resultados ao clicar no campo, se houver resultados
-  inputElement.addEventListener('focus', () => {
-    if (resultsContainer.innerHTML.trim() !== '') {
-      resultsContainer.style.display = 'block';
+  inputElement.addEventListener("focus", () => {
+    if (resultsContainer.innerHTML.trim() !== "" || resultsContainer.classList.contains("loading")) {
+      resultsContainer.style.display = "block"
     }
-  });
+  })
 
   // Fecha o menu de resultados ao clicar fora
-  document.addEventListener('click', (e) => {
+  document.addEventListener("click", (e) => {
     if (!inputElement.contains(e.target) && !resultsContainer.contains(e.target)) {
-      resultsContainer.style.display = 'none';
+      resultsContainer.style.display = "none"
     }
-  });
+  })
 }
 
 async function fetchDynamicLocations(query, signal) {
-  const response = await fetch(`/api/search-locations?query=${encodeURIComponent(query)}`, { signal });
+  const response = await fetch(`/api/search-locations?query=${encodeURIComponent(query)}`, { signal })
   if (!response.ok) {
-    throw new Error(`Erro na requisição: ${response.status}`);
+    throw new Error(`Erro na requisição: ${response.status}`)
   }
-  const data = await response.json();
+  const data = await response.json()
 
-  // Agrupa os resultados por cidade
-  const grouped = { others: [] };
+  const grouped = { others: [] }
   data.forEach((location) => {
-    const cityCode = location.city || 'others';
-    if (!grouped[cityCode]) {
-      grouped[cityCode] = { city: null, airports: [] };
-    }
-    if (location.type === 'CITY') {
-      grouped[cityCode].city = location;
-    } else if (location.type === 'AIRPORT') {
-      grouped[cityCode].airports.push(location);
-    }
-  });
 
-  return grouped;
+    const cityCode = (location.type === "CITY" ? location.code : location.city) || "others"
+    if (!grouped[cityCode]) {
+      grouped[cityCode] = { city: null, airports: [] }
+    }
+    if (location.type === "CITY") {
+      grouped[cityCode].city = location
+    } else if (location.type === "AIRPORT" && grouped[cityCode].city !== null) {
+      grouped[cityCode].airports.push(location)
+    }else{
+      grouped.others.push(location)
+    }
+  })
+  return grouped
 }
 
 function displayResults(groupedLocations, container) {
   const cityGroups = Object.entries(groupedLocations)
-    .filter(([key]) => key !== 'others')
-    .sort(([a], [b]) => a.localeCompare(b));
-  const otherGroup = groupedLocations.others.sort((a, b) => a.name.localeCompare(b.name));
+    .filter(([key]) => key !== "others")
+    .sort(([a], [b]) => a.localeCompare(b))
+
+  const otherGroup = groupedLocations.others || []
 
   const html = [
-    ...cityGroups.map(([key, { city, airports }]) => `
-      <div class="result-group">
-        <div class="result-group-title">${city ? city.name + ' (Todos os Aeroportos)' : ''}</div>
-        ${airports
-          .map(
-            (airport) => `
-              <div class="result-item" data-value="${airport.code}-${airport.country}-${airport.name}">
-                ${airport.name} (AIRPORT)
-              </div>`
-          )
-          .join('')}
-      </div>
-    `),
-    otherGroup.length
-      ? `
+    ...cityGroups.map(
+      ([key, { city, airports }]) => `
+      ${ city ? `
         <div class="result-group">
-          <div class="result-group-title others">Outras</div>
-          ${otherGroup
+          ${
+            city
+              ? `
+            <div class="result-item" data-value="${city.code}-${city.country}-${city.name}" data-type="CITY">
+              ${city.name} (Todos os Aeroportos)
+            </div>
+          `
+              : ""
+          }
+          ${airports
             .map(
               (airport) => `
-                <div class="result-item" data-value="${airport.code}-${airport.country}-${airport.name}">
-                  ${airport.name} (AIRPORT)
-                </div>`
+            <div class="result-item" data-value="${airport.code}-${airport.country}-${airport.name}" data-type="AIRPORT">
+              ${airport.name} (Aeroporto)
+            </div>
+          `,
             )
-            .join('')}
-        </div>
-      `
-      : '',
-  ].join('');
+            .join("")}
+        </div>  
+      ` : ""}
+    `,
+    ),
+    otherGroup.length > 0
+      ? `
+      <div class="result-group">
+        <div class="result-group-title others">Outras</div>
+        ${otherGroup
+          .map(
+            (location) => `
+          <div class="result-item" data-value="${location.code}-${location.country}-${location.name}" data-type="${location.type}">
+            ${location.name} (${location.type})
+          </div>
+        `,
+          )
+          .join("")}
+      </div>
+    `
+      : ""
+  ].join("")
 
-  container.innerHTML = html;
+  container.innerHTML = html
 
-  // Adiciona evento para selecionar a opção
-  container.querySelectorAll('.result-item').forEach((item) => {
-    item.addEventListener('click', () => {
-      const value = item.getAttribute('data-value');
-      const input = container.previousElementSibling.querySelector('input');
-      input.value = value.split('-')[2]; // Preenche com o nome
-      container.style.display = 'none';
-    });
-  });
+  container.querySelectorAll(".result-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      const value = item.getAttribute("data-value")
+      const type = item.getAttribute("data-type")
+      const [code, country, name] = value.split("-")
+      const input = container.closest(".input-wrapper").querySelector("input")
+      input.value = name
+      input.setAttribute("data-code", code)
+      input.setAttribute("data-country", country)
+      input.setAttribute("data-type", type)
+      container.style.display = "none"
+    })
+  })
 }
-
 
 async function fetchLocations() {
   try {
-    const response = await fetch('/api/fetch-locations-booking');
+    const response = await fetch("/api/fetch-locations-booking")
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`HTTP error! Status: ${response.status}`)
     }
-    const results = await response.json();
-    return groupLocationsByCityCode(flattenResults(results));
+    const results = await response.json()
+    const submitButton = document.querySelector('button[type="submit"]')
+    submitButton.disabled = false
+    groupedLocationsConfig = results
+    return
+    // return groupLocationsByCityCode(flattenResults(results))
   } catch (error) {
-    console.error("Error fetching locations:", error);
-    throw error;
+    console.error("Error fetching locations:", error)
+    throw error
   }
 }
 
-
 function flattenResults(results) {
-  return Object.values(results).flat();
+  return Object.values(results).flat()
 }
 
 function groupLocationsByCityCode(locations) {
-  const grouped = {};
+  const grouped = {}
   locations.forEach((location) => {
-    const cityCode = location.city || location.code;
+    const cityCode = location.city || location.code
     if (!grouped[cityCode]) {
-      grouped[cityCode] = [];
+      grouped[cityCode] = []
     }
-    grouped[cityCode].push(location);
-  });
-  return grouped;
+    grouped[cityCode].push(location)
+  })
+  return grouped
 }
 
 function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 async function handleStopRobot() {
@@ -315,20 +326,20 @@ async function handleStopRobot() {
     const stopRobotResponse = await fetch("/api/stop-robos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: "{\"target\": \"todos\"}",
-    });
+      body: '{"target": "todos"}',
+    })
 
     if (!stopRobotResponse.ok) {
-      throw new Error("Failed to stop the robot");
+      throw new Error("Failed to stop the robot")
     }
 
-    alert("Robô parado com sucesso!");
+    alert("Robô parado com sucesso!")
     // Voltar para o estado inicial
-    document.getElementById("searchForm").style.display = "block";
-    document.getElementById("robotStatus").classList.add("hidden");
+    document.getElementById("searchForm").style.display = "block"
+    document.getElementById("robotStatus").classList.add("hidden")
   } catch (error) {
-    console.error("Error:", error);
-    alert("Ocorreu um erro ao parar o robô. Por favor, tente novamente.");
+    console.error("Error:", error)
+    alert("Ocorreu um erro ao parar o robô. Por favor, tente novamente.")
   }
 }
 
@@ -406,32 +417,18 @@ function renderAdditionalFilters() {
   container.innerHTML = `
         <h2>Filtros Adicionais</h2>
         <div class="flex">
-            <div>
-                <label for="tripType">Tipo de Viagem</label>
-                <select id="tripType" name="tripType">
-                    <option value="all">Todas</option>
-                    <option value="national">Somente Nacional</option>
-                    <option value="international">Somente Internacional</option>
-                </select>
-            </div>
-            <div>
-                <label for="resultCount">Número de Resultados</label>
-                <input type="number" id="resultCount" name="resultCount" min="1" value="3">
-            </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="useTopDestinations" name="useTopDestinations">
-                <label for="useTopDestinations">
-                    Mostrar apenas os principais resultados
-                    <span class="tooltip">ℹ️
-                        <span class="tooltiptext">
-                            Esta opção filtra os resultados para mostrar
-                            apenas as principais origens e destinos
-                            com base em popularidade e frequência
-                            de viagens.
-                        </span>
-                    </span>
-                </label>
-            </div>
+          <div>
+              <label for="tripType">Tipo de Viagem</label>
+              <select id="tripType" name="tripType">
+                  <option value="all">Todas</option>
+                  <option value="national">Somente Nacional</option>
+                  <option value="international">Somente Internacional</option>
+              </select>
+          </div>
+          <div>
+              <label for="resultCount">Número de Resultados</label>
+              <input type="number" id="resultCount" name="resultCount" min="1" value="3">
+          </div>
         </div>
     `
 }
@@ -478,65 +475,73 @@ function filterGroupedLocations(groupedLocations) {
         type: location.type,
         code: location.code,
         country: location.country,
-        countryName: location.countryName
+        countryName: location.countryName,
       })),
-    ])
-  );
+    ]),
+  )
 }
 
 async function handleSubmit(event) {
-  event.preventDefault();
+  event.preventDefault()
 
-  const form = event.target;
-  const invalidFields = [];
+  const form = event.target
+  const invalidFields = []
 
   form.querySelectorAll("input, select").forEach((field) => {
     if (field.required && !field.value) {
-      invalidFields.push(field);
+      invalidFields.push(field)
     }
-  });
+  })
 
   if (invalidFields.length > 0) {
-    alert("Por favor, preencha todos os campos obrigatórios.");
-    invalidFields[0].focus();
-    return;
+    alert("Por favor, preencha todos os campos obrigatórios.")
+    invalidFields[0].focus()
+    return
   }
 
   try {
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+    const formData = new FormData(form)
+    const data = Object.fromEntries(formData)
 
-    data.updateInterval = convertToMinutes(data, "updateInterval");
-    data.messageInterval = convertToMinutes(data, "messageInterval");
+    const originInput = document.getElementById("originSearch")
+    const destinationInput = document.getElementById("destinationSearch")
 
-    if(data.updateInterval < 30 || data.messageInterval < 30) {
-      alert("O intervalo de atualização e envio de mensagens devem ser pelo menos de 30 minutos.");
-      return;
+    data.origin = originInput.getAttribute("data-code") + "-" + originInput.getAttribute("data-country") + "-" + originInput.value
+    data.destination = destinationInput.value != "" ? destinationInput.getAttribute("data-code") + "-" + destinationInput.getAttribute("data-country") + "-" + destinationInput.value : ""
+
+    data.updateInterval = convertToMinutes(data, "updateInterval")
+    data.messageInterval = convertToMinutes(data, "messageInterval")
+
+    if (data.updateInterval < 30 || data.messageInterval < 30) {
+      alert("O intervalo de atualização e envio de mensagens devem ser pelo menos de 30 minutos.")
+      return
     }
 
-    data.groupedLocationsConfig = filterGroupedLocations(groupedLocationsConfig);
+    data.groupedLocationsConfig = filterGroupedLocations(groupedLocationsConfig)
+    data.showMainResults = false
 
-    const checkbox = form.querySelector('input[name="showMainResults"]');
-    data.showMainResults = checkbox ? checkbox.checked : false;
+    form.style.display = "none"
+    document.getElementById("robotStatus").classList.remove("hidden")
 
-    form.style.display = "none";
-    document.getElementById("robotStatus").classList.remove("hidden");
+    startRobotProgress()
 
-    startRobotProgress();
-
-    const startCrawlerResponse = await fetch("/api/run-crawler", {
+    fetch("/api/run-crawler", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    });
-
-    if (!startCrawlerResponse.ok) {
-      throw new Error("Erro ao iniciar robô");
-    }
-
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erro ao iniciar robô")
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error)
+        alert("Ocorreu um erro ao iniciar o robô. Por favor, tente novamente.")
+      })
   } catch (error) {
-    console.error("Error:", error);
-    alert("Ocorreu um erro ao iniciar o robô. Por favor, tente novamente.");
+    console.error("Error:", error)
+    alert("Ocorreu um erro ao iniciar o robô. Por favor, tente novamente.")
   }
 }
 
@@ -565,7 +570,7 @@ socket.on("log", (logMessage) => {
 })
 
 function startRobotProgress() {
-  document.getElementById('robotProgressContainer').classList.remove('hidden');
+  document.getElementById("robotProgressContainer").classList.remove("hidden")
 }
 
 function convertToMinutes(data, intervalName) {

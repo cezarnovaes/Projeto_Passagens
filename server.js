@@ -172,7 +172,7 @@ app.post("/api/stop-robos", async (req, res) => {
       }
       res.status(200).json({ status: "success", message: "Robos parados com sucesso!" })
     } else {
-      res.status(400).json({ status: "error", message: "Nenhum robô correspondente está em execução." })
+      res.status(400).json({ status: "success", message: "Nenhum robô correspondente está em execução." })
     }
   } catch (error) {
     console.error("Erro ao parar o robô:", error.message)

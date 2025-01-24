@@ -16,22 +16,22 @@ function generateWhatsAppMessages(data) {
 
     data.forEach((entry) => {
         const flightDeals = entry.data.flightDeals || [];
+        if (flightDeals.length > 0) {
+            flightDeals.forEach((deal) => {
+                if (deal.key === "BEST") {
+                    const price = deal.price.units + deal.price.nanos / 1e9;
+                    const currency = deal.price.currencyCode;
+                    const from = entry.url.match(/from=([^&]+)/)[1];
+                    const to = entry.url.match(/to=([^&]+)/)[1];
+                    const departureDate = entry.url.match(/depart=([^&]+)/)[1];
+                    const cabinClass = entry.data.searchCriteria.cabinClass || "ECONOMY";
+                    const taxes = deal.travellerPrices[0].travellerPriceBreakdown.tax.units;
+                    const baseFare = deal.travellerPrices[0].travellerPriceBreakdown.baseFare.units;
 
-        flightDeals.forEach((deal) => {
-            if (deal.key === "BEST") {
-                const price = deal.price.units + deal.price.nanos / 1e9;
-                const currency = deal.price.currencyCode;
-                const from = entry.url.match(/from=([^&]+)/)[1];
-                const to = entry.url.match(/to=([^&]+)/)[1];
-                const departureDate = entry.url.match(/depart=([^&]+)/)[1];
-                const cabinClass = entry.data.searchCriteria.cabinClass || "ECONOMY";
-                const taxes = deal.travellerPrices[0].travellerPriceBreakdown.tax.units;
-                const baseFare = deal.travellerPrices[0].travellerPriceBreakdown.baseFare.units;
+                    // Gerar o URL da oferta
+                    const offerUrl = generateOfferURL(deal, from, to, departureDate);
 
-                // Gerar o URL da oferta
-                const offerUrl = generateOfferURL(deal, from, to, departureDate);
-
-                messages.push(`
+                    messages.push(`
 ✈️ *Oferta de Viagem - Melhores Condições!*
 🌍 Rota: *${decodeURIComponent(from)} ➡️ ${decodeURIComponent(to)}*
 📅 Data de Partida: *${departureDate}*
@@ -42,9 +42,12 @@ function generateWhatsAppMessages(data) {
 
 🌟 Aproveite esta oferta incrível para sua próxima viagem! 
 🔗 Confira todos os detalhes e reserve agora: ${offerUrl}`
-                );
-            }
-        });
+                    );
+                }
+            });
+        } else {
+            messages.push(`Nenhum voo encontrado com a data de saída: ${entry.url.split("depart=")[1].split("&return=")[0]} e data de retorno: ${entry.url.split("return=")[1].split("&from=")[0]}`);
+        }
     });
 
     return messages;
@@ -102,7 +105,7 @@ async function runLeitorPassagens(config, logCallback) {
                 log("Erro ao enviar mensagem:", response.data.description);
             }
         } catch (error) {
-            log("Erro na requisição telegram:", error.message);
+            log("Erro na requisição telegram:", error);
         }
     }
     // Configurar cliente WhatsApp
@@ -126,7 +129,7 @@ async function runLeitorPassagens(config, logCallback) {
         // Filtrar apenas grupos
         // chats.forEach(c => {log(c.name + " - " + c.id._serialized)})
         const grupo = chats.find(chat => chat.name == "Teste1")
-
+        log(`______________________________________________________________`)
         if (grupo) {
             const groupId = grupo.id._serialized;
             // Gerar as mensagens detalhadas
@@ -137,13 +140,19 @@ async function runLeitorPassagens(config, logCallback) {
                 if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
                 try {
                     // Enviar as mensagens para o grupo - 120363390566540905@g.us Teste1
-                    log(`Enviando mensagem programada ${(parseInt(mes)	 + 1)}`)
-                    await client.sendMessage(groupId, messages[mes])
-                    log(`Mensagem para WhatsApp envidada com sucesso!`)
-                    await sendTelegramMessage('7874360588:AAGYphRhJGd8NWMZ2bk_eIWrZ4zivKEOUTM', '-1002352411246', messages[mes])
-                    await sleep(100)
+                    log(`Enviando mensagem programada ${(parseInt(mes) + 1)}`)
+                    if (messages[mes].startsWith('Nenhum voo encontrado')) {
+                        log(messages[mes])
+                    } else {
+                        await client.sendMessage(groupId, messages[mes])
+                        log(`Mensagem para WhatsApp envidada com sucesso!`)
+                        await sendTelegramMessage('7874360588:AAGYphRhJGd8NWMZ2bk_eIWrZ4zivKEOUTM', '-1002352411246', messages[mes])
+                        await sleep(100)
+                    }
+                    log(`______________________________________________________________`)
                 } catch (error) {
                     log('Erro ao enviar mensagem para o grupo: ' + error)
+                    log(`______________________________________________________________`)
                 }
             }
             log('Finalizando...')

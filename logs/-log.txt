@@ -1,28 +1,22 @@
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:01 GMT-0300 (Horário Padrão de Brasília)|Abrindo pagina https://booking.com/
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:03 GMT-0300 (Horário Padrão de Brasília)|Total de URLs geradas: 4
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:03 GMT-0300 (Horário Padrão de Brasília)|Recuperando passagens
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:03 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:06 GMT-0300 (Horário Padrão de Brasília)|Origem: São Paulo, BR -> Buenos Aires, AR
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:06 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-24, Data de retorno: 2025-01-26
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:06 GMT-0300 (Horário Padrão de Brasília)|Progresso: 1/4 (25.00%)
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:06 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.13 minutos
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:06 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:06 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:08 GMT-0300 (Horário Padrão de Brasília)|Origem: São Paulo, BR -> Aeródromo Jorge Newbery, AR
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:08 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-24, Data de retorno: 2025-01-26
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:08 GMT-0300 (Horário Padrão de Brasília)|Progresso: 2/4 (50.00%)
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:08 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.09 minutos
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:08 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:08 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:11 GMT-0300 (Horário Padrão de Brasília)|Origem: São Paulo, BR -> Aeroporto Internacional de Ezeiza, AR
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:11 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-24, Data de retorno: 2025-01-26
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:11 GMT-0300 (Horário Padrão de Brasília)|Progresso: 3/4 (75.00%)
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:11 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.04 minutos
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:11 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:11 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:15 GMT-0300 (Horário Padrão de Brasília)|Origem: São Paulo, BR -> Estocolmo, SE
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:15 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-24, Data de retorno: 2025-01-26
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:15 GMT-0300 (Horário Padrão de Brasília)|Progresso: 4/4 (100.00%)
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:15 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.00 minutos
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:15 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
-CRAWLER-BOOKING|Fri Jan 24 2025 08:07:15 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Fri Jan 24 2025 20:41:55 GMT-0300 (Horário Padrão de Brasília)|Abrindo pagina https://booking.com/
+CRAWLER-BOOKING|Fri Jan 24 2025 20:41:57 GMT-0300 (Horário Padrão de Brasília)|Total de URLs geradas: 3
+CRAWLER-BOOKING|Fri Jan 24 2025 20:41:57 GMT-0300 (Horário Padrão de Brasília)|Recuperando passagens
+CRAWLER-BOOKING|Fri Jan 24 2025 20:41:57 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Origem: Rio de Janeiro, BR -> São Paulo, BR
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-28, Data de retorno: 2025-02-14
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Progresso: 1/3 (33.33%)
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.33 minutos
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Origem: Rio de Janeiro, BR -> Aeroporto de Congonhas/São Paulo, BR
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-28, Data de retorno: 2025-02-14
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Progresso: 2/3 (66.67%)
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.17 minutos
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Origem: Rio de Janeiro, BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-28, Data de retorno: 2025-02-14
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Progresso: 3/3 (100.00%)
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.00 minutos
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________

@@ -1,0 +1,19 @@
+2025/01/24-20:28:17.244 35fc Reusing MANIFEST C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client3\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/24-20:28:17.244 35fc Recovering log #1206
+2025/01/24-20:28:17.461 35fc Reusing old log C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-client3\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/001206.log 
+2025/01/24-20:28:18.886 44b0 Level-0 table #1214: started
+2025/01/24-20:28:18.912 44b0 Level-0 table #1214: 769388 bytes OK
+2025/01/24-20:28:18.912 44b0 Delete type=0 #1206
+2025/01/24-20:28:18.913 44b0 Manual compaction at level-0 from '\x00J\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00K\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/24-20:28:21.196 44b0 Compacting 1@1 + 4@2 files
+2025/01/24-20:28:21.285 44b0 Generated table #1215@1: 23803 keys, 2195354 bytes
+2025/01/24-20:28:21.326 44b0 Generated table #1216@1: 3077 keys, 2155137 bytes
+2025/01/24-20:28:21.442 44b0 Generated table #1217@1: 38023 keys, 2257689 bytes
+2025/01/24-20:28:21.621 44b0 Generated table #1218@1: 56390 keys, 1770608 bytes
+2025/01/24-20:28:21.621 44b0 Compacted 1@1 + 4@2 files => 8378788 bytes
+2025/01/24-20:28:21.623 44b0 compacted to: files[ 0 0 4 0 0 0 0 ]
+2025/01/24-20:28:21.623 44b0 Delete type=2 #1208
+2025/01/24-20:28:21.623 44b0 Delete type=2 #1209
+2025/01/24-20:28:21.623 44b0 Delete type=2 #1210
+2025/01/24-20:28:21.623 44b0 Delete type=2 #1211
+2025/01/24-20:28:21.623 44b0 Delete type=2 #1214
