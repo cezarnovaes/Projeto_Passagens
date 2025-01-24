@@ -1,24 +1,24 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: #e0e0e0; /* Texto claro */
   margin: 0;
   padding: 20px;
-  background-color: #f0f0f0;
+  background-color: #121212; /* Fundo escuro */
 }
 
 .container {
   max-width: 800px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #1e1e1e; /* Fundo do contêiner */
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sombra mais discreta */
 }
 
 h1,
 h2 {
-  color: #2c3e50;
+  color: #ffffff; /* Títulos claros */
   margin-bottom: 20px;
 }
 
@@ -29,6 +29,7 @@ h2 {
 .form-section h2 {
   font-size: 1.2em;
   margin-bottom: 10px;
+  color: #cfcfcf;
 }
 
 .flex {
@@ -46,6 +47,7 @@ label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #cccccc; /* Cor neutra para os labels */
 }
 
 input[type="text"],
@@ -54,15 +56,26 @@ input[type="number"],
 select {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #444; /* Borda suave */
   border-radius: 4px;
   font-size: 14px;
   box-sizing: border-box;
+  background-color: #2c2c2c; /* Fundo escuro dos inputs */
+  color: #e0e0e0; /* Texto claro */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: #64b5f6; /* Azul suave para foco */
+  box-shadow: 0 0 5px #64b5f6;
 }
 
 .btn-primary {
-  background-color: #3498db;
-  color: white;
+  background-color: #64b5f6; /* Azul suave */
+  color: #121212; /* Texto escuro para contraste */
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -74,12 +87,12 @@ select {
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
+  background-color: #42a5f5;
 }
 
 .btn-danger {
-  background-color: #ff0011;
-  color: white;
+  background-color: #e53935; /* Vermelho escuro */
+  color: #ffffff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -91,7 +104,7 @@ select {
 }
 
 .btn-danger:hover {
-  background-color: #ff0011;
+  background-color: #c62828;
 }
 
 .hidden {
@@ -100,11 +113,14 @@ select {
 
 select optgroup {
   font-weight: bold;
+  color: #b0b0b0; /* Cor neutra */
 }
 
 select option {
   font-weight: normal;
   padding-left: 10px;
+  background-color: #2c2c2c; /* Fundo dos options */
+  color: #e0e0e0;
 }
 
 .loading {
@@ -112,7 +128,7 @@ select option {
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  color: #007bff;
+  color: #64b5f6; /* Azul suave */
   animation: spin 1s linear infinite;
 }
 
@@ -120,8 +136,8 @@ select option {
   content: "";
   width: 50px;
   height: 50px;
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #3498db;
+  border: 5px solid #444;
+  border-top: 5px solid #64b5f6;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -144,8 +160,8 @@ select option {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 200px;
-  background-color: #555;
-  color: #fff;
+  background-color: #333; /* Fundo escuro */
+  color: #fff; /* Texto claro */
   text-align: center;
   border-radius: 6px;
   padding: 5px;
@@ -186,6 +202,9 @@ select option {
 .interval-input input {
   width: 60px;
   margin-right: 5px;
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  border: 1px solid #444;
 }
 
 .progress-container {
@@ -193,19 +212,20 @@ select option {
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   border-radius: 10px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #1e1e1e; /* Fundo escuro */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   font-family: Arial, sans-serif;
 }
 
 .logs {
   height: 300px;
   overflow-y: auto;
-  background-color: #f1f1f1;
+  background-color: #2c2c2c; /* Fundo escuro para logs */
   padding: 10px;
   border-radius: 5px;
   font-size: 14px;
   line-height: 1.5;
+  color: #e0e0e0;
 }

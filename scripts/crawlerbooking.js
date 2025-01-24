@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer')
 const path = require('path')
+const fsPromises = require('fs/promises')
 const fs = require('fs')
 var caminhoLog = null
 var caminhoLogSql = null
@@ -22,16 +23,19 @@ async function runCrawler(config, logCallback) {
         }
     }
     function logSql(sql) {
-        ;
+        
         //Adicionando ao final do arquivo
         fs.appendFileSync(caminhoLogSql, sql, "UTF-8")
     }
 
-    function logJson(json) {
-        // sql = sql.replace("\r\n", "").replace("\r", "").replace("\n", "") + "\r\n";
-
-        //Adicionando ao final do arquivo
-        fs.appendFileSync(caminhoLogSql, JSON.stringify(json), "UTF-8")
+    async function logJson(results, caminhoLogSql) {
+        try {
+            const jsonData = JSON.stringify(results, null, 2);
+            await fsPromises.writeFile(caminhoLogSql, jsonData, 'utf-8');
+            console.log("Dados escritos no arquivo JSON com sucesso.");
+        } catch (err) {
+            console.error("Erro ao escrever dados no arquivo JSON:", err.message);
+        }
     }
 
     const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))
@@ -115,14 +119,12 @@ async function runCrawler(config, logCallback) {
 
         await page.goto(url, { waitUntil: ['domcontentloaded'] })
 
-        var jsonGerados = 0
-
         resultsOrigens = config.groupedLocationsConfig
         let urls = null
         if (config.showMainResults) {
-            urls = generateBookingURLs(getTopOriginsDestinations(resultsOrigens, config.resultCount), config);
+            urls = generateBookingURLs(getTopOriginsDestinations(resultsOrigens, config.resultCount));
         } else {
-            urls = generateBookingURLs(getSlicedDestinations(resultsOrigens, config.resultCount), config);
+            urls = generateBookingURLs(getSlicedDestinations(resultsOrigens, config.resultCount));
         }
 
         log(`Total de URLs geradas: ${urls.length}`);
@@ -130,53 +132,39 @@ async function runCrawler(config, logCallback) {
 
         const results = await fetchAllUrls(urls, page);
 
-        caminhoLogSql = path.join(caminhoNovaPasta, "passagensResult.json");
-        fs.unlink(caminhoLogSql, (err) => {
-            fs.writeFile(caminhoLogSql, "", 'utf-8', (err) => {
-                if (err) {
-                    console.log('Ocorreu um erro ao criar o arquivo logJSON: ' + jsonGerados + ' => ' + err)
-                    browser.close()
-                    browser.disconnect()
+        try {
+            const caminhoLogSql = path.join(caminhoNovaPasta, "passagensResult.json");
+    
+            try {
+                await fsPromises.unlink(caminhoLogSql);
+                console.log(`Arquivo existente ${caminhoLogSql} excluído com sucesso.`);
+            } catch (unlinkErr) {
+                if (unlinkErr.code !== 'ENOENT') {
+                    throw unlinkErr;
                 }
-                console.log('Arquivo JSON criado com sucesso e conteúdo escrito ' + caminhoLogSql)
-                // console.log(results)
-                logJson(results)
-
-                browser.close()
-                browser.disconnect()
-            })
-        })
+            }
+    
+            await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
+            console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
+            await logJson(results, caminhoLogSql);
+            console.log("Resultados gravados com sucesso no arquivo JSON.")
+    
+        } catch (err) {
+            console.error('Erro ao manipular o arquivo JSON:', err.message)
+        } finally {
+            await browser.close();
+            browser.disconnect();
+            return { status: 'success', message: 'Crawler concluído.' }
+        }
     }
     function randomDelay() {
-        return Math.floor(Math.random() * (150 - 70 + 1) + 70);
+        return Math.floor(Math.random() * (140 - 50 + 1) + 50);
     }
 
-    function generateBookingURLs(resultsOrigens, config) {
+    function generateBookingURLs(resultsOrigens) {
         const datasViagens = obterViagensFimDeSemana(); // Calcula todas as viagens possiveis de finais de semana nos proximos 30 dias
         const urls = [];
-        // {
-        //     "periodType": "next30days",
-        //     "departureDate": "",
-        //     "returnDate": "",
-        //     "origin": "SAO",
-        //     "destination": "",
-        //     "cabinClass": "ECONOMY",
-        //     "adults": "1",
-        //     "children": "0",
-        //     "tripType": "all",
-        //     "resultCount": "10",
-        //     "updateInterval_weeks": "0",
-        //     "updateInterval_days": "0",
-        //     "updateInterval_hours": "0",
-        //     "updateInterval_minutes": "0",
-        //     "messageInterval_weeks": "0",
-        //     "messageInterval_days": "0",
-        //     "messageInterval_hours": "0",
-        //     "messageInterval_minutes": "0",
-        //     "updateInterval": 0,
-        //     "messageInterval": 0,
-        //     groupedLocationsConfig: null
-        // }
+
         if (config.periodType == "next30days") {
             for (const dataV of datasViagens) {
                 const baseURL = "https://flights.booking.com/api/flights/";
@@ -195,35 +183,56 @@ async function runCrawler(config, logCallback) {
                     depart: dataV.saida,
                     return: dataV.retorno,
                 };
-                const allDestinations = Object.values(resultsOrigens).flat();
+                if(!config.destination ||config.destination == ""){
+                    const allDestinations = Object.values(resultsOrigens).flat();
+                    for (const destination of allDestinations) {
+                        if (config.origin.split('-')[0] !== destination.code) {
+                            const params = new URLSearchParams({
+                                ...baseParams,
+                                from: config.origin.split('-')[0],
+                                to: (destination.type ? `${destination.code}.${destination.type}` : destination.code),
+                                fromCountry: config.origin.split('-')[1],
+                                toCountry: destination.country,
+                                fromLocationName: config.origin.split('-')[2],
+                                toLocationName: destination.name
+                            });
 
-                // for (const origin of allDestinations) {
-                for (const destination of allDestinations) {
-                    if (config.origin.split('-')[0] !== destination.code) {
-                        const params = new URLSearchParams({
-                            ...baseParams,
-                            from: config.origin.split('-')[0],
-                            to: (destination.type ? `${destination.code}.${destination.type}` : destination.code),
-                            fromCountry: config.origin.split('-')[1].split('-')[0],
-                            toCountry: destination.country,
-                            fromLocationName: config.origin.split('-')[1].split('-')[1],
-                            toLocationName: destination.name
-                        });
-
-                        const url = `${baseURL}?${params.toString()}`;
-                        listaDestinosG.push({
-                            ...baseParams,
-                            from: config.origin.split('-')[0],
-                            to: (destination.type ? `${destination.code}.${destination.type}` : destination.code),
-                            fromCountry: config.origin.split('-')[1].split('-')[0],
-                            toCountry: destination.country,
-                            fromLocationName: config.origin.split('-')[1].split('-')[1],
-                            toLocationName: destination.name
-                        })
-                        urls.push(url);
+                            const url = `${baseURL}?${params.toString()}`;
+                            listaDestinosG.push({
+                                ...baseParams,
+                                from: config.origin.split('-')[0],
+                                to: (destination.type ? `${destination.code}.${destination.type}` : destination.code),
+                                fromCountry: config.origin.split('-')[1],
+                                toCountry: destination.country,
+                                fromLocationName: config.origin.split('-')[2],
+                                toLocationName: destination.name
+                            })
+                            urls.push(url);
+                        }
                     }
+                }else{
+                    const params = new URLSearchParams({
+                        ...baseParams,
+                        from: config.origin.split('-')[0],
+                        to: config.destination.split('-')[0],
+                        fromCountry: config.origin.split('-')[1],
+                        toCountry: config.destination.split('-')[1],
+                        fromLocationName: config.origin.split('-')[2],
+                        toLocationName: config.destination.split('-')[2]
+                    });
+
+                    const url = `${baseURL}?${params.toString()}`;
+                    listaDestinosG.push({
+                        ...baseParams,
+                        from: config.origin.split('-')[0],
+                        to: config.destination.split('-')[0],
+                        fromCountry: config.origin.split('-')[1],
+                        toCountry: config.destination.split('-')[1],
+                        fromLocationName: config.origin.split('-')[2],
+                        toLocationName: config.destination.split('-')[2]
+                    })
+                    urls.push(url);
                 }
-                // }
             }
         } else {
             const baseURL = "https://flights.booking.com/api/flights/";
@@ -239,31 +248,60 @@ async function runCrawler(config, logCallback) {
                 label: "gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCmb25vAbAAgHSAiQ4MmQzM2I1OC02ZDM0LTRiYzYtODIzYS1iMGRkZjY3MDAxY2HYAgTgAgE",
                 adplat: "www-index-web_shell_header-flight-missing_creative-2VlI6ThuqGTRdPGFqUvfiU",
                 enableVI: "1",
-                depart: dataV.saida,
-                return: dataV.retorno,
+                depart: config.departureDate,
+                return: config.returnDate,
             };
 
-            const params = new URLSearchParams({
-                ...baseParams,
-                from: config.origin.split('-')[0],
-                to: destination.origin.split('-')[0],
-                fromCountry: config.origin.split('-')[1].split('-')[0],
-                toCountry: destination.origin.split('-')[1].split('-')[0],
-                fromLocationName: config.origin.split('-')[1].split('-')[1],
-                toLocationName: destination.origin.split('-')[1].split('-')[1]
-            })
+            if(config.destination == ""){
+                const allDestinations = Object.values(resultsOrigens).flat();
+                for (const destination of allDestinations) {
+                    if (config.origin.split('-')[0] !== destination.code) {
+                        const params = new URLSearchParams({
+                            ...baseParams,
+                            from: config.origin.split('-')[0],
+                            to: (destination.type ? `${destination.code}.${destination.type}` : destination.code),
+                            fromCountry: config.origin.split('-')[1],
+                            toCountry: destination.country,
+                            fromLocationName: config.origin.split('-')[2],
+                            toLocationName: destination.name
+                        });
 
-            const url = `${baseURL}?${params.toString()}`
-            listaDestinosG.push({
-                ...baseParams,
-                from: config.origin.split('-')[0],
-                to: destination.origin.split('-')[0],
-                fromCountry: config.origin.split('-')[1].split('-')[0],
-                toCountry: destination.origin.split('-')[1].split('-')[0],
-                fromLocationName: config.origin.split('-')[1].split('-')[1],
-                toLocationName: destination.origin.split('-')[1].split('-')[1]
-            })
-            urls.push(url)
+                        const url = `${baseURL}?${params.toString()}`;
+                        listaDestinosG.push({
+                            ...baseParams,
+                            from: config.origin.split('-')[0],
+                            to: (destination.type ? `${destination.code}.${destination.type}` : destination.code),
+                            fromCountry: config.origin.split('-')[1],
+                            toCountry: destination.country,
+                            fromLocationName: config.origin.split('-')[2],
+                            toLocationName: destination.name
+                        })
+                        urls.push(url);
+                    }
+                }
+            }else{
+                const params = new URLSearchParams({
+                    ...baseParams,
+                    from: config.origin.split('-')[0],
+                    to: config.destination.split('-')[0],
+                    fromCountry: config.origin.split('-')[1],
+                    toCountry: config.destination.split('-')[1],
+                    fromLocationName: config.origin.split('-')[2],
+                    toLocationName: config.destination.split('-')[2]
+                });
+
+                const url = `${baseURL}?${params.toString()}`;
+                listaDestinosG.push({
+                    ...baseParams,
+                    from: config.origin.split('-')[0],
+                    to: config.destination.split('-')[0],
+                    fromCountry: config.origin.split('-')[1],
+                    toCountry: config.destination.split('-')[1],
+                    fromLocationName: config.origin.split('-')[2],
+                    toLocationName: config.destination.split('-')[2]
+                })
+                urls.push(url);
+            }
         }
         return urls
     }
@@ -294,7 +332,7 @@ async function runCrawler(config, logCallback) {
         const totalUrls = urls.length;
         const startTime = Date.now();
 
-        log(`Iniciando fetch de ${totalUrls} URLs`);
+        log(`______________________________________________________________`)
 
         for (let i = 0; i < totalUrls; i++) {
             if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
@@ -307,11 +345,16 @@ async function runCrawler(config, logCallback) {
             const elapsedTime = (Date.now() - startTime) / 1000;
             const estimatedTotalTime = (elapsedTime / (i + 1)) * totalUrls;
             const remainingTime = estimatedTotalTime - elapsedTime;
+            // console.log(`....................... < ${i + 1} OBJ REQ > .......................`);
+            // console.log(listaDestinosG[i])
+            // console.log(`....................................................................`)
 
-            log(`Origem: ${listaDestinosG[i].fromLocationName}, ${listaDestinosG[i].fromCountry} => ${listaDestinosG[i].toLocationName}, ${listaDestinosG[i].toCountry}`)
+            log(`Origem: ${listaDestinosG[i].fromLocationName}, ${listaDestinosG[i].fromCountry} -> ${listaDestinosG[i].toLocationName}, ${listaDestinosG[i].toCountry}`)
+            log(`Data de saída: ${listaDestinosG[i].depart}, Data de retorno: ${listaDestinosG[i].return}`)
             log(`Progresso: ${i + 1}/${totalUrls} (${((i + 1) / totalUrls * 100).toFixed(2)}%)`);
             log(`Tempo estimado restante: ${remainingTime.toFixed(2) / 60} minutos`);
             log(`Status da última requisição: ${result.status}`);
+            log(`______________________________________________________________`)
 
             if (i < totalUrls - 1) {
                 const delay = randomDelay();
@@ -352,14 +395,19 @@ async function runCrawler(config, logCallback) {
         const topBrazilian = brazilianLocations.slice(0, qtdResults);
         const topInternational = internationalLocations.slice(0, qtdResults);
 
-        const topLocations = [...topBrazilian, ...topInternational];
+        if(config.tripType == "international") {
+            topLocations = [...topInternational];
+        }else if(config.tripType == "nacional") {
+            topLocations = [...topBrazilian];
+        }else{
+            topLocations = [...topBrazilian, ...topInternational];
+        }
+
         return topLocations;
     }
 
     function getSlicedDestinations(data, qtdResults) {
         const allLocations = [];
-        console.log('QTD RESULTS: ' + qtdResults)
-        console.log(data)
         
         for (const letter in data) {
             if (data.hasOwnProperty(letter)) {
@@ -385,8 +433,15 @@ async function runCrawler(config, logCallback) {
 
         const topBrazilian = brazilianLocations.slice(0, qtdResults);
         const topInternational = internationalLocations.slice(0, qtdResults);
+        let topLocations = [];
 
-        const topLocations = [...topBrazilian, ...topInternational];
+        if(config.tripType == "international") {
+            topLocations = [...topInternational];
+        }else if(config.tripType == "nacional") {
+            topLocations = [...topBrazilian];
+        }else{
+            topLocations = [...topBrazilian, ...topInternational];
+        }
 
         return topLocations;
     }

@@ -2,11 +2,27 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const fs = require("fs");
 const qrcode = require("qrcode-terminal");
 const axios = require("axios");
+const path = require('path')
 
 // Função para ler o arquivo JSON
 function readJsonFile(filePath) {
-    const data = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(data);
+    try {
+        // Tenta ler o arquivo e retornar os dados como JSON
+        const data = fs.readFileSync(filePath, "utf8");
+        return JSON.parse(data);
+    } catch (error) {
+        // Verifica o tipo de erro e retorna uma mensagem apropriada
+        if (error.code === "ENOENT") {
+            // Arquivo não encontrado
+            return { error: "O arquivo não foi encontrado. Certifique-se de que ele existe no caminho especificado." };
+        } else if (error.name === "SyntaxError") {
+            // Erro de JSON inválido
+            return { error: "Erro ao processar o arquivo. O conteúdo não está em formato JSON válido." };
+        } else {
+            // Outros erros
+            return { error: `Erro ao ler o arquivo: ${error.message}` };
+        }
+    }
 }
 
 // Função para criar o URL da oferta
@@ -55,28 +71,43 @@ function generateWhatsAppMessages(data) {
     return messages;
 }
 
-async function sendTelegramMessage(botToken, chatId, message) {
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-
-    try {
-        const response = await axios.get(url);
-
-        if (response.data.ok) {
-            console.log("Mensagem enviada com sucesso!");
-        } else {
-            console.error("Erro ao enviar mensagem:", response.data.description);
-        }
-    } catch (error) {
-        console.error("Erro na requisição:", error.message);
-    }
-}
-
 // Função principal
-async function runLeitorPassagens(config) {
+async function runLeitorPassagens(config, logCallback) {
     const controller = new AbortController();
     const { signal } = controller;
-    const filePath = "./logs/PASSAGENS/passagensResult.json"; // Substitua pelo caminho correto do arquivo JSON
-    const data = readJsonFile(filePath)
+    const diretorioAtual = __dirname.split('scripts')[0]
+    const caminhoLog = path.join(diretorioAtual, 'logs')
+    const caminhoArquivo = path.join(caminhoLog, 'PASSAGENS')
+    const caminhoPassagens = path.join(caminhoArquivo, 'passagensResult.json')
+    const data = readJsonFile(caminhoPassagens)
+
+    if (data.error) {
+        console.error(data.error);
+        return; // Encerra a execução, evitando falhas posteriores
+    }
+
+    function log(texto) {
+        if (texto != null) {
+            console.log(texto)
+            if (logCallback) {
+                logCallback(texto)
+            }
+        }
+    }
+
+    async function sendTelegramMessage(botToken, chatId, message) {
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+        try {
+            const response = await axios.get(url, { timeout: 90000 });
+            log(`Mensagem enviada no Telegram com sucesso!`)
+            if (response.data.ok) {
+            } else {
+                log("Erro ao enviar mensagem:", response.data.description);
+            }
+        } catch (error) {
+            log("Erro na requisição telegram:", error.message);
+        }
+    }
 
     // Configurar cliente WhatsApp
     const client = new Client({
@@ -90,51 +121,51 @@ async function runLeitorPassagens(config) {
     })
 
     client.on("ready", async () => {
-        console.log("Cliente WhatsApp está pronto!");
+        log("Cliente WhatsApp está pronto!");
 
         // Obter a lista de chats/grupos
         const chats = await client.getChats();
-        // console.log(chats)
-        console.log(`${chats.length} Chats encontrados, filtrando grupo...`)
+        // log(chats)
+        log(`${chats.length} Chats encontrados no WhatsApp, filtrando grupo "Teste1"`)
         // Filtrar apenas grupos
-        // chats.forEach(c => {console.log(c.name + " - " + c.id._serialized)})
+        // chats.forEach(c => {log(c.name + " - " + c.id._serialized)})
         const grupo = chats.find(chat => chat.name == "Teste1")
 
         if (grupo) {
             const groupId = grupo.id._serialized;
             // Gerar as mensagens detalhadas
-            const messages = generateWhatsAppMessages(data);            
-            // console.log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
-            // console.log(messages)
-            for(mes of messages){
+            const messages = generateWhatsAppMessages(data);
+            // log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
+            // log(messages)
+            for (mes in messages) {
                 if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
                 try {
                     // Enviar as mensagens para o grupo - 120363390566540905@g.us Teste1
-                    await client.sendMessage(groupId, mes)
-                    await sendTelegramMessage('7874360588:AAGYphRhJGd8NWMZ2bk_eIWrZ4zivKEOUTM', '-1002352411246', mes)
-                    console.log('Mensagens enviadas com sucesso!')
+                    log(`Enviando mensagem programada ${(parseInt(mes)	 + 1)}`)
+                    await client.sendMessage(groupId, messages[mes])
+                    log(`Mensagem para WhatsApp envidada com sucesso!`)
+                    await sendTelegramMessage('7874360588:AAGYphRhJGd8NWMZ2bk_eIWrZ4zivKEOUTM', '-1002352411246', messages[mes])
+                    await sleep(100)
                 } catch (error) {
-                    console.log('Erro ao enviar mensagem para o grupo: ' + error)
-                } finally {
-                    // Encerrar o cliente após enviar as mensagens
-                    console.log('Finalizando...')
-                    await sleep(3000)
-                    client.destroy();
+                    log('Erro ao enviar mensagem para o grupo: ' + error)
                 }
             }
+            log('Finalizando...')
+            client.destroy();
         } else {
             client.destroy();
-            console.log("Nenhum grupo encontrado!")
+            log("Nenhum grupo encontrado!")
+            log('Finalizando...')
         }
-        
+
     })
 
     // client.on("message", (message) => {
-    //     console.log(`Message received from ${message.from}: ${message.body}`)
+    //     log(`Message received from ${message.from}: ${message.body}`)
     // })
 
     client.on("authenticated", () => {
-        console.log("Cliente autenticado com sucesso!")
+        log("Cliente autenticado com sucesso!")
     })
 
     client.on("auth_failure", (msg) => {
@@ -142,12 +173,13 @@ async function runLeitorPassagens(config) {
     })
 
     client.on("disconnected", (reason) => {
-        console.log("Cliente desconectado:", reason)
+        log("Cliente desconectado:", reason)
     })
 
     // Inicializar o cliente
     client.initialize()
+    return { status: 'success', message: 'Crawler concluído.' };
 }
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
-module.exports = { runLeitorPassagens, createController: () => new AbortController() };
+module.exports = { runLeitorPassagens, createControllerLeitor: () => new AbortController() };

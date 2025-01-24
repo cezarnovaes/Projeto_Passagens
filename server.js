@@ -28,30 +28,78 @@ let isCrawlerRunning = false
 let isLeitorPassagensRunning = false
 let crawlerProcess = null
 let leitorPassagensProcess = null
+let scheduledTasks = {}
 
 // API routes
 app.post("/api/run-crawler", async (req, res) => {
   const config = req.body
   if (isCrawlerRunning) {
     return res.status(400).json({ status: "error", message: "Crawler já está em execução." })
+  } else if (isLeitorPassagensRunning) {
+    return res.status(400).json({ status: "error", message: "Envio de mensagens automaticas já está em execução." })
   }
   const { createController, runCrawler } = require("./scripts/crawlerbooking")
-  const controller = createController()
-
-  crawlerProcess = controller
+  const controllerCrawler = createController()
+  crawlerProcess = controllerCrawler
   isCrawlerRunning = true
 
-  try {
-    const result = await runCrawler(config, (logMessage) => {
-      io.emit("log", logMessage)
-    })
-    isCrawlerRunning = false
-    res.status(200).json(result)
-  } catch (error) {
-    console.error("Erro ao executar o crawler:", error.message)
-    isCrawlerRunning = false
-    res.status(500).json({ status: "error", message: error.message })
+  const { createControllerLeitor, runLeitorPassagens } = require("./scripts/leitorpassagens")
+  const controllerLeitor = createControllerLeitor()
+  leitorPassagensProcess = controllerLeitor
+  isLeitorPassagensRunning = true
+
+  if (!config.updateInterval || config.updateInterval <= 0 || !config.messageInterval || config.messageInterval <= 0) {
+    return res.status(400).json({ status: 'error', message: 'Intervalo inválido.' });
   }
+
+  if (scheduledTasks['crawler']) {
+    clearInterval(scheduledTasks['crawler']);
+  } else if (scheduledTasks['leitorpassagens']) {
+    clearInterval(scheduledTasks['leitorpassagens']);
+  }
+  res.status(200).json({ status: "success", message: "Crawler iniciado com sucesso!" })
+
+  await runCrawler(config, (logMessage) => {
+    io.emit('log', logMessage); // Envia logs ao frontend
+  });
+
+  io.emit("log", "Iniciando mensagens automaticas...")
+
+  await runLeitorPassagens(config, (logMessage) => {
+    io.emit('log', logMessage); // Envia logs ao frontend
+  });
+  isCrawlerRunning = false
+  isLeitorPassagensRunning = false
+
+  io.emit("log", "Intervalo de execução do robô programado: " + config.updateInterval + " min.")
+  io.emit("log", "Intervalo de execução do envio de mensagens programado: " + config.messageInterval + " min.")
+
+  scheduledTasks['crawler'] = setInterval(async () => {
+    try {
+      console.log('Iniciando execução automática do robô...');
+      await runCrawler(config, (logMessage) => {
+        io.emit('log', logMessage);
+      });
+    } catch (error) {
+      console.error('Erro ao executar o robô automaticamente:', error.message)
+      res.status(500).json({ status: "error", message: error.message })
+      isCrawlerRunning = false
+    }
+  }, config.updateInterval * 60 * 1000);
+
+  scheduledTasks['leitorpassagens'] = setInterval(async () => {
+    try {
+      console.log('Iniciando execução automática do robô...');
+      await runCrawler(config, (logMessage) => {
+        io.emit('log', logMessage);
+      });
+    } catch (error) {
+      console.error('Erro ao executar o envio de mensagens automaticamente:', error.message)
+      res.status(500).json({ status: "error", message: error.message })
+      isLeitorPassagensRunning = false
+    }
+  }, config.messageInterval * 60 * 1000);
+
 })
 
 app.post("/api/run-leitor-passagens", async (req, res) => {
@@ -60,9 +108,8 @@ app.post("/api/run-leitor-passagens", async (req, res) => {
     return res.status(400).json({ status: "error", message: "Leitor já está em execução." })
   }
   const { createController, runLeitorPassagens } = require("./scripts/leitorpassagens")
-  const controller = createController()
-
-  leitorPassagensProcess = controller
+  const controllerLeitor = createController()
+  leitorPassagensProcess = controllerLeitor
   isLeitorPassagensRunning = true
 
   try {
@@ -81,20 +128,47 @@ app.post("/api/stop-robos", async (req, res) => {
   try {
     if (target === "crawler" && isCrawlerRunning) {
       crawlerProcess.abort()
+      if (scheduledTasks['crawler']) {
+        clearInterval(scheduledTasks['crawler']);
+        delete scheduledTasks['crawler'];
+        res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
+      } else {
+        res.status(400).json({ status: 'error', message: 'Nenhum agendamento de robô ativo encontrado.' });
+      }
       isCrawlerRunning = false
-      res.status(200).json({ status: "success", message: "Crawler parado com sucesso!" })
+
     } else if (target === "leitor" && isLeitorPassagensRunning) {
       leitorPassagensProcess.abort()
-      isLeitorPassagensRunning = false
-      res.status(200).json({ status: "success", message: "Leitor de passagens parado com sucesso!" })
-    } else if (target === "todos" && (isCrawlerRunning || isLeitorPassagensRunning)) {
-      if (isLeitorPassagensRunning) {
-        leitorPassagensProcess.abort()
-        isLeitorPassagensRunning = false
+      if (scheduledTasks['leitorpassagens']) {
+        clearInterval(scheduledTasks['leitorpassagens']);
+        delete scheduledTasks['leitorpassagens'];
+        res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
+      } else {
+        res.status(400).json({ status: 'error', message: 'Nenhum agendamento de robô ativo encontrado.' });
       }
-      if (isCrawlerRunning) {
+      isLeitorPassagensRunning = false
+    } else if (target === "todos" && (isCrawlerRunning || isLeitorPassagensRunning)) {
+      if(isCrawlerRunning){
         crawlerProcess.abort()
+        if (scheduledTasks['crawler']) {
+          clearInterval(scheduledTasks['crawler']);
+          delete scheduledTasks['crawler'];
+          res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
+        } else {
+          res.status(400).json({ status: 'error', message: 'Nenhum agendamento de robô ativo encontrado.' });
+        }
         isCrawlerRunning = false
+      }
+      if(isLeitorPassagensRunning){
+        leitorPassagensProcess.abort()
+        if (scheduledTasks['leitorpassagens']) {
+          clearInterval(scheduledTasks['leitorpassagens']);
+          delete scheduledTasks['leitorpassagens'];
+          res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
+        } else {
+          res.status(400).json({ status: 'error', message: 'Nenhum agendamento de robô ativo encontrado.' });
+        }
+        isLeitorPassagensRunning = false
       }
       res.status(200).json({ status: "success", message: "Robos parados com sucesso!" })
     } else {
@@ -176,6 +250,6 @@ function isDuplicate(item, results) {
 
 // Start the server
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+  console.log(`Server running on port http://localhost:${PORT}`)
 })
 

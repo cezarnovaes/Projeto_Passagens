@@ -10,10 +10,94 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFlightConfig();
   renderAdditionalFilters();
   renderRobotConfig();
+  setupFieldValidations();
+  setupTripOptionsBehavior();
 
   form.addEventListener("submit", handleSubmit);
   stopRobotButton.addEventListener("click", handleStopRobot);
 });
+
+function setupFieldValidations() {
+  // Campos obrigatórios
+  const requiredFields = [
+    { id: "adults", minValue: 1 },
+    { id: "resultCount", minValue: 1 },
+  ];
+
+  requiredFields.forEach(({ id, minValue }) => {
+    const field = document.getElementById(id);
+    if (field) {
+      field.required = true;
+      field.addEventListener("input", () => {
+        if (field.value < minValue) {
+          field.value = minValue;
+        }
+      });
+
+      // Adiciona o asterisco vermelho
+      const label = field.closest("div").querySelector("label");
+      if (label) {
+        label.innerHTML += ' <span style="color: red;">*</span>';
+      }
+    }
+  });
+
+  // Validação para datas
+  const periodTypeInputs = document.querySelectorAll('input[name="periodType"]');
+  periodTypeInputs.forEach((input) => {
+    input.addEventListener("change", (e) => {
+      const specificDates = document.getElementById("specificDates");
+      const departureDate = document.getElementById("departureDate");
+      const returnDate = document.getElementById("returnDate");
+
+      if (e.target.value === "specific") {
+        specificDates.classList.remove("hidden");
+        departureDate.required = true;
+        returnDate.required = true;
+      } else {
+        specificDates.classList.add("hidden");
+        departureDate.required = false;
+        returnDate.required = false;
+      }
+    });
+  });
+}
+
+// Configuração de habilitação/desabilitação do campo de destino
+function setupTripOptionsBehavior() {
+  const tripOptions = document.getElementById("tripOptions");
+
+  if (!tripOptions) {
+    console.error("Elemento tripOptions não encontrado.");
+    return;
+  }
+
+  tripOptions.addEventListener("change", (e) => {
+    const destinationField = document.getElementById("destination");
+    const destinationLabel = document.querySelector('label[for="destination"]');
+
+    if (!destinationField || !destinationLabel) {
+      console.error("Campo ou label de destino não encontrado.");
+      return;
+    }
+
+    if (e.target.value === "ONEWAY") {
+      destinationField.disabled = true;
+      destinationField.value = ""; // Limpa o valor selecionado
+
+      // Remove o asterisco do label de destino
+      destinationLabel.innerHTML = destinationLabel.innerHTML.replace(/<span style="color: red;">\*<\/span>/, "");
+    } else {
+      destinationField.disabled = false;
+      destinationField.required = true;
+
+      // Adiciona o asterisco ao label, caso não exista
+      if (!destinationLabel.innerHTML.includes("*")) {
+        destinationLabel.innerHTML += ' <span style="color: red;">*</span>';
+      }
+    }
+  });
+}
 
 async function renderLocationSelector() {
   const container = document.getElementById("locationSelector");
@@ -33,7 +117,7 @@ async function renderLocationSelector() {
           </select>
         </div>
         <div>
-          <label for="destination">Destino</label>
+          <label for="destination">Destino<span style="color: red;">*</span></label>
           <select id="destination" name="destination">
             <option value="">Todos os destinos</option>
             ${renderLocationOptions(groupedLocations)}
@@ -43,15 +127,16 @@ async function renderLocationSelector() {
     `;
 
     const originSelect = document.getElementById("origin")
+    const destinationSelect = document.getElementById("destination")
     const saoPauloOption = Array.from(originSelect.options).find(
       (option) => option.text.toLowerCase().includes("são paulo") && option.value.startsWith("SAO"),
     )
     if (saoPauloOption) {
       saoPauloOption.selected = true
-      // Trigger a change event to update any dependent fields
-      const event = new Event("change")
-      originSelect.dispatchEvent(event)
     }
+    const event = new Event("change")
+    destinationSelect.dispatchEvent(event)
+    originSelect.dispatchEvent(event)
   } catch (error) {
     console.error("Error fetching locations:", error);
     container.innerHTML = "<h2>Origem e Destino</h2> <p>Erro ao carregar localizações. Por favor, tente novamente mais tarde.</p>";
@@ -130,7 +215,7 @@ function renderLocationOptions(groupedLocations) {
   })
 
   // Ordena os grupos de cidades alfabeticamente
-  cityGroups.sort((a, b) => a.name.localeCompare(b.name)) 
+  cityGroups.sort((a, b) => a.name.localeCompare(b.name))
 
   // Ordena os locais não agrupados
   ungroupedLocations.sort((a, b) => (a.name || "").localeCompare(b.name || ""))
@@ -162,7 +247,7 @@ async function handleStopRobot() {
     const stopRobotResponse = await fetch("/api/stop-robos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: "todos",
+      body: "{\"target\": \"todos\"}",
     });
 
     if (!stopRobotResponse.ok) {
@@ -194,11 +279,11 @@ function renderPeriodSelector() {
         <div id="specificDates" class="hidden">
             <div class="flex">
                 <div>
-                    <label for="departureDate">Data de Saída</label>
+                    <label for="departureDate">Data de Saída<span style="color: red;">*</span></label>
                     <input type="date" id="departureDate" name="departureDate">
                 </div>
                 <div>
-                    <label for="returnDate">Data de Retorno</label>
+                    <label for="returnDate">Data de Retorno<span style="color: red;">*</span></label>
                     <input type="date" id="returnDate" name="returnDate">
                 </div>
             </div>
@@ -263,7 +348,7 @@ function renderAdditionalFilters() {
             </div>
             <div>
                 <label for="resultCount">Número de Resultados</label>
-                <input type="number" id="resultCount" name="resultCount" min="1" value="10">
+                <input type="number" id="resultCount" name="resultCount" min="1" value="3">
             </div>
             <div class="checkbox-container">
                 <input type="checkbox" id="useTopDestinations" name="useTopDestinations">
@@ -300,20 +385,16 @@ function renderIntervalInput(name, label) {
             <label>${label}</label>
             <div class="interval-input">
                 <div>
-                    <input type="number" id="${name}_weeks" name="${name}_weeks" min="0" value="0">
-                    <label for="${name}_weeks">Semanas</label>
-                </div>
-                <div>
+                    <label for="${name}_days">Dias &#8203;</label>
                     <input type="number" id="${name}_days" name="${name}_days" min="0" value="0">
-                    <label for="${name}_days">Dias</label>
                 </div>
                 <div>
-                    <input type="number" id="${name}_hours" name="${name}_hours" min="0" value="0">
-                    <label for="${name}_hours">Horas</label>
+                    <label for="${name}_hours">Horas &#8203;</label>
+                    <input type="number" id="${name}_hours" name="${name}_hours" min="0" value="1">
                 </div>
                 <div>
+                    <label for="${name}_minutes">Minutos &#8203;</label>
                     <input type="number" id="${name}_minutes" name="${name}_minutes" min="0" value="0">
-                    <label for="${name}_minutes">Minutos</label>
                 </div>
             </div>
         </div>
@@ -337,27 +418,42 @@ function filterGroupedLocations(groupedLocations) {
 
 async function handleSubmit(event) {
   event.preventDefault();
+
   const form = event.target;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
+  const invalidFields = [];
 
-  // Converte intervalos para minutos
-  data.updateInterval = convertToMinutes(data, "updateInterval");
-  data.messageInterval = convertToMinutes(data, "messageInterval");
+  form.querySelectorAll("input, select").forEach((field) => {
+    if (field.required && !field.value) {
+      invalidFields.push(field);
+    }
+  });
 
-  // Adiciona groupedLocationsConfig ao objeto data
-  data.groupedLocationsConfig = filterGroupedLocations(groupedLocationsConfig);
-
-  // Captura o estado do checkbox "Mostrar apenas os principais resultados"
-  const checkbox = form.querySelector('input[name="showMainResults"]');
-  data.showMainResults = checkbox ? checkbox.checked : false;
-
-  console.log(data);
+  if (invalidFields.length > 0) {
+    alert("Por favor, preencha todos os campos obrigatórios.");
+    invalidFields[0].focus();
+    return;
+  }
 
   try {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    data.updateInterval = convertToMinutes(data, "updateInterval");
+    data.messageInterval = convertToMinutes(data, "messageInterval");
+
+    if(data.updateInterval < 30 || data.messageInterval < 30) {
+      alert("O intervalo de atualização e envio de mensagens devem ser pelo menos de 30 minutos.");
+      return;
+    }
+
+    data.groupedLocationsConfig = filterGroupedLocations(groupedLocationsConfig);
+
+    const checkbox = form.querySelector('input[name="showMainResults"]');
+    data.showMainResults = checkbox ? checkbox.checked : false;
+
     form.style.display = "none";
     document.getElementById("robotStatus").classList.remove("hidden");
-    
+
     startRobotProgress();
 
     const startCrawlerResponse = await fetch("/api/run-crawler", {
@@ -366,16 +462,8 @@ async function handleSubmit(event) {
       body: JSON.stringify(data),
     });
 
-    const startLeitorResponse = await fetch("/api/run-leitor-passagens", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
     if (!startCrawlerResponse.ok) {
       throw new Error("Erro ao iniciar robô");
-    } else if (!startLeitorResponse.ok) {
-      throw new Error("Erro ao iniciar leitor");
     }
 
   } catch (error) {
@@ -409,7 +497,7 @@ socket.on("log", (logMessage) => {
 })
 
 function startRobotProgress() {
-    document.getElementById('robotProgressContainer').classList.remove('hidden');
+  document.getElementById('robotProgressContainer').classList.remove('hidden');
 }
 
 function convertToMinutes(data, intervalName) {

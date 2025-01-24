@@ -1,1 +1,52 @@
-[]
+[
+  {
+    "url": "https://flights.booking.com/api/flights/?type=ROUNDTRIP&adults=1&cabinClass=ECONOMY&children=0&sort=BEST&travelPurpose=leisure&ca_source=flights_index_sb&aid=304142&label=gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCmb25vAbAAgHSAiQ4MmQzM2I1OC02ZDM0LTRiYzYtODIzYS1iMGRkZjY3MDAxY2HYAgTgAgE&adplat=www-index-web_shell_header-flight-missing_creative-2VlI6ThuqGTRdPGFqUvfiU&enableVI=1&depart=2025-01-24&return=&from=SAO&to=CGH&fromCountry=BR&toCountry=BR&fromLocationName=S%C3%A3o+Paulo&toLocationName=Aeroporto+de+Congonhas%2FS%C3%A3o+Paulo",
+    "status": "success",
+    "data": {
+      "error": {
+        "code": "BAD_REQUEST",
+        "requestId": "4d7a9020-d9e9-11ef-8dc4-6923e8a170bd"
+      }
+    }
+  },
+  {
+    "url": "https://flights.booking.com/api/flights/?type=ROUNDTRIP&adults=1&cabinClass=ECONOMY&children=0&sort=BEST&travelPurpose=leisure&ca_source=flights_index_sb&aid=304142&label=gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCmb25vAbAAgHSAiQ4MmQzM2I1OC02ZDM0LTRiYzYtODIzYS1iMGRkZjY3MDAxY2HYAgTgAgE&adplat=www-index-web_shell_header-flight-missing_creative-2VlI6ThuqGTRdPGFqUvfiU&enableVI=1&depart=2025-01-24&return=&from=SAO&to=GRU&fromCountry=BR&toCountry=BR&fromLocationName=S%C3%A3o+Paulo&toLocationName=Aeroporto+Internacional+de+Guarulhos",
+    "status": "success",
+    "data": {
+      "error": {
+        "code": "BAD_REQUEST",
+        "requestId": "4db7e740-d9e9-11ef-b000-a56e68cdcf7d"
+      }
+    }
+  },
+  {
+    "url": "https://flights.booking.com/api/flights/?type=ROUNDTRIP&adults=1&cabinClass=ECONOMY&children=0&sort=BEST&travelPurpose=leisure&ca_source=flights_index_sb&aid=304142&label=gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCmb25vAbAAgHSAiQ4MmQzM2I1OC02ZDM0LTRiYzYtODIzYS1iMGRkZjY3MDAxY2HYAgTgAgE&adplat=www-index-web_shell_header-flight-missing_creative-2VlI6ThuqGTRdPGFqUvfiU&enableVI=1&depart=2025-01-24&return=&from=SAO&to=BUE&fromCountry=BR&toCountry=AR&fromLocationName=S%C3%A3o+Paulo&toLocationName=Buenos+Aires",
+    "status": "success",
+    "data": {
+      "error": {
+        "code": "BAD_REQUEST",
+        "requestId": "4e093b90-d9e9-11ef-8734-47a53604698b"
+      }
+    }
+  },
+  {
+    "url": "https://flights.booking.com/api/flights/?type=ROUNDTRIP&adults=1&cabinClass=ECONOMY&children=0&sort=BEST&travelPurpose=leisure&ca_source=flights_index_sb&aid=304142&label=gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCmb25vAbAAgHSAiQ4MmQzM2I1OC02ZDM0LTRiYzYtODIzYS1iMGRkZjY3MDAxY2HYAgTgAgE&adplat=www-index-web_shell_header-flight-missing_creative-2VlI6ThuqGTRdPGFqUvfiU&enableVI=1&depart=2025-01-24&return=&from=SAO&to=AEP&fromCountry=BR&toCountry=AR&fromLocationName=S%C3%A3o+Paulo&toLocationName=Aer%C3%B3dromo+Jorge+Newbery",
+    "status": "success",
+    "data": {
+      "error": {
+        "code": "BAD_REQUEST",
+        "requestId": "4e50f2f0-d9e9-11ef-b5a5-1790fea1a6ee"
+      }
+    }
+  },
+  {
+    "url": "https://flights.booking.com/api/flights/?type=ROUNDTRIP&adults=1&cabinClass=ECONOMY&children=0&sort=BEST&travelPurpose=leisure&ca_source=flights_index_sb&aid=304142&label=gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCmb25vAbAAgHSAiQ4MmQzM2I1OC02ZDM0LTRiYzYtODIzYS1iMGRkZjY3MDAxY2HYAgTgAgE&adplat=www-index-web_shell_header-flight-missing_creative-2VlI6ThuqGTRdPGFqUvfiU&enableVI=1&depart=2025-01-24&return=&from=SAO&to=EZE&fromCountry=BR&toCountry=AR&fromLocationName=S%C3%A3o+Paulo&toLocationName=Aeroporto+Internacional+de+Ezeiza",
+    "status": "success",
+    "data": {
+      "error": {
+        "code": "BAD_REQUEST",
+        "requestId": "4edda290-d9e9-11ef-86ba-0f2ffb64d957"
+      }
+    }
+  }
+]
