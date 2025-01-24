@@ -303,7 +303,7 @@ async function runCrawler(config, logCallback) {
                 urls.push(url);
             }
         }
-        return urls
+        return urls.splice(0, config.resultCount)
     }
 
     // Função para fazer o fetch de uma única URL
@@ -352,7 +352,7 @@ async function runCrawler(config, logCallback) {
             log(`Origem: ${listaDestinosG[i].fromLocationName}, ${listaDestinosG[i].fromCountry} -> ${listaDestinosG[i].toLocationName}, ${listaDestinosG[i].toCountry}`)
             log(`Data de saída: ${listaDestinosG[i].depart}, Data de retorno: ${listaDestinosG[i].return}`)
             log(`Progresso: ${i + 1}/${totalUrls} (${((i + 1) / totalUrls * 100).toFixed(2)}%)`);
-            log(`Tempo estimado restante: ${remainingTime.toFixed(2) / 60} minutos`);
+            log(`Tempo estimado restante: ${(remainingTime / 60).toFixed(2)} minutos`);
             log(`Status da última requisição: ${result.status}`);
             log(`______________________________________________________________`)
 
@@ -554,8 +554,6 @@ async function runCrawler(config, logCallback) {
         return texto.replace(/[áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÔÖÚÙÛÜÇñÑßæÆœŒþÞðÐøØåÅ&´'`]/g, (match) => mapaCaracteres[match] || match);
     }
 
-    const idcrawlerlink = process.argv[2];
-    const fase = process.argv[3];
     await main();
     return
 }

@@ -180,6 +180,35 @@ app.post("/api/stop-robos", async (req, res) => {
   }
 })
 
+app.get('/api/search-locations', async (req, res) => {
+  const { query } = req.query;
+
+  if (!query || query.length < 3) {
+    return res.status(400).json({ error: 'Query deve ter pelo menos 3 caracteres.' });
+  }
+
+  try {
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+    await page.goto('https://booking.com/');
+
+    // Realiza a requisição no contexto da página do Puppeteer
+    const fetchURL = `https://flights.booking.com/api/autocomplete/pt?q=${encodeURIComponent(query)}`;
+    const results = await page.evaluate(async (fetchURL) => {
+      const response = await fetch(fetchURL);
+      return await response.json();
+    }, fetchURL);
+
+    await browser.close();
+
+    // Retorna os resultados processados
+    res.status(200).json(results);
+  } catch (error) {
+    console.error('Erro ao buscar locais:', error);
+    res.status(500).json({ error: 'Erro ao buscar locais.' });
+  }
+});
+
 app.get("/api/fetch-locations-booking", async (req, res) => {
   const baseURL = "https://flights.booking.com/api/autocomplete/pt?q="
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
