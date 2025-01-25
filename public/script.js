@@ -3,7 +3,6 @@ let groupedLocationsConfig = null
 document.addEventListener("DOMContentLoaded", () => {
   fetchLocations()
 
-  const form = document.getElementById("searchForm")
   const stopRobotButton = document.getElementById("stopRobotButton")
 
   renderPeriodSelector()
@@ -14,10 +13,77 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFieldValidations()
   setupTripOptionsBehavior()
 
-  form.addEventListener("submit", handleSubmit)
   const submitButton = document.querySelector('button[type="submit"]')
   submitButton.disabled = true
   stopRobotButton.addEventListener("click", handleStopRobot)
+
+  const contactsTable = document.getElementById("contactsTable").querySelector("tbody");
+  const nextButton = document.getElementById("nextButton");
+  const backButton = document.getElementById("backButton");
+  const searchForm = document.getElementById("searchForm");
+
+  const page1 = document.getElementById("page1");
+  const page2 = document.getElementById("page2");
+
+  let formData = { contacts: []};
+
+  nextButton.addEventListener("click", () => {
+    formData = {
+      ...formData,
+      period: document.querySelector("#periodSelector input")?.value || "",
+      location: document.querySelector("#locationSelector input")?.value || "",
+      flightConfig: document.querySelector("#flightConfig input")?.value || "",
+    };
+
+    page1.classList.add("hidden");
+    page2.classList.remove("hidden");
+  });
+
+  backButton.addEventListener("click", () => {
+    page2.classList.add("hidden");
+    page1.classList.remove("hidden");
+  });
+
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    formData = {
+      ...formData,
+      additionalFilters: document.querySelector("#additionalFilters input")?.value || "",
+      robotConfig: document.querySelector("#robotConfig input")?.value || "",
+    };
+
+    console.log("Configurações completas:", formData);
+
+    handleSubmit(e, formData);
+  });
+
+  addContactButton.addEventListener("click", () => {
+    const contactNumber = document.getElementById("contactNumber").value;
+    const contactName = document.getElementById("contactName").value;
+
+    if (contactNumber && contactName) {
+        formData.contacts.push({ number: contactNumber, name: contactName });
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${contactNumber}</td>
+            <td>${contactName}</td>
+            <td><button type="button" class="btn-danger removeContactButton">Remover</button></td>
+        `;
+        contactsTable.appendChild(row);
+
+        document.getElementById("contactNumber").value = "";
+        document.getElementById("contactName").value = "";
+
+        row.querySelector(".removeContactButton").addEventListener("click", () => {
+            contactsTable.removeChild(row);
+            formData.contacts = formData.contacts.filter(contact => contact.number !== contactNumber);
+        });
+    } else {
+        alert("Por favor, preencha todos os campos do contato!");
+    }
+});
 })
 
 function setupFieldValidations() {
@@ -207,7 +273,7 @@ async function fetchDynamicLocations(query, signal) {
       grouped[cityCode].city = location
     } else if (location.type === "AIRPORT" && grouped[cityCode].city !== null) {
       grouped[cityCode].airports.push(location)
-    }else{
+    } else {
       grouped.others.push(location)
     }
   })
@@ -224,16 +290,15 @@ function displayResults(groupedLocations, container) {
   const html = [
     ...cityGroups.map(
       ([key, { city, airports }]) => `
-      ${ city ? `
+      ${city ? `
         <div class="result-group">
-          ${
-            city
-              ? `
+          ${city
+            ? `
             <div class="result-item" data-value="${city.code}-${city.country}-${city.name}" data-type="CITY">
               ${city.name} (Todos os Aeroportos)
             </div>
           `
-              : ""
+            : ""
           }
           ${airports
             .map(
@@ -253,14 +318,14 @@ function displayResults(groupedLocations, container) {
       <div class="result-group">
         <div class="result-group-title others">Outras</div>
         ${otherGroup
-          .map(
-            (location) => `
+        .map(
+          (location) => `
           <div class="result-item" data-value="${location.code}-${location.country}-${location.name}" data-type="${location.type}">
             ${location.name} (${location.type})
           </div>
         `,
-          )
-          .join("")}
+        )
+        .join("")}
       </div>
     `
       : ""
@@ -433,39 +498,6 @@ function renderAdditionalFilters() {
     `
 }
 
-function renderRobotConfig() {
-  const container = document.getElementById("robotConfig")
-  container.innerHTML = `
-        <h2>Configuração do Robô</h2>
-        <div class="space-y-4">
-            ${renderIntervalInput("updateInterval", "Intervalo de Atualização")}
-            ${renderIntervalInput("messageInterval", "Intervalo de Envio de Mensagens")}
-        </div>
-    `
-}
-
-function renderIntervalInput(name, label) {
-  return `
-        <div>
-            <label>${label}</label>
-            <div class="interval-input">
-                <div>
-                    <label for="${name}_days">Dias &#8203;</label>
-                    <input type="number" id="${name}_days" name="${name}_days" min="0" value="0">
-                </div>
-                <div>
-                    <label for="${name}_hours">Horas &#8203;</label>
-                    <input type="number" id="${name}_hours" name="${name}_hours" min="0" value="1">
-                </div>
-                <div>
-                    <label for="${name}_minutes">Minutos &#8203;</label>
-                    <input type="number" id="${name}_minutes" name="${name}_minutes" min="0" value="0">
-                </div>
-            </div>
-        </div>
-    `
-}
-
 function filterGroupedLocations(groupedLocations) {
   return Object.fromEntries(
     Object.entries(groupedLocations).map(([key, locations]) => [
@@ -481,7 +513,7 @@ function filterGroupedLocations(groupedLocations) {
   )
 }
 
-async function handleSubmit(event) {
+async function handleSubmit(event, formData) {
   event.preventDefault()
 
   const form = event.target
@@ -500,7 +532,6 @@ async function handleSubmit(event) {
   }
 
   try {
-    const formData = new FormData(form)
     const data = Object.fromEntries(formData)
 
     const originInput = document.getElementById("originSearch")

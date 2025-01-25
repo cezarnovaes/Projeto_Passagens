@@ -73,6 +73,12 @@ select:focus {
   box-shadow: 0 0 5px #64b5f6;
 }
 
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .btn-primary:disabled {
   opacity: 0.5;
   cursor: progress;
@@ -95,6 +101,28 @@ select:focus {
   background-color: #42a5f5;
 }
 
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.btn-secondary {
+  background-color: #9FA6B2; /* Azul suave */
+  color: #121212; /* Texto escuro para contraste */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.btn-secondary:hover {
+  background-color: #888E99;
+}
+
 .btn-danger {
   background-color: #e53935; /* Vermelho escuro */
   color: #ffffff;
@@ -114,6 +142,66 @@ select:focus {
 
 .hidden {
   display: none;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#whatsappSenderConfig{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1px;
+}
+
+#senderNumber{
+  width: 20%;
+}
+
+/* Estilização da tabela de contatos */
+#contactsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#contactsTable th,
+#contactsTable td {
+  border: 1px solid #444;
+  padding: 2px;
+  text-align: left;
+  color: #e0e0e0;
+}
+
+#contactsTable th {
+  background-color: #2c2c2c; /* Cabeçalho escuro */
+}
+
+#contactsTable tr:nth-child(even) {
+  background-color: #1e1e1e;
+}
+
+/* Campo de texto com dark mode */
+#messageText {
+  width: 100%;
+  padding: 15px;
+  margin: 20px 0;
+  font-size: 16px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #2c2c2c; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  box-sizing: border-box;
+}
+
+#messageText:focus {
+  outline: none;
+  border-color: #64b5f6; /* Azul claro no foco */
+  box-shadow: 0 0 5px #64b5f6;
 }
 
 select optgroup {

@@ -1,21 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa de Passagens Promocionais</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <main class="container">
         <h1>Pesquisa de Passagens Promocionais</h1>
         <form id="searchForm">
-            <div id="periodSelector" class="form-section"></div>
-            <div id="locationSelector" class="form-section"></div>
-            <div id="flightConfig" class="form-section"></div>
-            <div id="additionalFilters" class="form-section"></div>
-            <div id="robotConfig" class="form-section"></div>
-            <button type="submit" class="btn-primary">Iniciar Pesquisa</button>
+            <div id="page1" class="form-page">
+                <div id="periodSelector" class="form-section"></div>
+                <div id="locationSelector" class="form-section"></div>
+                <div id="flightConfig" class="form-section"></div>
+                <div id="additionalFilters" class="form-section"></div>
+                <button type="button" id="nextButton" class="btn-primary">Próximo</button>
+            </div>
+
+            <div id="page2" class="form-page hidden">
+                <div id="robotConfig" class="form-section"></div>
+                <h2>Configurações do WhatsApp</h2>
+
+                <div id="whatsappSenderConfig" class="form-section">
+                    <label for="senderNumber">Número do WhatsApp:</label>
+                    <input type="text" id="senderNumber" placeholder="+55 11 91234-5678" required>
+                    <div id="whatsappSendOptions" class="form-section">
+                        <label>Escolha o tipo de envio:</label>
+                        <div>
+                            <input type="radio" id="sendToGroup" name="sendType" value="group" required>
+                            <label for="sendToGroup">Enviar para um grupo</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="sendToContacts" name="sendType" value="contacts">
+                            <label for="sendToContacts">Enviar para contatos específicos</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="groupConfig" class="form-section hidden">
+                    <label for="groupName">Nome do Grupo:</label>
+                    <input type="text" id="groupName" placeholder="Ex.: Grupo da Família">
+                </div>
+
+                <div id="contactsConfig" class="form-section hidden">
+                    <label for="contactNumber">Número do Contato:</label>
+                    <input type="text" id="contactNumber" placeholder="+55 11 91234-5678">
+
+                    <label for="contactName">Nome do Contato:</label>
+                    <input type="text" id="contactName" placeholder="Nome do Contato">
+
+                    <button type="button" id="addContactButton" class="btn-secondary">Adicionar Contato</button>
+
+                    <table id="contactsTable">
+                        <thead>
+                            <tr>
+                                <th>Número</th>
+                                <th>Nome</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div id="messageConfig" class="form-section">
+                    <label for="messageText">Mensagem a ser enviada:</label>
+                    <textarea id="messageText" rows="5" placeholder="Digite sua mensagem aqui..." required></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" id="backButton" class="btn-secondary">Voltar</button>
+                    <button type="submit" class="btn-primary">Iniciar Pesquisa</button>
+                </div>
+            </div>
         </form>
         <div id="robotStatus" class="hidden">
             <h2>Robô em execução</h2>
@@ -25,10 +84,11 @@
                 <div id="robotLogs" class="logs"></div>
             </div>
             <button id="stopRobotButton" class="btn-danger">Parar Robô</button>
-        </div>        
+        </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
     <script src="script.js"></script>
+    <script src="scriptPg2.js"></script>
 </body>
-</html>
 
+</html>
