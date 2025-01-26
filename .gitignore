@@ -6,3 +6,4 @@ wwebjs_cache/
 
 *.cache
 .cache/
+.vercel

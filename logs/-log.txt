@@ -1,22 +1,56 @@
-CRAWLER-BOOKING|Fri Jan 24 2025 20:41:55 GMT-0300 (Horário Padrão de Brasília)|Abrindo pagina https://booking.com/
-CRAWLER-BOOKING|Fri Jan 24 2025 20:41:57 GMT-0300 (Horário Padrão de Brasília)|Total de URLs geradas: 3
-CRAWLER-BOOKING|Fri Jan 24 2025 20:41:57 GMT-0300 (Horário Padrão de Brasília)|Recuperando passagens
-CRAWLER-BOOKING|Fri Jan 24 2025 20:41:57 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Origem: Rio de Janeiro, BR -> São Paulo, BR
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-28, Data de retorno: 2025-02-14
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Progresso: 1/3 (33.33%)
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.33 minutos
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:07 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Origem: Rio de Janeiro, BR -> Aeroporto de Congonhas/São Paulo, BR
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-28, Data de retorno: 2025-02-14
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Progresso: 2/3 (66.67%)
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.17 minutos
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:17 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Origem: Rio de Janeiro, BR -> Buenos Aires, AR
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-01-28, Data de retorno: 2025-02-14
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Progresso: 3/3 (100.00%)
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.00 minutos
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
-CRAWLER-BOOKING|Fri Jan 24 2025 20:42:25 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:15 GMT-0300 (Horário Padrão de Brasília)|Abrindo pagina https://booking.com/
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:15 GMT-0300 (Horário Padrão de Brasília)|Abrindo pagina https://booking.com/
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:20 GMT-0300 (Horário Padrão de Brasília)|Total de URLs geradas: 4
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:20 GMT-0300 (Horário Padrão de Brasília)|Recuperando passagens
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:20 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:20 GMT-0300 (Horário Padrão de Brasília)|Total de URLs geradas: 4
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:20 GMT-0300 (Horário Padrão de Brasília)|Recuperando passagens
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:20 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:30 GMT-0300 (Horário Padrão de Brasília)|Origem: Aeroporto Internacional de Brasília , BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:30 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-02-01, Data de retorno: 2025-02-03
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:30 GMT-0300 (Horário Padrão de Brasília)|Progresso: 1/4 (25.00%)
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:30 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.47 minutos
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:30 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:30 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:31 GMT-0300 (Horário Padrão de Brasília)|Origem: Aeroporto Internacional de Brasília , BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:31 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-02-01, Data de retorno: 2025-02-03
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:31 GMT-0300 (Horário Padrão de Brasília)|Progresso: 1/4 (25.00%)
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:31 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.53 minutos
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:31 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:31 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:42 GMT-0300 (Horário Padrão de Brasília)|Origem: Aeroporto Internacional de Brasília , BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:42 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-02-08, Data de retorno: 2025-02-10
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:42 GMT-0300 (Horário Padrão de Brasília)|Progresso: 2/4 (50.00%)
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:42 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.37 minutos
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:42 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:42 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:43 GMT-0300 (Horário Padrão de Brasília)|Origem: Aeroporto Internacional de Brasília , BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:43 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-02-08, Data de retorno: 2025-02-10
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:43 GMT-0300 (Horário Padrão de Brasília)|Progresso: 2/4 (50.00%)
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:43 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.38 minutos
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:43 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:43 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Origem: Aeroporto Internacional de Brasília , BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-02-15, Data de retorno: 2025-02-17
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Progresso: 3/4 (75.00%)
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.19 minutos
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Origem: Aeroporto Internacional de Brasília , BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-02-15, Data de retorno: 2025-02-17
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Progresso: 3/4 (75.00%)
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.19 minutos
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Sun Jan 26 2025 16:47:54 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Origem: Aeroporto Internacional de Brasília , BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-02-22, Data de retorno: 2025-02-24
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Progresso: 4/4 (100.00%)
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.00 minutos
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Origem: Aeroporto Internacional de Brasília , BR -> Buenos Aires, AR
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Data de saída: 2025-02-22, Data de retorno: 2025-02-24
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Progresso: 4/4 (100.00%)
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Tempo estimado restante: 0.00 minutos
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|Status da última requisição: success
+CRAWLER-BOOKING|Sun Jan 26 2025 16:48:03 GMT-0300 (Horário Padrão de Brasília)|______________________________________________________________

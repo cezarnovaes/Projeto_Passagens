@@ -162,11 +162,12 @@ async function runCrawler(config, logCallback) {
     }
 
     function generateBookingURLs(resultsOrigens) {
-        const datasViagens = obterViagensFimDeSemana(); // Calcula todas as viagens possiveis de finais de semana nos proximos 30 dias
+        const datasViagens = obterViagensFimDeSemana(config.departureDate); // Calcula todas as viagens possiveis de finais de semana nos proximos 30 dias
         const urls = [];
 
         if (config.periodType == "next30days") {
             for (const dataV of datasViagens) {
+                console.log("DATAS PROX 30 DIAS: " + dataV.saida + " -/> " + dataV.retorno);
                 const baseURL = "https://flights.booking.com/api/flights/";
                 const baseParams = {
                     type: config.tripOptions,
@@ -184,7 +185,7 @@ async function runCrawler(config, logCallback) {
                     return: dataV.retorno,
                 };
                 if(!config.destination ||config.destination == ""){
-                    const allDestinations = Object.values(resultsOrigens).flat();
+                    const allDestinations = Object.values(resultsOrigens).flat().slice(0, config.resultCount);
                     for (const destination of allDestinations) {
                         if (config.origin.split('-')[0] !== destination.code) {
                             const params = new URLSearchParams({
@@ -253,7 +254,7 @@ async function runCrawler(config, logCallback) {
             };
 
             if(config.destination == ""){
-                const allDestinations = Object.values(resultsOrigens).flat();
+                const allDestinations = Object.values(resultsOrigens).flat().slice(0, config.resultCount);
                 for (const destination of allDestinations) {
                     if (config.origin.split('-')[0] !== destination.code) {
                         const params = new URLSearchParams({
@@ -303,7 +304,7 @@ async function runCrawler(config, logCallback) {
                 urls.push(url);
             }
         }
-        return urls.splice(0, config.resultCount)
+        return urls
     }
 
     // Função para fazer o fetch de uma única URL
@@ -446,14 +447,14 @@ async function runCrawler(config, logCallback) {
         return topLocations;
     }
 
-    function obterViagensFimDeSemana() {
-        const hoje = new Date(); // Data atual
+    function obterViagensFimDeSemana(dataSaida) {
+        const dataInicial = new Date(dataSaida);
         const viagens = [];
 
         // Iterar pelos próximos 30 dias
         for (let i = 0; i < 30; i++) {
-            const data = new Date();
-            data.setDate(hoje.getDate() + i);
+            const data = new Date(dataInicial);
+            data.setDate(dataInicial.getDate() + i);
 
             // Verificar se é uma sexta-feira
             if (data.getDay() === 5) {

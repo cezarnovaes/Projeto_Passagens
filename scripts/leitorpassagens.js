@@ -10,48 +10,6 @@ function generateOfferURL(deal, from, to, departureDate) {
     return `https://flights.booking.com/flights/${from}-${to}/${offerToken}/?type=ONEWAY&adults=1&cabinClass=ECONOMY&sort=${deal.key}&depart=${departureDate}&from=${from}&to=${to}&ca_source=flights_index_cf&aid=304142&label=gen173bo-1DEg1mbGlnaHRzX2luZGV4KIICQgVpbmRleEgfWANoIIgBAZgBH7gBF8gBDNgBA-gBAfgBBogCAZgCAqgCA7gCwc-6vAbAAgHSAiQ2OTFmZWI3MS0wMWMyLTQ5ZjUtYjRkNS1mMWU5MTNiOWZlY2PYAgTgAgE&adplat=www-index-web_shell_header-flight-missing_creative-667NpvkQmtT1JuwQgDaItj`;
 }
 
-// Função para gerar mensagens detalhadas
-function generateWhatsAppMessages(data) {
-    const messages = [];
-
-    data.forEach((entry) => {
-        const flightDeals = entry.data.flightDeals || [];
-        if (flightDeals.length > 0) {
-            flightDeals.forEach((deal) => {
-                if (deal.key === "BEST") {
-                    const price = deal.price.units + deal.price.nanos / 1e9;
-                    const currency = deal.price.currencyCode;
-                    const from = entry.url.match(/from=([^&]+)/)[1];
-                    const to = entry.url.match(/to=([^&]+)/)[1];
-                    const departureDate = entry.url.match(/depart=([^&]+)/)[1];
-                    const cabinClass = entry.data.searchCriteria.cabinClass || "ECONOMY";
-                    const taxes = deal.travellerPrices[0].travellerPriceBreakdown.tax.units;
-                    const baseFare = deal.travellerPrices[0].travellerPriceBreakdown.baseFare.units;
-
-                    // Gerar o URL da oferta
-                    const offerUrl = generateOfferURL(deal, from, to, departureDate);
-
-                    messages.push(`
-✈️ *Oferta de Viagem - Melhores Condições!*
-🌍 Rota: *${decodeURIComponent(from)} ➡️ ${decodeURIComponent(to)}*
-📅 Data de Partida: *${departureDate}*
-🛏️ Classe: *${cabinClass}*
-💸 Preço Total: *${currency} ${price.toFixed(2)}*
-🔍 Base Fare: *${currency} ${baseFare}*
-🧾 Taxas: *${currency} ${taxes}*
-
-🌟 Aproveite esta oferta incrível para sua próxima viagem! 
-🔗 Confira todos os detalhes e reserve agora: ${offerUrl}`
-                    );
-                }
-            });
-        } else {
-            messages.push(`Nenhum voo encontrado com a data de saída: ${entry.url.split("depart=")[1].split("&return=")[0]} e data de retorno: ${entry.url.split("return=")[1].split("&from=")[0]}`);
-        }
-    });
-
-    return messages;
-}
 
 // Função principal
 async function runLeitorPassagens(config, logCallback) {
@@ -74,6 +32,48 @@ async function runLeitorPassagens(config, logCallback) {
                 logCallback(texto)
             }
         }
+    }
+
+    function generateWhatsAppMessages(data) {
+        const messages = [];
+    
+        data.forEach((entry) => {
+            const flightDeals = entry.data.flightDeals || [];
+            if (flightDeals.length > 0) {
+                flightDeals.forEach((deal) => {
+                    if (deal.key === "BEST") {
+                        const price = deal.price.units + deal.price.nanos / 1e9;
+                        const currency = deal.price.currencyCode;
+                        const from = entry.url.match(/from=([^&]+)/)[1];
+                        const to = entry.url.match(/to=([^&]+)/)[1];
+                        const departureDate = entry.url.match(/depart=([^&]+)/)[1];
+                        const cabinClass = entry.data.searchCriteria.cabinClass || "ECONOMY";
+                        const taxes = deal.travellerPrices[0].travellerPriceBreakdown.tax.units;
+                        const baseFare = deal.travellerPrices[0].travellerPriceBreakdown.baseFare.units;
+    
+                        // Gerar o URL da oferta
+                        const offerUrl = generateOfferURL(deal, from, to, departureDate);
+    
+                        messages.push(`${config.messageText}
+✈️ *Oferta de Viagem - Melhores Condições!*
+🌍 Rota: *${decodeURIComponent(from)} ➡️ ${decodeURIComponent(to)}*
+📅 Data de Partida: *${departureDate}*
+🛏️ Classe: *${cabinClass}*
+💸 Preço Total: *${currency} ${price.toFixed(2)}*
+🔍 Base Fare: *${currency} ${baseFare}*
+🧾 Taxas: *${currency} ${taxes}*
+
+🌟 Aproveite esta oferta incrível para sua próxima viagem! 
+🔗 Confira todos os detalhes e reserve agora: ${offerUrl}`
+                        );
+                    }
+                });
+            } else {
+                messages.push(`Nenhum voo encontrado com a data de saída: ${entry.url.split("depart=")[1].split("&return=")[0]} e data de retorno: ${entry.url.split("return=")[1].split("&from=")[0]}`);
+            }
+        });
+    
+        return messages;
     }
 
     function readJsonFile(filePath) {
@@ -110,13 +110,16 @@ async function runLeitorPassagens(config, logCallback) {
     }
     // Configurar cliente WhatsApp
     const client = new Client({
-        authStrategy: new LocalAuth({ clientId: "client3" }),  // Cria uma nova sessão ou usa uma existente com um clientId único
+        authStrategy: new LocalAuth({ clientId: config.senderContact }),  // Cria uma nova sessão ou usa uma existente com um clientId único
         puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: true } // Opcional: Torne o navegador headless
     })
 
     // Mostrar o QR code para autenticação
     client.on("qr", (qr) => {
-        qrcode.generate(qr, { small: true })
+        log("QR:" + qr)
+        // qrcode.generate(qr, { small: true }, (qrcode) => {
+        //     log(qrcode);
+        // });
     })
 
     client.on("ready", async () => {
@@ -124,45 +127,47 @@ async function runLeitorPassagens(config, logCallback) {
 
         // Obter a lista de chats/grupos
         const chats = await client.getChats();
+        let mensagensEnviadasTelegram = false
         // log(chats)
-        log(`${chats.length} Chats encontrados no WhatsApp, filtrando grupo "Teste1"`)
-        // Filtrar apenas grupos
-        // chats.forEach(c => {log(c.name + " - " + c.id._serialized)})
-        const grupo = chats.find(chat => chat.name == "Teste1")
-        log(`______________________________________________________________`)
-        if (grupo) {
-            const groupId = grupo.id._serialized;
-            // Gerar as mensagens detalhadas
-            const messages = generateWhatsAppMessages(data);
-            // log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
-            // log(messages)
-            for (mes in messages) {
-                if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
-                try {
-                    // Enviar as mensagens para o grupo - 120363390566540905@g.us Teste1
-                    log(`Enviando mensagem programada ${(parseInt(mes) + 1)}`)
-                    if (messages[mes].startsWith('Nenhum voo encontrado')) {
-                        log(messages[mes])
-                    } else {
-                        await client.sendMessage(groupId, messages[mes])
-                        log(`Mensagem para WhatsApp envidada com sucesso!`)
-                        await sendTelegramMessage('7874360588:AAGYphRhJGd8NWMZ2bk_eIWrZ4zivKEOUTM', '-1002352411246', messages[mes])
-                        await sleep(100)
-                    }
-                    log(`______________________________________________________________`)
-                } catch (error) {
-                    log('Erro ao enviar mensagem para o grupo: ' + error)
-                    log(`______________________________________________________________`)
-                }
-            }
-            log('Finalizando...')
-            client.destroy();
-        } else {
-            client.destroy();
-            log("Nenhum grupo encontrado!")
-            log('Finalizando...')
-        }
 
+        for(contato of config.contacts){
+            const grupo = chats.find(chat => chat.name == contato.name)
+            log(`______________________________________________________________`)
+            log(`Filtrando contato " ${contato.name} "`)
+            if (grupo) {
+                const groupId = grupo.id._serialized;
+                // Gerar as mensagens detalhadas
+                const messages = generateWhatsAppMessages(data);
+                // log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
+                // log(messages)
+                for (mes in messages) {
+                    if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
+                    try {
+                        // Enviar as mensagens para o grupo - 120363390566540905@g.us Teste1
+                        log(`Enviando mensagem programada: ${(parseInt(mes) + 1)}`)
+                        if (messages[mes].startsWith('Nenhum voo encontrado')) {
+                            log(messages[mes])
+                        } else {
+                            await client.sendMessage(groupId, messages[mes])
+                            log(`Mensagem para WhatsApp envidada com sucesso!`)
+                            if(!mensagensEnviadasTelegram){
+                                await sendTelegramMessage('7874360588:AAGYphRhJGd8NWMZ2bk_eIWrZ4zivKEOUTM', '-1002352411246', messages[mes])
+                            }
+                            await sleep(100)
+                        }
+                        log(`______________________________________________________________`)
+                    } catch (error) {
+                        log('Erro ao enviar mensagem para o grupo: ' + error)
+                        log(`______________________________________________________________`)
+                    }
+                }
+                mensagensEnviadasTelegram = true
+            } else {
+                log(`Contato ${contato.name} não encontrado na lista de contatos.`)
+            }
+        }
+        log('Finalizando...')
+        client.destroy();
     })
 
     // client.on("message", (message) => {
@@ -182,9 +187,7 @@ async function runLeitorPassagens(config, logCallback) {
     })
 
     // Inicializar o cliente
-    log(`Iniciando client`)
     client.initialize()
-    log(`Client iniciado`)
     // return { status: 'success', message: 'Envio de mensagens concluído.' }
 }
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))

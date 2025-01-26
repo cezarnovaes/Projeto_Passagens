@@ -1,7 +1,7 @@
 const express = require("express")
 const http = require("http")
 const { Server } = require("socket.io")
-const puppeteer = require("puppeteer")
+const { initializePuppeteer, getPage } = require("./puppeteerManager")
 const bodyParser = require("body-parser")
 
 const app = express()
@@ -124,55 +124,53 @@ app.post("/api/run-leitor-passagens", async (req, res) => {
 })
 
 app.post("/api/stop-robos", async (req, res) => {
-  const { target } = req.body
+  const config = req.body
   try {
-    if (target === "crawler" && isCrawlerRunning) {
+    if (config.target === "crawler" && isCrawlerRunning) {
       crawlerProcess.abort()
       if (scheduledTasks['crawler']) {
         clearInterval(scheduledTasks['crawler']);
         delete scheduledTasks['crawler'];
         res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
       } else {
-        res.status(400).json({ status: 'error', message: 'Nenhum agendamento de robô ativo encontrado.' });
+        res.status(200).json({ status: 'success', message: 'Nenhum agendamento de robô ativo encontrado.' });
       }
       isCrawlerRunning = false
 
-    } else if (target === "leitor" && isLeitorPassagensRunning) {
+    } else if (config.target === "leitor" && isLeitorPassagensRunning) {
       leitorPassagensProcess.abort()
       if (scheduledTasks['leitorpassagens']) {
         clearInterval(scheduledTasks['leitorpassagens']);
         delete scheduledTasks['leitorpassagens'];
         res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
       } else {
-        res.status(400).json({ status: 'error', message: 'Nenhum agendamento de robô ativo encontrado.' });
+        res.status(200).json({ status: 'success', message: 'Nenhum agendamento de robô ativo encontrado.' });
       }
       isLeitorPassagensRunning = false
-    } else if (target === "todos" && (isCrawlerRunning || isLeitorPassagensRunning)) {
+    } else if (config.target === "todos" && (isCrawlerRunning || isLeitorPassagensRunning)) {
       if(isCrawlerRunning){
+        console.log("PARANDO ROBO CRAWLER ")
         crawlerProcess.abort()
         if (scheduledTasks['crawler']) {
           clearInterval(scheduledTasks['crawler']);
           delete scheduledTasks['crawler'];
-          res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
         } else {
-          res.status(400).json({ status: 'error', message: 'Nenhum agendamento de robô ativo encontrado.' });
         }
         isCrawlerRunning = false
       }
       if(isLeitorPassagensRunning){
+        console.log("PARANDO ROBO DE ENVIAR MSG")
         leitorPassagensProcess.abort()
         if (scheduledTasks['leitorpassagens']) {
           clearInterval(scheduledTasks['leitorpassagens']);
           delete scheduledTasks['leitorpassagens'];
-          res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
         } else {
-          res.status(400).json({ status: 'error', message: 'Nenhum agendamento de robô ativo encontrado.' });
         }
         isLeitorPassagensRunning = false
       }
-      res.status(200).json({ status: "success", message: "Robos parados com sucesso!" })
+      res.status(200).json({ status: 'success', message: 'Agendamento do robô cancelado.' });
     } else {
-      res.status(400).json({ status: "success", message: "Nenhum robô correspondente está em execução." })
+      res.status(200).json({ status: "success", message: "Nenhum robô correspondente está em execução." })
     }
   } catch (error) {
     console.error("Erro ao parar o robô:", error.message)
@@ -188,18 +186,18 @@ app.get('/api/search-locations', async (req, res) => {
   }
 
   try {
-    const browser = await puppeteer.launch({ headless: true });
-    const page = await browser.newPage();
-    await page.goto('https://booking.com/');
+    // const browser = await puppeteer.launch({ headless: true });
+    // const page = await browser.newPage();
+    // await page.goto('https://booking.com/');
+
+    const page = await getPage()
 
     // Realiza a requisição no contexto da página do Puppeteer
-    const fetchURL = `https://flights.booking.com/api/autocomplete/pt?q=${encodeURIComponent(query)}`;
+    const fetchURL = `https://flights.booking.com/api/autocomplete/pt?q=${encodeURIComponent(query)}&accessToken=`;
     const results = await page.evaluate(async (fetchURL) => {
       const response = await fetch(fetchURL);
       return await response.json();
     }, fetchURL);
-
-    await browser.close();
 
     // Retorna os resultados processados
     res.status(200).json(results);
@@ -215,12 +213,14 @@ app.get("/api/fetch-locations-booking", async (req, res) => {
   const results = {}
 
   try {
-    const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    await page.goto("https://booking.com/")
+    // const browser = await puppeteer.launch()
+    // const page = await browser.newPage()
+    // await page.goto("https://booking.com/")
+
+    const page = await getPage()
 
     for (const letter of alphabet) {
-      const fetchURL = `${baseURL}${letter}`
+      const fetchURL = `${baseURL}${letter}&accessToken=`
       console.log(`Fetching: ${fetchURL}`)
 
       try {
@@ -256,7 +256,6 @@ app.get("/api/fetch-locations-booking", async (req, res) => {
       })
     }
 
-    await browser.close()
     res.status(200).json(results)
   } catch (error) {
     console.error("Error fetching locations:", error)
@@ -278,7 +277,8 @@ function isDuplicate(item, results) {
 }
 
 // Start the server
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
+  await initializePuppeteer()
   console.log(`Server running on port http://localhost:${PORT}`)
 })
 

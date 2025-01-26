@@ -1,0 +1,8 @@
+2025/01/26-15:42:24.307 392c Reusing MANIFEST C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-teste26-1\Default\Local Storage\leveldb/MANIFEST-000001
+2025/01/26-15:42:24.309 392c Recovering log #3
+2025/01/26-15:42:24.309 392c Level-0 table #3: started
+2025/01/26-15:42:24.311 392c Level-0 table #3: 19159 bytes OK
+2025/01/26-15:42:24.311 392c Recovering log #4
+2025/01/26-15:42:24.311 392c Reusing old log C:\Users\55359\Documents\GitHub\Projeto_Passagens\.wwebjs_auth\session-teste26-1\Default\Local Storage\leveldb/000004.log 
+2025/01/26-15:42:24.313 392c Delete type=0 #3
+2025/01/26-15:42:24.313 392c Delete type=2 #5

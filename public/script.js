@@ -1,4 +1,5 @@
 let groupedLocationsConfig = null
+var contatos = []
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchLocations()
@@ -17,73 +18,36 @@ document.addEventListener("DOMContentLoaded", () => {
   submitButton.disabled = true
   stopRobotButton.addEventListener("click", handleStopRobot)
 
-  const contactsTable = document.getElementById("contactsTable").querySelector("tbody");
-  const nextButton = document.getElementById("nextButton");
-  const backButton = document.getElementById("backButton");
-  const searchForm = document.getElementById("searchForm");
-
-  const page1 = document.getElementById("page1");
-  const page2 = document.getElementById("page2");
-
-  let formData = { contacts: []};
+  const nextButton = document.getElementById("nextButton")
+  const backButton = document.querySelectorAll("#backButton")
+  const searchForm = document.getElementById("searchForm")
+  const page1 = document.getElementById("page1")
+  const page2 = document.getElementById("page2")
 
   nextButton.addEventListener("click", () => {
-    formData = {
-      ...formData,
-      period: document.querySelector("#periodSelector input")?.value || "",
-      location: document.querySelector("#locationSelector input")?.value || "",
-      flightConfig: document.querySelector("#flightConfig input")?.value || "",
-    };
+    validatePage1()
+  })
 
-    page1.classList.add("hidden");
-    page2.classList.remove("hidden");
-  });
-
-  backButton.addEventListener("click", () => {
-    page2.classList.add("hidden");
-    page1.classList.remove("hidden");
-  });
-
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    formData = {
-      ...formData,
-      additionalFilters: document.querySelector("#additionalFilters input")?.value || "",
-      robotConfig: document.querySelector("#robotConfig input")?.value || "",
-    };
-
-    console.log("Configurações completas:", formData);
-
-    handleSubmit(e, formData);
-  });
-
-  addContactButton.addEventListener("click", () => {
-    const contactNumber = document.getElementById("contactNumber").value;
-    const contactName = document.getElementById("contactName").value;
-
-    if (contactNumber && contactName) {
-        formData.contacts.push({ number: contactNumber, name: contactName });
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${contactNumber}</td>
-            <td>${contactName}</td>
-            <td><button type="button" class="btn-danger removeContactButton">Remover</button></td>
-        `;
-        contactsTable.appendChild(row);
-
-        document.getElementById("contactNumber").value = "";
-        document.getElementById("contactName").value = "";
-
-        row.querySelector(".removeContactButton").addEventListener("click", () => {
-            contactsTable.removeChild(row);
-            formData.contacts = formData.contacts.filter(contact => contact.number !== contactNumber);
-        });
-    } else {
-        alert("Por favor, preencha todos os campos do contato!");
+  backButton.forEach((el) => {
+    if (el.classList.contains("backRobot")) {
+      el.disabled = true
     }
-});
+    el.addEventListener("click", () => {
+      page2.classList.add("hidden")
+      page1.classList.remove("hidden")
+    });
+  })
+
+  searchForm.addEventListener("submit", handleSubmit)
+
+  const departureDate = document.getElementById("departureDate")
+  const today = new Date()
+  const day = ("0" + today.getDate()).slice(-2)
+  const month = ("0" + (today.getMonth() + 1)).slice(-2)
+  const year = today.getFullYear()
+
+  const formattedDate = year + "-" + month + "-" + day
+  departureDate.value = formattedDate
 })
 
 function setupFieldValidations() {
@@ -115,18 +79,26 @@ function setupFieldValidations() {
   const periodTypeInputs = document.querySelectorAll('input[name="periodType"]')
   periodTypeInputs.forEach((input) => {
     input.addEventListener("change", (e) => {
-      const specificDates = document.getElementById("specificDates")
       const departureDate = document.getElementById("departureDate")
       const returnDate = document.getElementById("returnDate")
+      const returnDateLabel = document.querySelector('label[for="returnDate"]')
 
       if (e.target.value === "specific") {
-        specificDates.classList.remove("hidden")
-        departureDate.required = true
         returnDate.required = true
+        returnDate.disabled = false
+        returnDateLabel.innerHTML += ' <span style="color: red;">*</span>'
       } else {
-        specificDates.classList.add("hidden")
-        departureDate.required = false
+        var today = new Date();
+        // Formata a data para o padrão yyyy-mm-dd
+        var day = ("0" + today.getDate()).slice(-2)
+        var month = ("0" + (today.getMonth() + 1)).slice(-2)
+        var year = today.getFullYear()
+
+        var formattedDate = year + "-" + month + "-" + day
+        departureDate.value = formattedDate
         returnDate.required = false
+        returnDate.disabled = true
+        returnDateLabel.innerHTML = returnDateLabel.innerHTML.replace(/<span style="color: red;">\*<\/span>/, "")
       }
     })
   })
@@ -156,13 +128,21 @@ function setupTripOptionsBehavior() {
       // Remove o asterisco do label de destino
       returnDateLabel.innerHTML = returnDateLabel.innerHTML.replace(/<span style="color: red;">\*<\/span>/, "");
     } else {
-      returnDateField.disabled = false;
-      returnDateField.required = true;
+      const periodTypeInputs = document.querySelectorAll('input[name="periodType"]')
+      periodTypeInputs.forEach((input) => {
+        if (input.checked) {
+          if (input.value === "specific") {
+            returnDateField.disabled = false;
+            returnDateField.required = true;
 
-      // Adiciona o asterisco ao label, caso não exista
-      if (!returnDateLabel.innerHTML.includes("*")) {
-        returnDateLabel.innerHTML += ' <span style="color: red;">*</span>';
-      }
+            // Adiciona o asterisco ao label, caso não exista
+            if (!returnDateLabel.innerHTML.includes("*")) {
+              returnDateLabel.innerHTML += ' <span style="color: red;">*</span>';
+            }
+          }
+        }
+      })
+
     }
   });
 }
@@ -264,7 +244,6 @@ async function fetchDynamicLocations(query, signal) {
 
   const grouped = { others: [] }
   data.forEach((location) => {
-
     const cityCode = (location.type === "CITY" ? location.code : location.city) || "others"
     if (!grouped[cityCode]) {
       grouped[cityCode] = { city: null, airports: [] }
@@ -277,6 +256,7 @@ async function fetchDynamicLocations(query, signal) {
       grouped.others.push(location)
     }
   })
+
   return grouped
 }
 
@@ -296,6 +276,7 @@ function displayResults(groupedLocations, container) {
             ? `
             <div class="result-item" data-value="${city.code}-${city.country}-${city.name}" data-type="CITY">
               ${city.name} (Todos os Aeroportos)
+              <span class="subresult-item">${city.cityName ? city.cityName + ", " : ""}${city.regionName ? city.regionName + ", "	: ""}${city.countryName}</span>
             </div>
           `
             : ""
@@ -305,6 +286,7 @@ function displayResults(groupedLocations, container) {
               (airport) => `
             <div class="result-item" data-value="${airport.code}-${airport.country}-${airport.name}" data-type="AIRPORT">
               ${airport.name} (Aeroporto)
+              <span class="subresult-item">${city.cityName ? city.cityName  + ", " : ""}${city.regionName ? city.regionName + ", " : ""}${city.countryName}</span>
             </div>
           `,
             )
@@ -316,12 +298,13 @@ function displayResults(groupedLocations, container) {
     otherGroup.length > 0
       ? `
       <div class="result-group">
-        <div class="result-group-title others">Outras</div>
+        <div class="result-group-title others">Outros Resultados</div>
         ${otherGroup
         .map(
           (location) => `
           <div class="result-item" data-value="${location.code}-${location.country}-${location.name}" data-type="${location.type}">
             ${location.name} (${location.type})
+            <span class="subresult-item">${location.cityName ? location.cityName + ", " : ""}${location.regionName ? location.regionName + ", "	: ""}${location.countryName}</span>
           </div>
         `,
         )
@@ -331,7 +314,7 @@ function displayResults(groupedLocations, container) {
       : ""
   ].join("")
 
-  container.innerHTML = html
+  container.innerHTML = html || `<div class="no-results">Nenhum resultado encontrado</div>`;
 
   container.querySelectorAll(".result-item").forEach((item) => {
     item.addEventListener("click", () => {
@@ -420,28 +403,28 @@ function renderPeriodSelector() {
                 <input type="radio" name="periodType" value="specific"> Data específica
             </label>
         </div>
-        <div id="specificDates" class="hidden">
+        <div id="specificDates">
             <div class="flex">
                 <div>
-                    <label for="departureDate">Data de Saída<span style="color: red;">*</span></label>
-                    <input type="date" id="departureDate" name="departureDate">
+                    <label for="departureDate">Data de Saída &#8203;<span style="color: red;">*</span></label>
+                    <input type="date" id="departureDate" name="departureDate" required>
                 </div>
                 <div>
-                    <label for="returnDate">Data de Retorno<span style="color: red;">*</span></label>
-                    <input type="date" id="returnDate" name="returnDate">
+                    <label for="returnDate">Data de Retorno</span></label>
+                    <input type="date" id="returnDate" name="returnDate" disabled>
                 </div>
             </div>
         </div>
     `
 
-  const periodTypeInputs = container.querySelectorAll('input[name="periodType"]')
-  const specificDates = document.getElementById("specificDates")
+  // const periodTypeInputs = container.querySelectorAll('input[name="periodType"]')
+  // const specificDates = document.getElementById("specificDates")
 
-  periodTypeInputs.forEach((input) => {
-    input.addEventListener("change", (e) => {
-      specificDates.classList.toggle("hidden", e.target.value !== "specific")
-    })
-  })
+  // periodTypeInputs.forEach((input) => {
+  //   input.addEventListener("change", (e) => {
+  //     specificDates.classList.toggle("hidden", e.target.value !== "specific")
+  //   })
+  // })
 }
 
 function renderFlightConfig() {
@@ -513,7 +496,29 @@ function filterGroupedLocations(groupedLocations) {
   )
 }
 
-async function handleSubmit(event, formData) {
+function validatePage1() {
+  const invalidFields = []
+  const page1 = document.getElementById("page1");
+  const page2 = document.getElementById("page2");
+
+  page1.querySelectorAll("input, select").forEach((field) => {
+    if (field.required && (!field.value || field.value === "")) {
+      invalidFields.push(field)
+    }
+  })
+
+  if (invalidFields.length > 0) {
+    page2.classList.add("hidden");
+    page1.classList.remove("hidden");
+    invalidFields[0].focus()
+    return
+  }
+
+  page1.classList.add("hidden");
+  page2.classList.remove("hidden");
+}
+
+async function handleSubmit(event) {
   event.preventDefault()
 
   const form = event.target
@@ -532,6 +537,7 @@ async function handleSubmit(event, formData) {
   }
 
   try {
+    const formData = new FormData(form);
     const data = Object.fromEntries(formData)
 
     const originInput = document.getElementById("originSearch")
@@ -539,17 +545,23 @@ async function handleSubmit(event, formData) {
 
     data.origin = originInput.getAttribute("data-code") + "-" + originInput.getAttribute("data-country") + "-" + originInput.value
     data.destination = destinationInput.value != "" ? destinationInput.getAttribute("data-code") + "-" + destinationInput.getAttribute("data-country") + "-" + destinationInput.value : ""
-
+    // data.senderNumber = removeFormatting(data.senderNumber).replace("+", "")
     data.updateInterval = convertToMinutes(data, "updateInterval")
     data.messageInterval = convertToMinutes(data, "messageInterval")
+    if(contatos.length == 0) {
+      alert("Por favor, adicione pelo menos um contato na tabela de contatos.")
+      return
+    }
+    data.contacts = contatos
 
-    if (data.updateInterval < 30 || data.messageInterval < 30) {
+    if (data.updateInterval < 10 || data.messageInterval < 10) {
       alert("O intervalo de atualização e envio de mensagens devem ser pelo menos de 30 minutos.")
       return
     }
 
     data.groupedLocationsConfig = filterGroupedLocations(groupedLocationsConfig)
     data.showMainResults = false
+    console.log(data)
 
     form.style.display = "none"
     document.getElementById("robotStatus").classList.remove("hidden")
@@ -593,12 +605,53 @@ socket.on("error", (error) => {
 })
 
 socket.on("log", (logMessage) => {
-  const logsContainer = document.getElementById("robotLogs")
+  const logsContainer = document.getElementById("robotLogs");
+
   if (logsContainer) {
-    logsContainer.innerHTML += `<p>${logMessage}</p>`
-    logsContainer.scrollTop = logsContainer.scrollHeight
+    // Verifica se o log é um código QR com base em uma regra (exemplo: começa com "QR:")
+    if (logMessage.startsWith("QR:")) {
+      const qrCodeValue = logMessage.substring(3).trim(); // Remove "QR:" para obter o conteúdo
+      const qrCodeCanvas = document.createElement("canvas"); // Cria um canvas para o QR Code
+
+      // Gera o QR Code usando a biblioteca qrcode.js
+      QRCode.toCanvas(qrCodeCanvas, qrCodeValue, { width: 150 }, (error) => {
+        if (error) {
+          console.error("Erro ao gerar QR Code:", error);
+          logsContainer.innerHTML += `<p>Erro ao gerar QR Code: ${error.message}</p>`;
+        } else {
+          const qrLogContainer = document.createElement("div"); // Cria um container para o QR Code e a legenda
+          qrLogContainer.innerHTML = `<p>Código QR:</p>`;
+          qrLogContainer.appendChild(qrCodeCanvas); // Adiciona o canvas ao container
+
+          logsContainer.appendChild(qrLogContainer); // Adiciona o container ao log
+        }
+        logsContainer.scrollTop = logsContainer.scrollHeight; // Rola para o final
+      });
+    } else if (logMessage.startsWith("Finalizando...")) {
+      const backButton = document.querySelector(".backRobot")
+      backButton.disabled = false
+      stopRobotButton.disabled = true
+      backButton.addEventListener("click", () => {
+        stopRobotButton.disabled = false
+        document.getElementById("searchForm").style.display = "block"
+        document.getElementById("robotStatus").classList.add("hidden")
+        logsContainer.innerHTML = ""; // Limpa os logs
+        page2.classList.add("hidden")
+        page1.classList.remove("hidden")
+      })
+      alert("Os robôs foram finalizados com sucesso!");
+    } else {
+      // Caso contrário, adiciona o log como texto normal
+      logsContainer.innerHTML += `<p>${logMessage}</p>`;
+      logsContainer.scrollTop = logsContainer.scrollHeight; // Rola para o final
+    }
   }
-})
+});
+
+
+function removeFormatting(phoneNumber) {
+  return phoneNumber.replace(/[^+\d]/g, ""); // Mantém apenas números e o "+"
+}
 
 function startRobotProgress() {
   document.getElementById("robotProgressContainer").classList.remove("hidden")

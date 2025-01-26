@@ -23,7 +23,7 @@ h2 {
 }
 
 .form-section {
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .form-section h2 {
@@ -151,45 +151,127 @@ select:focus {
   gap: 10px;
 }
 
-#whatsappSenderConfig{
+.contacts-group{
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1px;
+  gap: 40px;
 }
 
-#senderNumber{
-  width: 20%;
+#whatsappSenderConfig{
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+#messageConfig{
+  margin-top: 20px;
+}
+
+.inline-block{
+  display: flex;
+  justify-content: space-between;
+}
+
+#senderParameters{
+  gap: 10px;
+}
+
+.inline-block label[for="sendToGroup"]{
+  margin: 0px;
+}
+
+.inline-block input[type="radio"]{
+  margin: 0px;
 }
 
 /* Estilização da tabela de contatos */
 #contactsTable {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+}
+
+
+#contactsTable thead {
+  display: table; /* Mantém o comportamento natural do cabeçalho */
+  width: 100%; /* Garante alinhamento com o tbody */
+  table-layout: fixed; /* Colunas com largura fixa */
+  background-color: #333; /* Fundo do cabeçalho */
+}
+
+#contactsTable tbody {
+  display: block; /* Permite rolagem no corpo */
+  max-height: calc(2 * 50px); /* Altura para 2 linhas visíveis */
+  overflow-y: auto; /* Adiciona scroll vertical */
+  width: 100%;
+  table-layout: fixed; /* Garante alinhamento das colunas */
+}
+
+#contactsTable tr {
+  display: table; /* Preserva comportamento de linha de tabela */
+  width: 100%;
+  table-layout: fixed; /* Mantém colunas alinhadas */
 }
 
 #contactsTable th,
 #contactsTable td {
-  border: 1px solid #444;
-  padding: 2px;
+  padding: 7px;
   text-align: left;
   color: #e0e0e0;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-#contactsTable th {
-  background-color: #2c2c2c; /* Cabeçalho escuro */
+#contactsTable td button{
+  margin: 0px;
+  padding: 7px 10px;
+  font-size: 11px;
 }
 
 #contactsTable tr:nth-child(even) {
   background-color: #1e1e1e;
 }
 
+/* Remove rolagem horizontal */
+#contactsTable tbody::-webkit-scrollbar {
+  width: 6px;
+}
+
+#contactsTable tbody::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+#contactsTable tbody::-webkit-scrollbar-track {
+  background-color: #222;
+}
+
+/* Estilo para o botão no cabeçalho da tabela */
+.add-contact-btn {
+  background-color: #64b5f6; /* Azul suave */
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-block;
+  text-align: center;
+  width: 35%; /* Faz o botão ocupar toda a célula */
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 7px 10px;
+  font-weight: bolder;
+}
+
+.add-contact-btn:hover {
+  background-color: #42a5f5;
+}
+
 /* Campo de texto com dark mode */
 #messageText {
   width: 100%;
   padding: 15px;
-  margin: 20px 0;
   font-size: 16px;
   border: 1px solid #444;
   border-radius: 8px;
@@ -303,10 +385,17 @@ input:disabled {
 .result-item {
   padding: 7px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .result-item:hover {
   background-color: #e0e0e0;
+}
+
+.subresult-item {
+  font-size: 12px;
+  font-weight: normal;
+  color: #939393;
 }
 
 .result-group-title {
