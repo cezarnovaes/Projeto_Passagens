@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require('path')
 
 // Função principal
-async function runLeitorPassagens(config, logCallback) {
+async function runLeitorPassagens(config) {
 
     function generateWhatsAppMessages(data) {
         const messages = []
@@ -75,9 +75,6 @@ async function runLeitorPassagens(config, logCallback) {
     function log(texto) {
         if (texto != null) {
             console.log(texto)
-            if (logCallback) {
-                logCallback(texto)
-            }
         }
     }
     let passagens = []

@@ -1,19 +1,15 @@
 const { Client, LocalAuth } = require("whatsapp-web.js");
-const fs = require("fs");
 const qrcode = require("qrcode-terminal");
 const axios = require("axios");
 
 // Função principal
-async function runLeitorPassagens(config, logCallback) {
+async function runEnviaMensagens(config) {
     const controller = new AbortController();
     const { signal } = controller;
 
     function log(texto) {
         if (texto != null) {
             console.log(texto)
-            if (logCallback) {
-                logCallback(texto)
-            }
         }
     }
 
@@ -114,4 +110,4 @@ async function runLeitorPassagens(config, logCallback) {
 }
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))
 
-module.exports = { runLeitorPassagens, createControllerLeitor: () => new AbortController() }
+module.exports = { runEnviaMensagens, createControllerLeitor: () => new AbortController() }

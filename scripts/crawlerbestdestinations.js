@@ -5,18 +5,14 @@ const fs = require('fs')
 var caminhoLog = null
 var caminhoLogSql = null
 var nomeCategoria
-var listaDestinosG = []
 
-async function runCrawler(config, logCallback) {
+async function runCrawler(config) {
     const controller = new AbortController()
     const { signal } = controller
 
     function log(texto) {
         if (texto != null) {
             console.log(texto)
-            if (logCallback) {
-                logCallback(texto)
-            }
             texto = "CRAWLER-BOOKING|" + (new Date()) + "|" + texto + "\r\n"
             //Adicionando ao final do arquivo
             fs.appendFileSync(caminhoLog, texto, "UTF-8")
@@ -149,7 +145,7 @@ async function runCrawler(config, logCallback) {
         } finally {
             await browser.close();
             browser.disconnect();
-            return { status: 'success', message: 'Crawler concluído.' }
+            return { status: 'success', message: results }
         }
     }
     function randomDelay() {
@@ -336,10 +332,8 @@ async function runCrawler(config, logCallback) {
         return texto.replace(/[áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÔÖÚÙÛÜÇñÑßæÆœŒþÞðÐøØåÅ&´'`]/g, (match) => mapaCaracteres[match] || match);
     }
 
-    await main();
-    return
+    const result = await main();
+    return result
 }
-
-runCrawler(null, null)
 
 module.exports = { runCrawler, createController: () => new AbortController() };
