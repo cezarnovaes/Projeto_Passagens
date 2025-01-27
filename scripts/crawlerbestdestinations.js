@@ -128,7 +128,7 @@ async function runCrawler(config, logCallback) {
         const results = await fetchAllUrls(urls, page);
 
         try {
-            const caminhoLogSql = path.join(caminhoNovaPasta, "cidadesPassagens.json");
+            const caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
     
             try {
                 await fsPromises.unlink(caminhoLogSql);
@@ -153,7 +153,7 @@ async function runCrawler(config, logCallback) {
         }
     }
     function randomDelay() {
-        return Math.floor(Math.random() * (500 - 100 + 1) + 100);
+        return Math.floor(Math.random() * (700 - 400 + 1) + 100);
     }
 
     // Função para fazer o fetch de uma única URL
