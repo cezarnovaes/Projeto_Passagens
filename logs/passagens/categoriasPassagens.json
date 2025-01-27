@@ -1,0 +1,4206 @@
+[
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Itália",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Milão",
+          "total_price": 2999,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=MIL"
+        },
+        {
+          "to_city_name": "Roma",
+          "total_price": 3395,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=ROM"
+        },
+        {
+          "to_city_name": "Veneza",
+          "total_price": 4128,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VCE"
+        },
+        {
+          "to_city_name": "Florença",
+          "total_price": 4444,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=FLR"
+        },
+        {
+          "to_city_name": "Pisa",
+          "total_price": 4866,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=PSA"
+        },
+        {
+          "to_city_name": "Verona",
+          "total_price": 5300,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VRN"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Itália",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Milão",
+          "total_price": 2999,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=MIL"
+        },
+        {
+          "to_city_name": "Roma",
+          "total_price": 3395,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=ROM"
+        },
+        {
+          "to_city_name": "Veneza",
+          "total_price": 4128,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VCE"
+        },
+        {
+          "to_city_name": "Florença",
+          "total_price": 4444,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=FLR"
+        },
+        {
+          "to_city_name": "Pisa",
+          "total_price": 4866,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=PSA"
+        },
+        {
+          "to_city_name": "Verona",
+          "total_price": 5300,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VRN"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Itália",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Milão",
+          "total_price": 2999,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=MIL"
+        },
+        {
+          "to_city_name": "Roma",
+          "total_price": 3395,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=ROM"
+        },
+        {
+          "to_city_name": "Veneza",
+          "total_price": 4128,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VCE"
+        },
+        {
+          "to_city_name": "Florença",
+          "total_price": 4444,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=FLR"
+        },
+        {
+          "to_city_name": "Pisa",
+          "total_price": 4866,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=PSA"
+        },
+        {
+          "to_city_name": "Verona",
+          "total_price": 5300,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VRN"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Itália",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Milão",
+          "total_price": 2999,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=MIL"
+        },
+        {
+          "to_city_name": "Roma",
+          "total_price": 3395,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=ROM"
+        },
+        {
+          "to_city_name": "Veneza",
+          "total_price": 4128,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VCE"
+        },
+        {
+          "to_city_name": "Florença",
+          "total_price": 4444,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=FLR"
+        },
+        {
+          "to_city_name": "Pisa",
+          "total_price": 4866,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=PSA"
+        },
+        {
+          "to_city_name": "Verona",
+          "total_price": 5300,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VRN"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Itália",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Milão",
+          "total_price": 2999,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=MIL"
+        },
+        {
+          "to_city_name": "Roma",
+          "total_price": 3395,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=ROM"
+        },
+        {
+          "to_city_name": "Veneza",
+          "total_price": 4128,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VCE"
+        },
+        {
+          "to_city_name": "Florença",
+          "total_price": 4444,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=FLR"
+        },
+        {
+          "to_city_name": "Pisa",
+          "total_price": 4866,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=PSA"
+        },
+        {
+          "to_city_name": "Verona",
+          "total_price": 5300,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VRN"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Itália",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Milão",
+          "total_price": 2999,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=MIL"
+        },
+        {
+          "to_city_name": "Roma",
+          "total_price": 3395,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=ROM"
+        },
+        {
+          "to_city_name": "Veneza",
+          "total_price": 4128,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VCE"
+        },
+        {
+          "to_city_name": "Florença",
+          "total_price": 4444,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=FLR"
+        },
+        {
+          "to_city_name": "Pisa",
+          "total_price": 4866,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=PSA"
+        },
+        {
+          "to_city_name": "Verona",
+          "total_price": 5300,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=21&to_iata_code=VRN"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=3",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Portugal",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Lisboa",
+          "total_price": 3357,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=3&to_iata_code=LIS"
+        },
+        {
+          "to_city_name": "Porto",
+          "total_price": 3359,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=3&to_iata_code=OPO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=3",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Portugal",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Lisboa",
+          "total_price": 3357,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=3&to_iata_code=LIS"
+        },
+        {
+          "to_city_name": "Porto",
+          "total_price": 3359,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=3&to_iata_code=OPO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Espanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Madri",
+          "total_price": 3510,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=MAD"
+        },
+        {
+          "to_city_name": "Ibiza",
+          "total_price": 3665,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=IBZ"
+        },
+        {
+          "to_city_name": "Barcelona",
+          "total_price": 3687,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=BCN"
+        },
+        {
+          "to_city_name": "Palma de Maiorca",
+          "total_price": 4707,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=PMI"
+        },
+        {
+          "to_city_name": "Gibraltar",
+          "total_price": 5362,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=GIB"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Espanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Madri",
+          "total_price": 3510,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=MAD"
+        },
+        {
+          "to_city_name": "Ibiza",
+          "total_price": 3665,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=IBZ"
+        },
+        {
+          "to_city_name": "Barcelona",
+          "total_price": 3687,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=BCN"
+        },
+        {
+          "to_city_name": "Palma de Maiorca",
+          "total_price": 4707,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=PMI"
+        },
+        {
+          "to_city_name": "Gibraltar",
+          "total_price": 5362,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=GIB"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Espanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Madri",
+          "total_price": 3510,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=MAD"
+        },
+        {
+          "to_city_name": "Ibiza",
+          "total_price": 3665,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=IBZ"
+        },
+        {
+          "to_city_name": "Barcelona",
+          "total_price": 3687,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=BCN"
+        },
+        {
+          "to_city_name": "Palma de Maiorca",
+          "total_price": 4707,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=PMI"
+        },
+        {
+          "to_city_name": "Gibraltar",
+          "total_price": 5362,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=GIB"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Espanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Madri",
+          "total_price": 3510,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=MAD"
+        },
+        {
+          "to_city_name": "Ibiza",
+          "total_price": 3665,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=IBZ"
+        },
+        {
+          "to_city_name": "Barcelona",
+          "total_price": 3687,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=BCN"
+        },
+        {
+          "to_city_name": "Palma de Maiorca",
+          "total_price": 4707,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=PMI"
+        },
+        {
+          "to_city_name": "Gibraltar",
+          "total_price": 5362,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=GIB"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Espanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Madri",
+          "total_price": 3510,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=MAD"
+        },
+        {
+          "to_city_name": "Ibiza",
+          "total_price": 3665,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=IBZ"
+        },
+        {
+          "to_city_name": "Barcelona",
+          "total_price": 3687,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=BCN"
+        },
+        {
+          "to_city_name": "Palma de Maiorca",
+          "total_price": 4707,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=PMI"
+        },
+        {
+          "to_city_name": "Gibraltar",
+          "total_price": 5362,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=4&to_iata_code=GIB"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=17",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "França",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Paris",
+          "total_price": 3788,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=17&to_iata_code=PAR"
+        },
+        {
+          "to_city_name": "Nice",
+          "total_price": 4384,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=17&to_iata_code=NCE"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=17",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "França",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Paris",
+          "total_price": 3788,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=17&to_iata_code=PAR"
+        },
+        {
+          "to_city_name": "Nice",
+          "total_price": 4384,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=17&to_iata_code=NCE"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Alemanha",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Munique",
+          "total_price": 4104,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=MUC"
+        },
+        {
+          "to_city_name": "Berlim",
+          "total_price": 4111,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BER"
+        },
+        {
+          "to_city_name": "Hamburgo",
+          "total_price": 4125,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAM"
+        },
+        {
+          "to_city_name": "Frankfurt",
+          "total_price": 4172,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=FRA"
+        },
+        {
+          "to_city_name": "Dusseldorf",
+          "total_price": 4726,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DUS"
+        },
+        {
+          "to_city_name": "Stuttgart",
+          "total_price": 5000,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=STR"
+        },
+        {
+          "to_city_name": "Nuremberg",
+          "total_price": 5037,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=NUE"
+        },
+        {
+          "to_city_name": "Leipzig",
+          "total_price": 5146,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=LEJ"
+        },
+        {
+          "to_city_name": "Colônia",
+          "total_price": 5385,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=CGN"
+        },
+        {
+          "to_city_name": "Hannover",
+          "total_price": 5530,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=HAJ"
+        },
+        {
+          "to_city_name": "Dresden",
+          "total_price": 5631,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DRS"
+        },
+        {
+          "to_city_name": "Bremen",
+          "total_price": 6054,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=BRE"
+        },
+        {
+          "to_city_name": "Dortmund",
+          "total_price": 6225,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=13&to_iata_code=DTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=20",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Reino Unido",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Londres",
+          "total_price": 4164,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=20&to_iata_code=LON"
+        },
+        {
+          "to_city_name": "Edimburgo",
+          "total_price": 4638,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=20&to_iata_code=EDI"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=20",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Reino Unido",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Londres",
+          "total_price": 4164,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=20&to_iata_code=LON"
+        },
+        {
+          "to_city_name": "Edimburgo",
+          "total_price": 4638,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=20&to_iata_code=EDI"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Outros países",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Bruxelas",
+          "total_price": 4209,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BRU"
+        },
+        {
+          "to_city_name": "Luxemburgo",
+          "total_price": 4438,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=LUX"
+        },
+        {
+          "to_city_name": "Dublin",
+          "total_price": 4542,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=DUB"
+        },
+        {
+          "to_city_name": "Oslo",
+          "total_price": 4755,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=OSL"
+        },
+        {
+          "to_city_name": "Viena",
+          "total_price": 4779,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VIE"
+        },
+        {
+          "to_city_name": "Estocolmo",
+          "total_price": 4989,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=STO"
+        },
+        {
+          "to_city_name": "Copenhague",
+          "total_price": 5324,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=CPH"
+        },
+        {
+          "to_city_name": "Varsóvia",
+          "total_price": 5383,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=WAW"
+        },
+        {
+          "to_city_name": "Reykjavík",
+          "total_price": 5448,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=REK"
+        },
+        {
+          "to_city_name": "Praga",
+          "total_price": 5490,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=PRG"
+        },
+        {
+          "to_city_name": "Helsinque",
+          "total_price": 5519,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=HEL"
+        },
+        {
+          "to_city_name": "Budapeste",
+          "total_price": 5553,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUD"
+        },
+        {
+          "to_city_name": "Talin",
+          "total_price": 5608,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TLL"
+        },
+        {
+          "to_city_name": "Belgrado",
+          "total_price": 5721,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BEG"
+        },
+        {
+          "to_city_name": "Bucareste",
+          "total_price": 5758,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=BUH"
+        },
+        {
+          "to_city_name": "Cracóvia (Polônia)",
+          "total_price": 5813,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=KRK"
+        },
+        {
+          "to_city_name": "Sófia (Bulgária)",
+          "total_price": 5827,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=SOF"
+        },
+        {
+          "to_city_name": "Tirana",
+          "total_price": 5934,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=TIA"
+        },
+        {
+          "to_city_name": "Riga",
+          "total_price": 6044,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=RIX"
+        },
+        {
+          "to_city_name": "Vilnius (Lituânia)",
+          "total_price": 6738,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=24&to_iata_code=VNO"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=15",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Suíça",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Zurique",
+          "total_price": 4258,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=15&to_iata_code=ZRH"
+        },
+        {
+          "to_city_name": "Genebra",
+          "total_price": 4555,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=15&to_iata_code=GVA"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=15",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Suíça",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Zurique",
+          "total_price": 4258,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=15&to_iata_code=ZRH"
+        },
+        {
+          "to_city_name": "Genebra",
+          "total_price": 4555,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=15&to_iata_code=GVA"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=16",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Holanda",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Amsterdã",
+          "total_price": 4372,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=16&to_iata_code=AMS"
+        },
+        {
+          "to_city_name": "Roterdã-Haia",
+          "total_price": 6154,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=16&to_iata_code=RTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=16",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Holanda",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Amsterdã",
+          "total_price": 4372,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=16&to_iata_code=AMS"
+        },
+        {
+          "to_city_name": "Roterdã-Haia",
+          "total_price": 6154,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=16&to_iata_code=RTM"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Grécia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Atenas",
+          "total_price": 4423,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=ATH"
+        },
+        {
+          "to_city_name": "Mykonos",
+          "total_price": 5706,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=JMK"
+        },
+        {
+          "to_city_name": "Santorini",
+          "total_price": 5926,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=JTR"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Grécia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Atenas",
+          "total_price": 4423,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=ATH"
+        },
+        {
+          "to_city_name": "Mykonos",
+          "total_price": 5706,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=JMK"
+        },
+        {
+          "to_city_name": "Santorini",
+          "total_price": 5926,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=JTR"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Grécia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Atenas",
+          "total_price": 4423,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=ATH"
+        },
+        {
+          "to_city_name": "Mykonos",
+          "total_price": 5706,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=JMK"
+        },
+        {
+          "to_city_name": "Santorini",
+          "total_price": 5926,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=18&to_iata_code=JTR"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Turquia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Istambul",
+          "total_price": 4760,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=IST"
+        },
+        {
+          "to_city_name": "Kayseri",
+          "total_price": 7474,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=ASR"
+        },
+        {
+          "to_city_name": "Nevşehir",
+          "total_price": 8686,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=NAV"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Turquia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Istambul",
+          "total_price": 4760,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=IST"
+        },
+        {
+          "to_city_name": "Kayseri",
+          "total_price": 7474,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=ASR"
+        },
+        {
+          "to_city_name": "Nevşehir",
+          "total_price": 8686,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=NAV"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Turquia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Istambul",
+          "total_price": 4760,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=IST"
+        },
+        {
+          "to_city_name": "Kayseri",
+          "total_price": 7474,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=ASR"
+        },
+        {
+          "to_city_name": "Nevşehir",
+          "total_price": 8686,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=22&to_iata_code=NAV"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Croácia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Zagreb",
+          "total_price": 5355,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=ZAG"
+        },
+        {
+          "to_city_name": "Split",
+          "total_price": 5440,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=SPU"
+        },
+        {
+          "to_city_name": "Dubrovnik",
+          "total_price": 5715,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=DBV"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Croácia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Zagreb",
+          "total_price": 5355,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=ZAG"
+        },
+        {
+          "to_city_name": "Split",
+          "total_price": 5440,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=SPU"
+        },
+        {
+          "to_city_name": "Dubrovnik",
+          "total_price": 5715,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=DBV"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23",
+    "status": "success",
+    "data": {
+      "from_city_name": null,
+      "to_city_name": null,
+      "month": null,
+      "to_name": "Croácia",
+      "parent_category_link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=2",
+      "cities": [
+        {
+          "to_city_name": "Zagreb",
+          "total_price": 5355,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=ZAG"
+        },
+        {
+          "to_city_name": "Split",
+          "total_price": 5440,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=SPU"
+        },
+        {
+          "to_city_name": "Dubrovnik",
+          "total_price": 5715,
+          "link": "https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=23&to_iata_code=DBV"
+        }
+      ]
+    }
+  }
+]

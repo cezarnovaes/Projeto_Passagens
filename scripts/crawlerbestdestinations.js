@@ -40,8 +40,6 @@ async function runCrawler(config) {
             console.error("Erro ao escrever dados no arquivo JSON:", err.message);
         }
     }
-
-    const fs = require('fs');
     const { Transform } = require('stream');
     
     async function logJsonAppend(data, filePath) {
@@ -224,7 +222,7 @@ async function runCrawler(config) {
         }
     }
     function randomDelay() {
-        return Math.floor(Math.random() * (3700 - 1400 + 1) + 1400);
+        return Math.floor(Math.random() * (5000 - 2000 + 1) + 2000);
     }
 
     // Função para fazer o fetch de uma única URL
@@ -274,7 +272,7 @@ async function runCrawler(config) {
 
         // console.log(`______________________________________________________________`)
 
-        for (let i = 0; i < totalUrls; i++) {
+        for (let i = totalUrls - 1; i > -1 ; i--) {
             if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
             console.log(`RECUPERANDO PASSAGENS ${i + 1}/${totalUrls} URL: ${urls[i]}
                 `)
@@ -303,9 +301,9 @@ async function runCrawler(config) {
             if (result.data && result.data.cities) {
                 for (cidade of result.data.cities) {
                     resultsCategorias.push(result)
-                    caminhoLogSql = path.join(caminhoNovaPasta, "categoriasPassagens.json");
+                    caminhoLogSql = path.join(caminhoNovaPasta, "categoriasPassagens.json")
 
-                    await ensureFileExists(caminhoLogSql);
+                    await ensureFileExists(caminhoLogSql)
                     // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
                     console.log(`Arquivo JSON escrito com sucesso: ${caminhoLogSql}`)
                     await logJsonAppend(result, caminhoLogSql);
@@ -323,6 +321,16 @@ async function runCrawler(config) {
             console.log(`RECUPERANDO CIDADES ${i + 1}/${urlsCidades.length} URL: ${urlsCidades[i]}
                 `)
             const result = await fetchUrl(urlsCidades[i], page)
+
+            let caminhoLogSql = path.join(caminhoNovaPasta, "cidadesResults.json");
+
+            await ensureFileExists(caminhoLogSql);
+ 
+            // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
+            console.log(`Arquivo JSON escrito com sucesso: ${caminhoLogSql}`)
+            await logJsonAppend(result, caminhoLogSql);
+            console.log("Resultados gravados com sucesso no arquivo JSON.")
+
             if (result.data && result.data.cities) {
                 for (cidade of result.data.cities) {
                     resultsCidades.push(result)
@@ -335,26 +343,26 @@ async function runCrawler(config) {
             }
         }
 
-        for (let i = 0; i < urlsPassagens.length; i++) {
-            console.log(`RECUPERANDO CIDADES ${i + 1}/${urlsPassagens.length} URL: ${urlsPassagens[i]}
-                `)
-            const result = await fetchUrl(urlsPassagens[i], page)
+        // for (let i = 0; i < urlsPassagens.length; i++) {
+        //     console.log(`RECUPERANDO CIDADES ${i + 1}/${urlsPassagens.length} URL: ${urlsPassagens[i]}
+        //         `)
+        //     const result = await fetchUrl(urlsPassagens[i], page)
 
-            let caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
+        //     let caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
 
-            await ensureFileExists(caminhoLogSql);
+        //     await ensureFileExists(caminhoLogSql);
  
-            // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
-            console.log(`Arquivo JSON escrito com sucesso: ${caminhoLogSql}`)
-            await logJsonAppend(results, caminhoLogSql);
-            console.log("Resultados gravados com sucesso no arquivo JSON.")
+        //     // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
+        //     console.log(`Arquivo JSON escrito com sucesso: ${caminhoLogSql}`)
+        //     await logJsonAppend(result, caminhoLogSql);
+        //     console.log("Resultados gravados com sucesso no arquivo JSON.")
 
-            results.push(result);
-            if (i < urlsPassagens.length - 1) {
-                const delay = randomDelay();
-                await new Promise(resolve => setTimeout(resolve, delay));
-            }
-        }
+        //     results.push(result);
+        //     if (i < urlsPassagens.length - 1) {
+        //         const delay = randomDelay();
+        //         await new Promise(resolve => setTimeout(resolve, delay));
+        //     }
+        // }
 
         return { passagens: results, cidades: resultsCidades, categorias: resultsCategorias };
     }
