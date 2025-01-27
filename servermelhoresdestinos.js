@@ -12,19 +12,24 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }))
 app.use(express.static("public"))
 
 server.listen(PORT, async () => {
-    const { createController, runCrawler } = require("./scripts/crawlerbestdestinations")
-    const { createControllerLeitor, runLeitorPassagens } = require("./scripts/leitorpassagens")
-    const { createControllerEnvio, runEviaMensagens } = require("./scripts/enviamensagens")
+    const { runCrawler } = require("./scripts/crawlerbestdestinations")
+    const { runLeitorPassagens } = require("./scripts/leitorbestdestinations")
+    const { runEnviaMensagens } = require("./scripts/enviamensagens")
 
     let config = {
-        senderContact: "Teste26-1",
-        contacts: [{
-            name: "Teste1"
-        }]
+        senderContact: "teste27-1",
+        contacts: [
+            {
+                name: "Teste1"
+            },
+            {
+                name: "Eu"
+            }
+        ]
     }
     console.log(`Server running on port http://localhost:${PORT}`)
 
-    await runCrawler(config);
+    // await runCrawler(config);
 
     console.log("Lendo resultados passagens...")
 
@@ -32,10 +37,10 @@ server.listen(PORT, async () => {
 
     console.log("Enviando mensagens...")
 
-    config.mensagens = mensagens
+    config.mensagens = mensagens.message.mais_baratas
 
-    const envio = await runEviaMensagens(config);
-
-    console.log(envio)
+    console.log("MENSAGENS: " + config.mensagens.length)
+ 
+    await runEnviaMensagens(config);
 })
 

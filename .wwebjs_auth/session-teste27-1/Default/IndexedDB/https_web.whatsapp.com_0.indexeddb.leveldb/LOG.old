@@ -1,0 +1,27 @@
+2025/01/27-12:13:55.287 35bc Reusing MANIFEST C:\projetos\Projeto_Passagens\.wwebjs_auth\session-teste27-1\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/27-12:13:55.288 35bc Recovering log #183
+2025/01/27-12:13:55.353 35bc Reusing old log C:\projetos\Projeto_Passagens\.wwebjs_auth\session-teste27-1\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000183.log 
+2025/01/27-12:13:59.022 38ac Level-0 table #195: started
+2025/01/27-12:13:59.030 38ac Level-0 table #195: 477897 bytes OK
+2025/01/27-12:13:59.031 38ac Delete type=0 #183
+2025/01/27-12:13:59.031 38ac Manual compaction at level-0 from '\x00\x17\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x18\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/27-12:14:00.375 35bc Compacting 1@1 + 8@2 files
+2025/01/27-12:14:00.412 35bc Generated table #196@1: 20472 keys, 2189196 bytes
+2025/01/27-12:14:00.434 35bc Generated table #197@1: 3103 keys, 2162412 bytes
+2025/01/27-12:14:00.455 35bc Generated table #198@1: 3366 keys, 2157718 bytes
+2025/01/27-12:14:00.475 35bc Generated table #199@1: 2465 keys, 2145019 bytes
+2025/01/27-12:14:00.514 35bc Generated table #200@1: 23339 keys, 2213053 bytes
+2025/01/27-12:14:00.564 35bc Generated table #201@1: 29075 keys, 2261586 bytes
+2025/01/27-12:14:00.619 35bc Generated table #202@1: 55038 keys, 2238440 bytes
+2025/01/27-12:14:00.657 35bc Generated table #203@1: 49856 keys, 1049484 bytes
+2025/01/27-12:14:00.658 35bc Compacted 1@1 + 8@2 files => 16416908 bytes
+2025/01/27-12:14:00.658 35bc compacted to: files[ 0 0 8 0 0 0 0 ]
+2025/01/27-12:14:00.658 35bc Delete type=2 #185
+2025/01/27-12:14:00.658 35bc Delete type=2 #186
+2025/01/27-12:14:00.658 35bc Delete type=2 #187
+2025/01/27-12:14:00.658 35bc Delete type=2 #188
+2025/01/27-12:14:00.658 35bc Delete type=2 #189
+2025/01/27-12:14:00.658 35bc Delete type=2 #190
+2025/01/27-12:14:00.658 35bc Delete type=2 #191
+2025/01/27-12:14:00.658 35bc Delete type=2 #192
+2025/01/27-12:14:00.658 35bc Delete type=2 #195

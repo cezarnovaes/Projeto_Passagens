@@ -28,7 +28,7 @@ async function runLeitorPassagens(config) {
 📅 Data de Retorno: *${returnDate}*
 💸 Preço Total: *${currency} ${price.toFixed(2)}*
 
-🌟 Aproveite esta oferta incrível para sua próxima viagem! 
+🌟 Aproveite esta oferta incrível para sua próxima viagem!
 🔗 Confira todos os detalhes e reserve agora: ${offerUrl}`
                         )
                     }
@@ -92,7 +92,7 @@ async function runLeitorPassagens(config) {
     return { status: 'success', message: mensagens }
 }
 
-runLeitorPassagens(null, null)
+// runLeitorPassagens(null)
 
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))
 

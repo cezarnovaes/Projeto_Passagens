@@ -4,6 +4,7 @@ const axios = require("axios");
 
 // Função principal
 async function runEnviaMensagens(config) {
+    console.log("RUN")
     const controller = new AbortController();
     const { signal } = controller;
 
@@ -35,9 +36,9 @@ async function runEnviaMensagens(config) {
     // Mostrar o QR code para autenticação
     client.on("qr", (qr) => {
         log("QR:" + qr)
-        // qrcode.generate(qr, { small: true }, (qrcode) => {
-        //     log(qrcode);
-        // });
+        qrcode.generate(qr, { small: true }, (qrcode) => {
+            log(qrcode);
+        });
     })
 
     client.on("ready", async () => {
@@ -58,7 +59,7 @@ async function runEnviaMensagens(config) {
                 const messages = config.mensagens
                 // log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
                 // log(messages)
-                for (mes in messages) {
+                for (mes in messages.slice(0, 2)) {
                     if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
                     try {
                         // Enviar as mensagens para o grupo - 120363390566540905@g.us Teste1
@@ -104,10 +105,26 @@ async function runEnviaMensagens(config) {
         log("Cliente desconectado:", reason)
     })
 
-    // Inicializar o cliente
     client.initialize()
-    return { status: 'success', message: 'Envio de mensagens concluído.' }
 }
+
+// runEnviaMensagens({
+//     senderContact: "teste27-1",
+//     contacts: [{
+//         name: "Teste1"
+//     }],
+//     mensagens: [`
+// ✈️ *Oferta de Viagem - Melhores Condições!*
+// 🌍 Rota: *Florianópolis ➡️ Fort Lauderdale*
+// 📅 Data de Partida: *2/2/2025*
+// 📅 Data de Retorno: *10/2/2025*
+// 💸 Preço Total: *R$ 2630.00*
+// 🌟 Aproveite esta oferta incrível para sua próxima viagem!
+
+// 🔗 Confira todos os detalhes e reserve agora: https://www.trackeame.com/sem-tracker-web/track?key=UT81AK9JAFEGJ4D69OVO6J673E&clt_n=mlds&clt_cc=BR&clt_cm=campaign_partnership_melhoresdestinos.com.br&clt_c=BR-V-MelhoresDestinos&clt_pr=V&utm_source=melhoresdestinos&utm_medium=viaje_com_desconto_web&u=https%3A%2F%2Fwww.decolar.com%2Fshop%2Fflights%2Fresults%2Froundtrip%2FFLN%2FMIA%2F2025-02-02%2F2025-02-10%2F1%2F0%2F0%3Fdi%3D1-0%26cabinType%3D%26utm_source%3Dmelhoresdestinos%26utm_medium%3Dviaje_com_desconto_web
+//         `]
+// })
+
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))
 
-module.exports = { runEnviaMensagens, createControllerLeitor: () => new AbortController() }
+module.exports = { runEnviaMensagens }
