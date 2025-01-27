@@ -19,7 +19,7 @@ async function runCrawler(config) {
         }
     }
     function logSql(sql) {
-        
+
         //Adicionando ao final do arquivo
         fs.appendFileSync(caminhoLogSql, sql, "UTF-8")
     }
@@ -34,10 +34,39 @@ async function runCrawler(config) {
         }
     }
 
+    async function logJsonAppend(data, filePath) {
+        try {
+          let fileExists = fs.existsSync(filePath);
+          let writeStream = fs.createWriteStream(filePath, { flags: 'a' });
+      
+          if (!fileExists) {
+            writeStream.write('[');
+          } else {
+            // Remove o colchete de fechamento do JSON e adiciona uma vírgula
+            let stats = fs.statSync(filePath);
+            if (stats.size > 1) {
+              let fd = fs.openSync(filePath, 'r+');
+              fs.writeSync(fd, ',', stats.size - 1);
+              fs.closeSync(fd);
+            }
+          }
+      
+          // Adiciona o novo objeto JSON
+          writeStream.write(JSON.stringify(data, null, 2) + ']');
+      
+          writeStream.end();
+      
+          console.log('Resultados gravados com sucesso no arquivo JSON.');
+        } catch (err) {
+          console.error('Erro ao gravar no arquivo JSON:', err);
+        }
+    }
+
+
     const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))
+    const diretorioAtual = __dirname.split('scripts')[0]
 
     async function main() {
-        const diretorioAtual = __dirname.split('scripts')[0]
         //Gerando o arquivo de logs
         //Construindo um caminho relativo a partir do diretório atual
         caminhoLog = path.join(diretorioAtual, 'logs', "-log.txt")
@@ -116,7 +145,7 @@ async function runCrawler(config) {
         await page.goto(url, { waitUntil: ['domcontentloaded'] })
         let urls = []
         const baseURL = `https://passagensaereas.melhoresdestinos.com.br/api/v1/twd/web/categories?category_id=`
-        for(i = 1; i < 13; i++) {
+        for (i = 1; i < 13; i++) {
             urls.push(baseURL + i)
         }
         console.log(`Recuperando passagens`)
@@ -124,40 +153,40 @@ async function runCrawler(config) {
         const results = await fetchAllUrls(urls, page);
 
         try {
-            let caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
-    
-            try {
-                await fsPromises.unlink(caminhoLogSql);
-                console.log(`Arquivo existente ${caminhoLogSql} excluído com sucesso.`);
-            } catch (unlinkErr) {
-                if (unlinkErr.code !== 'ENOENT') {
-                    throw unlinkErr;
-                }
-            }
-    
-            await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
-            console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
-            await logJson(results.passagens, caminhoLogSql);
-            console.log("Resultados gravados com sucesso no arquivo JSON.")
+            // let caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
+
+            // try {
+            //     await fsPromises.unlink(caminhoLogSql);
+            //     console.log(`Arquivo existente ${caminhoLogSql} excluído com sucesso.`);
+            // } catch (unlinkErr) {
+            //     if (unlinkErr.code !== 'ENOENT') {
+            //         throw unlinkErr;
+            //     }
+            // }
+
+            // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
+            // console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
+            // await logJson(results.passagens, caminhoLogSql);
+            // console.log("Resultados gravados com sucesso no arquivo JSON.")
 
             // ----------------------------------------------------------------------
 
-            caminhoLogSql = path.join(caminhoNovaPasta, "categoriasPassagens.json");
-    
-            try {
-                await fsPromises.unlink(caminhoLogSql);
-                console.log(`Arquivo existente ${caminhoLogSql} excluído com sucesso.`);
-            } catch (unlinkErr) {
-                if (unlinkErr.code !== 'ENOENT') {
-                    throw unlinkErr;
-                }
-            }
-    
-            await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
-            console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
-            await logJson(results.categorias, caminhoLogSql);
-            console.log("Resultados gravados com sucesso no arquivo JSON.")
-    
+            // caminhoLogSql = path.join(caminhoNovaPasta, "categoriasPassagens.json");
+
+            // try {
+            //     await fsPromises.unlink(caminhoLogSql);
+            //     console.log(`Arquivo existente ${caminhoLogSql} excluído com sucesso.`);
+            // } catch (unlinkErr) {
+            //     if (unlinkErr.code !== 'ENOENT') {
+            //         throw unlinkErr;
+            //     }
+            // }
+
+            // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
+            // console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
+            // await logJson(results.categorias, caminhoLogSql);
+            // console.log("Resultados gravados com sucesso no arquivo JSON.")
+
         } catch (err) {
             console.error('Erro ao manipular o arquivo JSON:', err.message)
         } finally {
@@ -167,7 +196,7 @@ async function runCrawler(config) {
         }
     }
     function randomDelay() {
-        return Math.floor(Math.random() * (700 - 400 + 1) + 100);
+        return Math.floor(Math.random() * (1700 - 1400 + 1) + 1400);
     }
 
     // Função para fazer o fetch de uma única URL
@@ -203,6 +232,18 @@ async function runCrawler(config) {
         const urlsPassagens = []
         // const startTime = Date.now();
 
+        nomeCategoria = 'passagens'
+
+        const pastaLogs = path.join(diretorioAtual, 'logs');
+        if (!fs.existsSync(pastaLogs)) {
+            fs.mkdirSync(pastaLogs);
+        }
+
+        const caminhoNovaPasta = path.join(pastaLogs, nomeCategoria);
+        if (!fs.existsSync(pastaLogs)) {
+            fs.mkdirSync(pastaLogs);
+        }
+
         // console.log(`______________________________________________________________`)
 
         for (let i = 0; i < totalUrls; i++) {
@@ -211,12 +252,12 @@ async function runCrawler(config) {
                 `)
             const url = urls[i];
             const result = await fetchUrl(url, page);
-            if(result.data && result.data.cities){
-                for(cidade of result.data.cities) {
+            if (result.data && result.data.cities) {
+                for (cidade of result.data.cities) {
                     urlsCidades.push(cidade.link)
                 }
-            }else if(result.data && result.data.categories){
-                for(categoria of result.data.categories) {
+            } else if (result.data && result.data.categories) {
+                for (categoria of result.data.categories) {
                     urlsCategorias.push(categoria.link)
                 }
             }
@@ -227,13 +268,31 @@ async function runCrawler(config) {
             }
         }
 
-        for(let i = 0; i < urlsCategorias.length; i++) {
+        for (let i = 0; i < urlsCategorias.length; i++) {
             console.log(`RECUPERANDO CATEGORIAS ${i + 1}/${urlsCategorias.length} URL: ${urlsCategorias[i]}
                 `)
             const result = await fetchUrl(urlsCategorias[i], page)
-            if(result.data && result.data.cities){
-                for(cidade of result.data.cities) {
+            if (result.data && result.data.cities) {
+                for (cidade of result.data.cities) {
                     resultsCategorias.push(result)
+                    caminhoLogSql = path.join(caminhoNovaPasta, "categoriasPassagens.json");
+
+                    fs.access(caminhoLogSql, fs.constants.F_OK, (err) => {
+                        if (err) {
+                            // O arquivo não existe, então o cria
+                            fs.writeFile(caminhoLogSql, '', (err) => {
+                                if (err) throw err;
+                                console.log('Arquivo criado com sucesso!');
+                            });
+                        } else {
+                            // console.log('O arquivo já existe.');
+                        }
+                    });
+
+                    // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
+                    // console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
+                    await logJsonAppend(result, caminhoLogSql);
+                    console.log("Resultados gravados com sucesso no arquivo JSON.")
                     urlsCidades.push(cidade.link)
                 }
             }
@@ -242,13 +301,13 @@ async function runCrawler(config) {
                 await new Promise(resolve => setTimeout(resolve, delay));
             }
         }
-        
-        for(let i = 0; i < urlsCidades.length; i++) {
+
+        for (let i = 0; i < urlsCidades.length; i++) {
             console.log(`RECUPERANDO CIDADES ${i + 1}/${urlsCidades.length} URL: ${urlsCidades[i]}
                 `)
             const result = await fetchUrl(urlsCidades[i], page)
-            if(result.data && result.data.cities){
-                for(cidade of result.data.cities) {
+            if (result.data && result.data.cities) {
+                for (cidade of result.data.cities) {
                     resultsCidades.push(result)
                     urlsPassagens.push(cidade.link)
                 }
@@ -259,10 +318,30 @@ async function runCrawler(config) {
             }
         }
 
-        for(let i = 0; i < urlsPassagens.length; i++) {
+        for (let i = 0; i < urlsPassagens.length; i++) {
             console.log(`RECUPERANDO CIDADES ${i + 1}/${urlsPassagens.length} URL: ${urlsPassagens[i]}
                 `)
             const result = await fetchUrl(urlsPassagens[i], page)
+
+            let caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
+
+            fs.access(caminhoLogSql, fs.constants.F_OK, (err) => {
+                if (err) {
+                    // O arquivo não existe, então o cria
+                    fs.writeFile(caminhoLogSql, "", (err) => {
+                        if (err) throw err;
+                        console.log('Arquivo criado com sucesso!');
+                    });
+                } else {
+                    // console.log('O arquivo já existe.');
+                }
+            });
+
+            // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
+            // console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
+            await logJsonAppend(results, caminhoLogSql);
+            console.log("Resultados gravados com sucesso no arquivo JSON.")
+
             results.push(result);
             if (i < urlsPassagens.length - 1) {
                 const delay = randomDelay();
@@ -270,7 +349,7 @@ async function runCrawler(config) {
             }
         }
 
-        return {passagens: results, cidades: resultsCidades, categorias: resultsCategorias};
+        return { passagens: results, cidades: resultsCidades, categorias: resultsCategorias };
     }
 
 
@@ -360,6 +439,6 @@ async function runCrawler(config) {
     return result
 }
 
-// runCrawler(null)
+runCrawler(null)
 
 module.exports = { runCrawler, createController: () => new AbortController() };
