@@ -102,7 +102,7 @@ async function runCrawler(config, logCallback) {
         }
         await page.emulate(device);
 
-        nomeCategoria = 'PASSAGENS'
+        nomeCategoria = 'passagens'
 
         const pastaLogs = path.join(diretorioAtual, 'logs');
         if (!fs.existsSync(pastaLogs)) {

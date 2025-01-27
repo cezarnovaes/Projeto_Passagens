@@ -17,7 +17,7 @@ async function runLeitorPassagens(config, logCallback) {
     const { signal } = controller;
     const diretorioAtual = __dirname.split('scripts')[0]
     const caminhoLog = path.join(diretorioAtual, 'logs')
-    const caminhoArquivo = path.join(caminhoLog, 'PASSAGENS')
+    const caminhoArquivo = path.join(caminhoLog, 'passagens')
     const caminhoPassagens = path.join(caminhoArquivo, 'passagensResult.json')
     const data = readJsonFile(caminhoPassagens)
     if (data.error) {
