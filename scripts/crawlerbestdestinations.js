@@ -124,7 +124,7 @@ async function runCrawler(config) {
         const results = await fetchAllUrls(urls, page);
 
         try {
-            const caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
+            let caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
     
             try {
                 await fsPromises.unlink(caminhoLogSql);
@@ -137,7 +137,25 @@ async function runCrawler(config) {
     
             await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
             console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
-            await logJson(results, caminhoLogSql);
+            await logJson(results.passagens, caminhoLogSql);
+            console.log("Resultados gravados com sucesso no arquivo JSON.")
+
+            // ----------------------------------------------------------------------
+
+            caminhoLogSql = path.join(caminhoNovaPasta, "categoriasPassagens.json");
+    
+            try {
+                await fsPromises.unlink(caminhoLogSql);
+                console.log(`Arquivo existente ${caminhoLogSql} excluído com sucesso.`);
+            } catch (unlinkErr) {
+                if (unlinkErr.code !== 'ENOENT') {
+                    throw unlinkErr;
+                }
+            }
+    
+            await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
+            console.log(`Arquivo JSON criado com sucesso: ${caminhoLogSql}`)
+            await logJson(results.categorias, caminhoLogSql);
             console.log("Resultados gravados com sucesso no arquivo JSON.")
     
         } catch (err) {
@@ -176,9 +194,13 @@ async function runCrawler(config) {
     async function fetchAllUrls(urls, page) {
         const results = [];
         const totalUrls = urls.length;
-        let urlsCidades = []
-        let urlsCategorias = []
-        let urlsPassagens = []
+        const urlsCidades = []
+        const resultsCidades = []
+
+        const urlsCategorias = []
+        const resultsCategorias = []
+
+        const urlsPassagens = []
         // const startTime = Date.now();
 
         // console.log(`______________________________________________________________`)
@@ -211,6 +233,7 @@ async function runCrawler(config) {
             const result = await fetchUrl(urlsCategorias[i], page)
             if(result.data && result.data.cities){
                 for(cidade of result.data.cities) {
+                    resultsCategorias.push(result)
                     urlsCidades.push(cidade.link)
                 }
             }
@@ -226,6 +249,7 @@ async function runCrawler(config) {
             const result = await fetchUrl(urlsCidades[i], page)
             if(result.data && result.data.cities){
                 for(cidade of result.data.cities) {
+                    resultsCidades.push(result)
                     urlsPassagens.push(cidade.link)
                 }
             }
@@ -246,7 +270,7 @@ async function runCrawler(config) {
             }
         }
 
-        return results;
+        return {passagens: results, cidades: resultsCidades, categorias: resultsCategorias};
     }
 
 
