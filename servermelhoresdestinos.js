@@ -29,7 +29,9 @@ server.listen(PORT, async () => {
     }
     console.log(`Server running on port http://localhost:${PORT}`)
 
-    // await runCrawler(config);
+    const resultCrawler = await runCrawler(config);
+    
+    config.melhoresPassagens = resultCrawler
 
     console.log("Lendo resultados passagens...")
 
@@ -44,3 +46,4 @@ server.listen(PORT, async () => {
     await runEnviaMensagens(config);
 })
 
+//https://passagensaereas.melhoresdestinos.com.br/api/v1/airports/origins

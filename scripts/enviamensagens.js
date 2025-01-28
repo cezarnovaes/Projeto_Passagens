@@ -59,7 +59,7 @@ async function runEnviaMensagens(config) {
                 const messages = config.mensagens
                 // log('Enviando mensagens para o grupo: ' + grupo.name + " < Id >: " + groupId)
                 // log(messages)
-                for (mes in messages.slice(0, 2)) {
+                for (mes in messages) {
                     if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
                     try {
                         // Enviar as mensagens para o grupo - 120363390566540905@g.us Teste1

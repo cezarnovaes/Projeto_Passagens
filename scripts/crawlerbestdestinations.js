@@ -41,11 +41,11 @@ async function runCrawler(config) {
         }
     }
     const { Transform } = require('stream');
-    
+
     async function logJsonAppend(data, filePath) {
         try {
             let fileContent = [];
-    
+
             // Verifica se o arquivo existe e lê seu conteúdo
             try {
                 const existingContent = await fsPromises.readFile(filePath, 'utf-8');
@@ -57,10 +57,10 @@ async function runCrawler(config) {
                     throw err;
                 }
             }
-    
+
             // Adiciona o novo objeto à lista
             fileContent.push(data);
-    
+
             // Escreve a lista atualizada de volta ao arquivo
             await fsPromises.writeFile(filePath, JSON.stringify(fileContent, null, 2), 'utf-8');
             console.log('Resultados gravados com sucesso no arquivo JSON.');
@@ -82,7 +82,7 @@ async function runCrawler(config) {
             }
         }
     }
-    
+
     const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs))
     const diretorioAtual = __dirname.split('scripts')[0]
 
@@ -218,7 +218,7 @@ async function runCrawler(config) {
         } finally {
             await browser.close();
             browser.disconnect();
-            return { status: 'success', message: results }
+            return results
         }
     }
     function randomDelay() {
@@ -247,7 +247,7 @@ async function runCrawler(config) {
 
     // Função principal para fazer o fetch de todas as URLs
     async function fetchAllUrls(urls, page) {
-        const results = [];
+        const resultsFinal = [];
         const totalUrls = urls.length;
         const urlsCidades = []
         const resultsCidades = []
@@ -272,7 +272,7 @@ async function runCrawler(config) {
 
         // console.log(`______________________________________________________________`)
 
-        for (let i = totalUrls - 1; i > -1 ; i--) {
+        for (let i = totalUrls - 1; i > -1; i--) {
             if (signal.aborted) throw new Error('Execução cancelada pelo usuário.');
             console.log(`RECUPERANDO PASSAGENS ${i + 1}/${totalUrls} URL: ${urls[i]}
                 `)
@@ -325,7 +325,7 @@ async function runCrawler(config) {
             let caminhoLogSql = path.join(caminhoNovaPasta, "cidadesResults.json");
 
             await ensureFileExists(caminhoLogSql);
- 
+
             // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
             console.log(`Arquivo JSON escrito com sucesso: ${caminhoLogSql}`)
             await logJsonAppend(result, caminhoLogSql);
@@ -351,7 +351,7 @@ async function runCrawler(config) {
         //     let caminhoLogSql = path.join(caminhoNovaPasta, "passagensCidades.json");
 
         //     await ensureFileExists(caminhoLogSql);
- 
+
         //     // await fsPromises.writeFile(caminhoLogSql, "", 'utf-8');
         //     console.log(`Arquivo JSON escrito com sucesso: ${caminhoLogSql}`)
         //     await logJsonAppend(result, caminhoLogSql);
@@ -364,9 +364,66 @@ async function runCrawler(config) {
         //     }
         // }
 
-        return { passagens: results, cidades: resultsCidades, categorias: resultsCategorias };
+        const destinosBrAll = []
+        const destinosIntAll = []
+
+        for (destino of resultsCidades) {
+            if (destino.status == "success" && destino.data.to_name == "Brasil") {
+                destinosBrAll.push(destino.data.cities[0])
+            } else {
+                destinosIntAll.push(destino.data.cities[0])
+            }
+        }
+
+        const destinosAleatorios = selecionarDestinosUnicos(destinosBrAll, destinosIntAll, 2, 2);
+        console.log(destinosAleatorios)
+
+        for (let i = 0; i < destinosAleatorios.length; i++) {
+            console.log(`RECUPERANDO DESTINOS ALEATÓRIOS: ${i + 1}/${destinosAleatorios.length} URL: ${destinosAleatorios[i]}
+                `)
+            const result = await fetchUrl(destinosAleatorios[i], page)
+
+            if (result.status == "success") {
+                resultsFinal.push(result)
+            }
+            if (i < destinosAleatorios.length - 1) {
+                const delay = randomDelay();
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
+
+        return resultsFinal;
     }
 
+    function selecionarDestinosUnicos(destinosBrAll, destinosIntAll, quantidadeBr, quantidadeInt) {
+        let destinosAleatorios = [];
+        let destinosBrDisponiveis = [...destinosBrAll];
+        let destinosIntDisponiveis = [...destinosIntAll];
+
+        for (let i = 0; i < quantidadeBr; i++) {
+            if (destinosBrDisponiveis.length === 0) break;
+
+            let indiceAleatorio = getRandomInt(0, destinosBrDisponiveis.length - 1);
+            destinosAleatorios.push(destinosBrDisponiveis[indiceAleatorio].link);
+            destinosBrDisponiveis.splice(indiceAleatorio, 1);
+        }
+
+        for (let i = 0; i < quantidadeInt; i++) {
+            if (destinosIntDisponiveis.length === 0) break;
+
+            let indiceAleatorio = getRandomInt(0, destinosIntDisponiveis.length - 1);
+            destinosAleatorios.push(destinosIntDisponiveis[indiceAleatorio].link);
+            destinosIntDisponiveis.splice(indiceAleatorio, 1);
+        }
+
+        return destinosAleatorios;
+    }
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
     async function decodeHTMLEntities(text, page) {
         var txt = await page.evaluate((text) => {
@@ -454,6 +511,6 @@ async function runCrawler(config) {
     return result
 }
 
-runCrawler(null)
+// runCrawler(null)
 
 module.exports = { runCrawler, createController: () => new AbortController() };

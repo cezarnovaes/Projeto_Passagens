@@ -62,32 +62,26 @@ async function runLeitorPassagens(config) {
     const controller = new AbortController();
     const { signal } = controller;
 
-    const diretorioAtual = __dirname.split('scripts')[0]
-    const caminhoLog = path.join(diretorioAtual, 'logs')
-    const caminhoArquivo = path.join(caminhoLog, 'passagens')
-    const caminhoPassagens = path.join(caminhoArquivo, 'cidadesPassagens.json')
-    const data = readJsonFile(caminhoPassagens)
-    if (data.error) {
-        console.error(data.error);
-        return;
-    }
+    // const diretorioAtual = __dirname.split('scripts')[0]
+    // const caminhoLog = path.join(diretorioAtual, 'logs')
+    // const caminhoArquivo = path.join(caminhoLog, 'passagens')
+    // const caminhoPassagens = path.join(caminhoArquivo, 'cidadesPassagens.json')
+    // const data = readJsonFile(caminhoPassagens)
+
+    // if (data.error) {
+    //     console.error(data.error);
+    //     return;
+    // }
 
     function log(texto) {
         if (texto != null) {
             console.log(texto)
         }
     }
-    let passagens = []
-    let categoriasNaoLidas = []
-    for(passagem of data){
-        if(passagem.status == "success"){
-            passagens.push(passagem)
-        }else{
-            categoriasNaoLidas.push(passagem.url)
-        }
-    }
-    const mensagens = generateWhatsAppMessages(passagens)
-    console.log(JSON.stringify(mensagens.mais_baratas[0]))
+    console.log(config.melhoresPassagens)
+
+    const mensagens = generateWhatsAppMessages(config.melhoresPassagens)
+    console.log(JSON.stringify(mensagens.mais_baratas))
 
     return { status: 'success', message: mensagens }
 }
